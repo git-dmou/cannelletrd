@@ -1,0 +1,1446 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="Packager" default="all" basedir=".">
+
+    <!-- =================================================================== -->
+    <!-- Cleans the directories                                              -->
+    <!-- =================================================================== -->
+    <target name="clean">
+
+        <echo>+---------------------------------------------------+</echo>
+        <echo>| |</echo>
+        <echo>| Nettoyage des fichiers existants |</echo>
+        <echo>| |</echo>
+        <echo>+---------------------------------------------------+</echo>
+
+        <delete dir="cannelle-resources/src/main/resources/Resources_cannelle"/>
+
+    </target>
+
+    <!-- =================================================================== -->
+    <!-- Adapting configuration files                                        -->
+    <!-- =================================================================== -->
+    <target name="update" depends="clean">
+
+        <echo>+---------------------------------------------------+</echo>
+        <echo>| |</echo>
+        <echo>| Compilation de la méta |</echo>
+        <echo>| |</echo>
+        <echo>+---------------------------------------------------+</echo>
+
+        <!--
+                <exec executable="${basedir}\sources_cannelle_2020\meta_sources\Meta\build.bat"
+                    dir="${basedir}\sources_cannelle_2020\meta_sources\Meta"
+                    failonerror="true"/>
+        -->
+        <echo>+---------------------------------------------------+</echo>
+        <echo>| |</echo>
+        <echo>| Mise à jour des fichiers |</echo>
+        <echo>| |</echo>
+        <echo>+---------------------------------------------------+</echo>
+
+        <!-- /!\ /!\ /!\ /!\ Meta-core_2.0 /!\ /!\ /!\ /!\ -->
+        <!-- FR -->
+        <echo>Copie de la méta Cannelle 2.0 FR...</echo>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/act_files/types/solunea/fr/container/html_meta_2/engine"
+              overwrite="true">
+            <fileset dir="sources_cannelle_2020/meta_sources/Meta/deploy/engine"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/act_files/types/solunea/fr/container/html_meta_2"
+              overwrite="true"
+              file="sources_cannelle_2020/meta_sources/Meta/deploy/index.html"/>
+
+        <!-- EN -->
+        <echo>Copie de la méta Cannelle 2.0 EN...</echo>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/act_files/types/solunea/en/container/html_meta_2/engine"
+              overwrite="true">
+            <fileset dir="sources_cannelle_2020/meta_sources/Meta/deploy/engine"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/act_files/types/solunea/en/container/html_meta_2"
+              overwrite="true"
+              file="sources_cannelle_2020/meta_sources/Meta/deploy/index.html"/>
+
+        <!-- ES -->
+        <echo>Copie de la méta Cannelle 2.0 ES...</echo>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/act_files/types/solunea/es/container/html_meta_2/engine"
+              overwrite="true">
+            <fileset dir="sources_cannelle_2020/meta_sources/Meta/deploy/engine"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/act_files/types/solunea/es/container/html_meta_2"
+              overwrite="true"
+              file="sources_cannelle_2020/meta_sources/Meta/deploy/index.html"/>
+
+        <!-- NL -->
+        <echo>Copie de la méta Cannelle 2.0 NL...</echo>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/act_files/types/solunea/nl/container/html_meta_2/engine"
+              overwrite="true">
+            <fileset dir="sources_cannelle_2020/meta_sources/Meta/deploy/engine"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/act_files/types/solunea/nl/container/html_meta_2"
+              overwrite="true"
+              file="sources_cannelle_2020/meta_sources/Meta/deploy/index.html"/>
+
+        <!-- DE -->
+        <echo>Copie de la méta Cannelle 2.0 DE...</echo>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/act_files/types/solunea/de/container/html_meta_2/engine"
+              overwrite="true">
+            <fileset dir="sources_cannelle_2020/meta_sources/Meta/deploy/engine"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/act_files/types/solunea/de/container/html_meta_2"
+              overwrite="true"
+              file="sources_cannelle_2020/meta_sources/Meta/deploy/index.html"/>
+
+        <!-- IT -->
+        <echo>Copie de la méta Cannelle 2.0 IT...</echo>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/act_files/types/solunea/it/container/html_meta_2/engine"
+              overwrite="true">
+            <fileset dir="sources_cannelle_2020/meta_sources/Meta/deploy/engine"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/act_files/types/solunea/it/container/html_meta_2"
+              overwrite="true"
+              file="sources_cannelle_2020/meta_sources/Meta/deploy/index.html"/>
+
+        <!-- ZH -->
+        <echo>Copie de la méta Cannelle 2.0 ZH...</echo>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/act_files/types/solunea/zh/container/html_meta_2/engine"
+              overwrite="true">
+            <fileset dir="sources_cannelle_2020/meta_sources/Meta/deploy/engine"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/act_files/types/solunea/zh/container/html_meta_2"
+              overwrite="true"
+              file="sources_cannelle_2020/meta_sources/Meta/deploy/index.html"/>
+
+        <!-- PT -->
+        <echo>Copie de la méta Cannelle 2.0 PT...</echo>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/act_files/types/solunea/pt/container/html_meta_2/engine"
+              overwrite="true">
+            <fileset dir="sources_cannelle_2020/meta_sources/Meta/deploy/engine"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/act_files/types/solunea/pt/container/html_meta_2"
+              overwrite="true"
+              file="sources_cannelle_2020/meta_sources/Meta/deploy/index.html"/>
+
+        <!-- TR -->
+        <echo>Copie de la méta Cannelle 2.0 TR...</echo>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/act_files/types/solunea/tr/container/html_meta_2/engine"
+              overwrite="true">
+            <fileset dir="sources_cannelle_2020/meta_sources/Meta/deploy/engine"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/act_files/types/solunea/tr/container/html_meta_2"
+              overwrite="true"
+              file="sources_cannelle_2020/meta_sources/Meta/deploy/index.html"/>
+
+        <!-- EL -->
+        <echo>Copie de la méta Cannelle 2.0 EL...</echo>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/act_files/types/solunea/el/container/html_meta_2/engine"
+              overwrite="true">
+            <fileset dir="sources_cannelle_2020/meta_sources/Meta/deploy/engine"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/act_files/types/solunea/el/container/html_meta_2"
+              overwrite="true"
+              file="sources_cannelle_2020/meta_sources/Meta/deploy/index.html"/>
+
+        <!-- AR -->
+        <echo>Copie de la méta Cannelle 2.0 AR...</echo>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/act_files/types/solunea/ar/container/html_meta_2/engine"
+              overwrite="true">
+            <fileset dir="sources_cannelle_2020/meta_sources/Meta/deploy/engine"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/act_files/types/solunea/ar/container/html_meta_2"
+              overwrite="true"
+              file="sources_cannelle_2020/meta_sources/Meta/deploy/index.html"/>
+
+        <!-- AR -->
+        <echo>Copie de la méta Cannelle 2.0 HE...</echo>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/act_files/types/solunea/he/container/html_meta_2/engine"
+              overwrite="true">
+            <fileset dir="sources_cannelle_2020/meta_sources/Meta/deploy/engine"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/act_files/types/solunea/he/container/html_meta_2"
+              overwrite="true"
+              file="sources_cannelle_2020/meta_sources/Meta/deploy/index.html"/>
+
+        <!-- RU -->
+        <echo>Copie de la méta Cannelle 2.0 RU...</echo>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/act_files/types/solunea/ru/container/html_meta_2/engine"
+              overwrite="true">
+            <fileset dir="sources_cannelle_2020/meta_sources/Meta/deploy/engine"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/act_files/types/solunea/ru/container/html_meta_2"
+              overwrite="true"
+              file="sources_cannelle_2020/meta_sources/Meta/deploy/index.html"/>
+
+        <!-- AR -->
+        <echo>Copie de la méta Cannelle 2.0 SK...</echo>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/act_files/types/solunea/sk/container/html_meta_2/engine"
+              overwrite="true">
+            <fileset dir="sources_cannelle_2020/meta_sources/Meta/deploy/engine"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/act_files/types/solunea/sk/container/html_meta_2"
+              overwrite="true"
+              file="sources_cannelle_2020/meta_sources/Meta/deploy/index.html"/>
+
+        <echo>Copie des zips de customisation 2.0</echo>
+
+        <!-- Suppression de l'anciennce version -->
+        <delete file="cannelle-resources/src/main/resources/Resources_cannelle/content-customization-html.zip"
+                quiet="true"/>
+
+        <!-- /!\ /!\ /!\ /!\       ATTENTION, ATTENTION !!!      /!\ /!\ /!\ /!\ -->
+        <!-- Constitution du fichier de customization à partir de la meta  -->
+        <!-- mais version écrasée dans la suite du traitement par -->
+        <!-- sources_cannelle_2020/customization/content-customization-html.zip -->
+        <!-- /!\ /!\ /!\ /!\ * * * * * * * * * * * * * * * * * * /!\ /!\ /!\ /!\ -->
+
+        <!-- Création dossier temporaire-->
+        <!-- <echo>Création dossier temporaire "tmp_custom"</echo>
+        <mkdir dir="tmp_custom"/>
+        <copy todir="tmp_custom/engine/css" overwrite="true"
+              file="sources_cannelle_2020/meta_sources/Meta/deploy/engine/css/customization.css"/>
+        <mkdir dir="tmp_custom/engine/font"/>
+        <copy todir="tmp_custom/engine/img" overwrite="true">
+            <fileset dir="sources_cannelle_2020/meta_sources/Meta/deploy/engine/img/"/>
+        </copy>
+        <copy todir="tmp_custom/engine/js" overwrite="true"
+              file="sources_cannelle_2020/meta_sources/Meta/deploy/engine/js/meta-customSettings.js"/>
+        <copy todir="tmp_custom/engine/localisation" overwrite="true"
+              file="sources_cannelle_2020/meta_sources/Meta/deploy/engine/localisation/customization.js"/>
+
+        <echo>Zippage et copie du fichier temporaire</echo>
+        <zip destfile="cannelle-resources/src/main/resources/Resources_cannelle/content-customization-html.zip"
+             basedir="tmp_custom/"
+             update="true"/>
+
+        <echo>Nettoyage du répertoire temporaire</echo>
+        <delete dir="tmp_custom" /> -->
+
+        <!-- /!\ /!\ /!\ /!\ Fin de la copie de la meta-core_2.0 /!\ /!\ /!\ /!\ -->
+
+        <!-- Copie des écrans d'exercices HTML -->
+
+        <echo>Copie du modèle d'écran Association...</echo>
+
+        <!-- modèle HTML -->
+        <fileset id="association_html" dir="sources_cannelle_2020/screens/Association_html">
+            <exclude name="**/*.xls"/>
+        </fileset>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/fr/Association_html"
+              overwrite="true">
+            <fileset refid="association_html"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/en/Association_html"
+              overwrite="true">
+            <fileset refid="association_html"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/es/Association_html"
+              overwrite="true">
+            <fileset refid="association_html"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/nl/Association_html"
+              overwrite="true">
+            <fileset refid="association_html"/>
+        </copy>
+
+        <!-- Xls FR -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/fr/Association_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/Association_html/Association_fr.xls"/>
+        <!-- Xls EN -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/en/Association_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/Association_html/Association_en.xls"/>
+        <!-- Xls ES -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/es/Association_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/Association_html/Association_es.xls"/>
+        <!-- Xls NL -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/nl/Association_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/Association_html/Association_nl.xls"/>
+
+
+        <echo>Copie du modèle d'écran Cercle...</echo>
+
+        <!-- modèle HTML -->
+        <fileset id="cercle_html" dir="sources_cannelle_2020/screens/Cercle_html">
+            <exclude name="**/*.xls"/>
+        </fileset>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/fr/Cercle_html"
+              overwrite="true">
+            <fileset refid="cercle_html"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/en/Cercle_html"
+              overwrite="true">
+            <fileset refid="cercle_html"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/es/Cercle_html"
+              overwrite="true">
+            <fileset refid="cercle_html"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/nl/Cercle_html"
+              overwrite="true">
+            <fileset refid="cercle_html"/>
+        </copy>
+
+        <!-- Xls FR -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/fr/Cercle_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/Cercle_html/Cercle_fr.xls"/>
+        <!-- Xls EN -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/en/Cercle_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/Cercle_html/Cercle_en.xls"/>
+        <!-- Xls EN -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/es/Cercle_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/Cercle_html/Cercle_es.xls"/>
+        <!-- Xls NL -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/nl/Cercle_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/Cercle_html/Cercle_nl.xls"/>
+
+
+        <echo>Copie du modèle d'écran BilanThematique...</echo>
+
+        <!-- modèle HTML -->
+        <fileset id="BilanThematique_html" dir="sources_cannelle_2020/screens/BilanThematique_html">
+            <exclude name="**/*.xls"/>
+        </fileset>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/fr/BilanThematique_html"
+              overwrite="true">
+            <fileset refid="BilanThematique_html"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/en/BilanThematique_html"
+              overwrite="true">
+            <fileset refid="BilanThematique_html"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/es/BilanThematique_html"
+              overwrite="true">
+            <fileset refid="BilanThematique_html"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/nl/BilanThematique_html"
+              overwrite="true">
+            <fileset refid="BilanThematique_html"/>
+        </copy>
+
+        <!-- Xls FR -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/fr/BilanThematique_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/BilanThematique_html/BilanThematique_fr.xls"/>
+        <!-- Xls EN -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/en/BilanThematique_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/BilanThematique_html/BilanThematique_en.xls"/>
+        <!-- Xls EN -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/es/BilanThematique_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/BilanThematique_html/BilanThematique_es.xls"/>
+        <!-- Xls NL -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/nl/BilanThematique_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/BilanThematique_html/BilanThematique_nl.xls"/>
+
+        <echo>Copie du modèle d'écran Carrousel...</echo>
+
+        <!-- modèle HTML -->
+        <fileset id="Carrousel_html" dir="sources_cannelle_2020/screens/Carrousel_html">
+            <exclude name="**/*.xls"/>
+        </fileset>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/fr/Carrousel_html"
+              overwrite="true">
+            <fileset refid="Carrousel_html"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/en/Carrousel_html"
+              overwrite="true">
+            <fileset refid="Carrousel_html"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/es/Carrousel_html"
+              overwrite="true">
+            <fileset refid="Carrousel_html"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/nl/Carrousel_html"
+              overwrite="true">
+            <fileset refid="Carrousel_html"/>
+        </copy>
+
+        <!-- Xls FR -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/fr/Carrousel_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/Carrousel_html/Carrousel_fr.xls"/>
+        <!-- Xls EN -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/en/Carrousel_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/Carrousel_html/Carrousel_en.xls"/>
+        <!-- Xls EN -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/es/Carrousel_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/Carrousel_html/Carrousel_es.xls"/>
+        <!-- Xls NL -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/nl/Carrousel_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/Carrousel_html/Carrousel_nl.xls"/>
+
+
+        <echo>Copie du modèle d'écran Choice...</echo>
+
+        <!-- modèle HTML -->
+        <fileset id="Choice_html" dir="sources_cannelle_2020/screens/Choice_html">
+            <exclude name="**/*.xls"/>
+        </fileset>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/fr/Choice_html"
+              overwrite="true">
+            <fileset refid="Choice_html"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/en/Choice_html"
+              overwrite="true">
+            <fileset refid="Choice_html"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/es/Choice_html"
+              overwrite="true">
+            <fileset refid="Choice_html"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/nl/Choice_html"
+              overwrite="true">
+            <fileset refid="Choice_html"/>
+        </copy>
+
+        <!-- Xls FR -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/fr/Choice_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/Choice_html/Choice_fr.xls"/>
+        <!-- Xls EN -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/en/Choice_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/Choice_html/Choice_en.xls"/>
+        <!-- Xls EN -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/es/Choice_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/Choice_html/Choice_es.xls"/>
+        <!-- Xls NL -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/nl/Choice_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/Choice_html/Choice_nl.xls"/>
+
+
+        <echo>Copie du modèle d'écran Derouler...</echo>
+
+        <!-- modèle HTML -->
+        <fileset id="Derouler_html" dir="sources_cannelle_2020/screens/Derouler_html">
+            <exclude name="**/*.xls"/>
+        </fileset>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/fr/Derouler_html"
+              overwrite="true">
+            <fileset refid="Derouler_html"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/en/Derouler_html"
+              overwrite="true">
+            <fileset refid="Derouler_html"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/es/Derouler_html"
+              overwrite="true">
+            <fileset refid="Derouler_html"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/nl/Derouler_html"
+              overwrite="true">
+            <fileset refid="Derouler_html"/>
+        </copy>
+
+        <!-- Xls FR -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/fr/Derouler_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/Derouler_html/Derouler_fr.xls"/>
+        <!-- Xls EN -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/en/Derouler_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/Derouler_html/Derouler_en.xls"/>
+        <!-- Xls EN -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/es/Derouler_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/Derouler_html/Derouler_es.xls"/>
+        <!-- Xls NL -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/nl/Derouler_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/Derouler_html/Derouler_nl.xls"/>
+
+
+        <echo>Copie du modèle d'écran Classification...</echo>
+
+        <!-- modèle HTML -->
+        <fileset id="Classification_html" dir="sources_cannelle_2020/screens/Classification_html">
+            <exclude name="**/*.xls"/>
+        </fileset>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/fr/Classification_html"
+              overwrite="true">
+            <fileset refid="Classification_html"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/en/Classification_html"
+              overwrite="true">
+            <fileset refid="Classification_html"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/es/Classification_html"
+              overwrite="true">
+            <fileset refid="Classification_html"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/nl/Classification_html"
+              overwrite="true">
+            <fileset refid="Classification_html"/>
+        </copy>
+
+        <!-- Xls FR -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/fr/Classification_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/Classification_html/Classification_fr.xls"/>
+        <!-- Xls EN -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/en/Classification_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/Classification_html/Classification_en.xls"/>
+        <!-- Xls EN -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/es/Classification_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/Classification_html/Classification_es.xls"/>
+        <!-- Xls NL -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/nl/Classification_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/Classification_html/Classification_nl.xls"/>
+
+
+        <echo>Copie du modèle d'écran Comparaison...</echo>
+
+        <!-- modèle HTML -->
+        <fileset id="Comparaison_html" dir="sources_cannelle_2020/screens/Comparaison_html">
+            <exclude name="**/*.xls"/>
+        </fileset>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/fr/Comparaison_html"
+              overwrite="true">
+            <fileset refid="Comparaison_html"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/en/Comparaison_html"
+              overwrite="true">
+            <fileset refid="Comparaison_html"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/es/Comparaison_html"
+              overwrite="true">
+            <fileset refid="Comparaison_html"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/nl/Comparaison_html"
+              overwrite="true">
+            <fileset refid="Comparaison_html"/>
+        </copy>
+
+        <!-- Xls FR -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/fr/Comparaison_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/Comparaison_html/Comparaison_fr.xls"/>
+        <!-- Xls EN -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/en/Comparaison_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/Comparaison_html/Comparaison_en.xls"/>
+        <!-- Xls EN -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/es/Comparaison_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/Comparaison_html/Comparaison_es.xls"/>
+        <!-- Xls NL -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/nl/Comparaison_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/Comparaison_html/Comparaison_nl.xls"/>
+
+
+        <echo>Copie du modèle d'écran CompletionLibre...</echo>
+
+        <!-- modèle HTML -->
+        <fileset id="CompletionLibre_html" dir="sources_cannelle_2020/screens/CompletionLibre_html">
+            <exclude name="**/*.xls"/>
+        </fileset>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/fr/CompletionLibre_html"
+              overwrite="true">
+            <fileset refid="CompletionLibre_html"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/en/CompletionLibre_html"
+              overwrite="true">
+            <fileset refid="CompletionLibre_html"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/es/CompletionLibre_html"
+              overwrite="true">
+            <fileset refid="CompletionLibre_html"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/nl/CompletionLibre_html"
+              overwrite="true">
+            <fileset refid="CompletionLibre_html"/>
+        </copy>
+
+        <!-- Xls FR -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/fr/CompletionLibre_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/CompletionLibre_html/CompletionLibre_fr.xls"/>
+        <!-- Xls EN -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/en/CompletionLibre_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/CompletionLibre_html/CompletionLibre_en.xls"/>
+        <!-- Xls EN -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/es/CompletionLibre_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/CompletionLibre_html/CompletionLibre_es.xls"/>
+        <!-- Xls NL -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/nl/CompletionLibre_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/CompletionLibre_html/CompletionLibre_nl.xls"/>
+
+
+        <echo>Copie du modèle d'écran Definition...</echo>
+
+        <!-- modèle HTML -->
+        <fileset id="Definition_html" dir="sources_cannelle_2020/screens/Definition_html">
+            <exclude name="**/*.xls"/>
+        </fileset>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/fr/Definition_html"
+              overwrite="true">
+            <fileset refid="Definition_html"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/en/Definition_html"
+              overwrite="true">
+            <fileset refid="Definition_html"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/es/Definition_html"
+              overwrite="true">
+            <fileset refid="Definition_html"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/nl/Definition_html"
+              overwrite="true">
+            <fileset refid="Definition_html"/>
+        </copy>
+
+        <!-- Xls FR -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/fr/Definition_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/Definition_html/Definition_fr.xls"/>
+        <!-- Xls EN -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/en/Definition_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/Definition_html/Definition_en.xls"/>
+        <!-- Xls EN -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/es/Definition_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/Definition_html/Definition_es.xls"/>
+        <!-- Xls EN -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/nl/Definition_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/Definition_html/Definition_nl.xls"/>
+
+
+        <echo>Copie du modèle d'écran Developpement...</echo>
+
+        <!-- modèle HTML -->
+        <fileset id="Developpement_html" dir="sources_cannelle_2020/screens/Developpement_html">
+            <exclude name="**/*.xls"/>
+        </fileset>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/fr/Developpement_html"
+              overwrite="true">
+            <fileset refid="Developpement_html"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/en/Developpement_html"
+              overwrite="true">
+            <fileset refid="Developpement_html"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/es/Developpement_html"
+              overwrite="true">
+            <fileset refid="Developpement_html"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/nl/Developpement_html"
+              overwrite="true">
+            <fileset refid="Developpement_html"/>
+        </copy>
+
+        <!-- Xls FR -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/fr/Developpement_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/Developpement_html/Developpement_fr.xls"/>
+        <!-- Xls EN -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/en/Developpement_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/Developpement_html/Developpement_en.xls"/>
+        <!-- Xls EN -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/es/Developpement_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/Developpement_html/Developpement_es.xls"/>
+        <!-- Xls NL -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/nl/Developpement_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/Developpement_html/Developpement_nl.xls"/>
+
+
+        <echo>Copie du modèle d'écran Enumeration...</echo>
+
+        <!-- modèle HTML -->
+        <fileset id="Enumeration_html" dir="sources_cannelle_2020/screens/Enumeration_html">
+            <exclude name="**/*.xls"/>
+        </fileset>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/fr/Enumeration_html"
+              overwrite="true">
+            <fileset refid="Enumeration_html"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/en/Enumeration_html"
+              overwrite="true">
+            <fileset refid="Enumeration_html"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/es/Enumeration_html"
+              overwrite="true">
+            <fileset refid="Enumeration_html"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/nl/Enumeration_html"
+              overwrite="true">
+            <fileset refid="Enumeration_html"/>
+        </copy>
+
+        <!-- Xls FR -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/fr/Enumeration_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/Enumeration_html/Enumeration_fr.xls"/>
+        <!-- Xls EN -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/en/Enumeration_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/Enumeration_html/Enumeration_en.xls"/>
+        <!-- Xls EN -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/es/Enumeration_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/Enumeration_html/Enumeration_es.xls"/>
+        <!-- Xls NL -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/nl/Enumeration_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/Enumeration_html/Enumeration_nl.xls"/>
+
+
+        <echo>Copie du modèle d'écran Objectifs...</echo>
+
+        <!-- modèle HTML -->
+        <fileset id="Objectifs_html" dir="sources_cannelle_2020/screens/Objectifs_html">
+            <exclude name="**/*.xls"/>
+        </fileset>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/fr/Objectifs_html"
+              overwrite="true">
+            <fileset refid="Objectifs_html"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/en/Objectifs_html"
+              overwrite="true">
+            <fileset refid="Objectifs_html"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/es/Objectifs_html"
+              overwrite="true">
+            <fileset refid="Objectifs_html"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/nl/Objectifs_html"
+              overwrite="true">
+            <fileset refid="Objectifs_html"/>
+        </copy>
+
+        <!-- Xls FR -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/fr/Objectifs_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/Objectifs_html/Objectifs_fr.xls"/>
+        <!-- Xls EN -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/en/Objectifs_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/Objectifs_html/Objectifs_en.xls"/>
+        <!-- Xls EN -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/es/Objectifs_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/Objectifs_html/Objectifs_es.xls"/>
+        <!-- Xls NL -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/nl/Objectifs_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/Objectifs_html/Objectifs_nl.xls"/>
+
+
+        <echo>Copie du modèle d'écran ProcessLigne...</echo>
+
+        <!-- modèle HTML -->
+        <fileset id="ProcessLigne_html" dir="sources_cannelle_2020/screens/ProcessLigne_html">
+            <exclude name="**/*.xls"/>
+        </fileset>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/fr/ProcessLigne_html"
+              overwrite="true">
+            <fileset refid="ProcessLigne_html"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/en/ProcessLigne_html"
+              overwrite="true">
+            <fileset refid="ProcessLigne_html"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/es/ProcessLigne_html"
+              overwrite="true">
+            <fileset refid="ProcessLigne_html"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/nl/ProcessLigne_html"
+              overwrite="true">
+            <fileset refid="ProcessLigne_html"/>
+        </copy>
+
+        <!-- Xls FR -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/fr/ProcessLigne_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/ProcessLigne_html/ProcessLigne_fr.xls"/>
+        <!-- Xls EN -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/en/ProcessLigne_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/ProcessLigne_html/ProcessLigne_en.xls"/>
+        <!-- Xls EN -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/es/ProcessLigne_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/ProcessLigne_html/ProcessLigne_es.xls"/>
+        <!-- Xls EN -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/nl/ProcessLigne_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/ProcessLigne_html/ProcessLigne_nl.xls"/>
+
+
+        <echo>Copie du modèle d'écran Schema...</echo>
+
+        <!-- modèle HTML -->
+        <fileset id="Schema_html" dir="sources_cannelle_2020/screens/Schema_html">
+            <exclude name="**/*.xls"/>
+        </fileset>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/fr/Schema_html"
+              overwrite="true">
+            <fileset refid="Schema_html"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/en/Schema_html"
+              overwrite="true">
+            <fileset refid="Schema_html"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/es/Schema_html"
+              overwrite="true">
+            <fileset refid="Schema_html"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/nl/Schema_html"
+              overwrite="true">
+            <fileset refid="Schema_html"/>
+        </copy>
+
+        <!-- Xls FR -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/fr/Schema_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/Schema_html/Schema_fr.xls"/>
+        <!-- Xls EN -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/en/Schema_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/Schema_html/Schema_en.xls"/>
+        <!-- Xls EN -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/es/Schema_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/Schema_html/Schema_es.xls"/>
+        <!-- Xls NL -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/nl/Schema_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/Schema_html/Schema_nl.xls"/>
+
+
+        <echo>Copie du modèle d'écran Titrage...</echo>
+
+        <!-- modèle HTML -->
+        <fileset id="Titrage_html" dir="sources_cannelle_2020/screens/Titrage_html">
+            <exclude name="**/*.xls"/>
+        </fileset>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/fr/Titrage_html"
+              overwrite="true">
+            <fileset refid="Titrage_html"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/en/Titrage_html"
+              overwrite="true">
+            <fileset refid="Titrage_html"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/es/Titrage_html"
+              overwrite="true">
+            <fileset refid="Titrage_html"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/nl/Titrage_html"
+              overwrite="true">
+            <fileset refid="Titrage_html"/>
+        </copy>
+
+        <!-- Xls FR -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/fr/Titrage_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/Titrage_html/Titrage_fr.xls"/>
+        <!-- Xls EN -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/en/Titrage_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/Titrage_html/Titrage_en.xls"/>
+        <!-- Xls EN -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/es/Titrage_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/Titrage_html/Titrage_es.xls"/>
+        <!-- Xls NL -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/nl/Titrage_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/Titrage_html/Titrage_nl.xls"/>
+
+
+        <echo>Copie du modèle d'écran Random...</echo>
+
+        <!-- modèle HTML -->
+        <fileset id="Random_html" dir="sources_cannelle_2020/screens/Random_html">
+            <exclude name="**/*.xls"/>
+        </fileset>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/fr/Random_html"
+              overwrite="true">
+            <fileset refid="Random_html"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/en/Random_html"
+              overwrite="true">
+            <fileset refid="Random_html"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/es/Random_html"
+              overwrite="true">
+            <fileset refid="Random_html"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/nl/Random_html"
+              overwrite="true">
+            <fileset refid="Random_html"/>
+        </copy>
+
+        <!-- Xls FR -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/fr/Random_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/Random_html/Random_fr.xls"/>
+        <!-- Xls EN -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/en/Random_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/Random_html/Random_en.xls"/>
+        <!-- Xls EN -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/es/Random_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/Random_html/Random_es.xls"/>
+        <!-- Xls EN -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/nl/Random_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/Random_html/Random_nl.xls"/>
+
+
+        <echo>Copie du modèle d'écran Video...</echo>
+
+        <!-- modèle HTML -->
+        <fileset id="Video_html" dir="sources_cannelle_2020/screens/Video_html">
+            <exclude name="**/*.xls"/>
+        </fileset>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/fr/Video_html"
+              overwrite="true">
+            <fileset refid="Video_html"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/en/Video_html"
+              overwrite="true">
+            <fileset refid="Video_html"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/es/Video_html"
+              overwrite="true">
+            <fileset refid="Video_html"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/nl/Video_html"
+              overwrite="true">
+            <fileset refid="Video_html"/>
+        </copy>
+
+        <!-- Xls FR -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/fr/Video_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/Video_html/Video_fr.xls"/>
+        <!-- Xls EN -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/en/Video_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/Video_html/Video_en.xls"/>
+        <!-- Xls EN -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/es/Video_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/Video_html/Video_es.xls"/>
+        <!-- Xls NL -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/nl/Video_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/Video_html/Video_nl.xls"/>
+
+
+        <echo>Copie du modèle d'écran Flip...</echo>
+
+        <!-- modèle HTML -->
+        <fileset id="Flip_html" dir="sources_cannelle_2020/screens/Flip_html">
+            <exclude name="**/*.xls"/>
+        </fileset>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/fr/Flip_html"
+              overwrite="true">
+            <fileset refid="Flip_html"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/en/Flip_html"
+              overwrite="true">
+            <fileset refid="Flip_html"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/es/Flip_html"
+              overwrite="true">
+            <fileset refid="Flip_html"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/nl/Flip_html"
+              overwrite="true">
+            <fileset refid="Flip_html"/>
+        </copy>
+
+        <!-- Xls FR -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/fr/Flip_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/Flip_html/Flip_fr.xls"/>
+        <!-- Xls EN -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/en/Flip_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/Flip_html/Flip_en.xls"/>
+        <!-- Xls ES -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/es/Flip_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/Flip_html/Flip_es.xls"/>
+        <!-- Xls NL -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/nl/Flip_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/Flip_html/Flip_nl.xls"/>
+
+
+        <echo>Copie du modèle d'écran TakeAway...</echo>
+
+        <!-- modèle HTML -->
+        <fileset id="TakeAway_html" dir="sources_cannelle_2020/screens/TakeAway_html">
+            <exclude name="**/*.xls"/>
+        </fileset>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/fr/TakeAway_html"
+              overwrite="true">
+            <fileset refid="TakeAway_html"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/en/TakeAway_html"
+              overwrite="true">
+            <fileset refid="TakeAway_html"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/es/TakeAway_html"
+              overwrite="true">
+            <fileset refid="TakeAway_html"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/nl/TakeAway_html"
+              overwrite="true">
+            <fileset refid="TakeAway_html"/>
+        </copy>
+
+        <!-- Xls FR -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/fr/TakeAway_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/TakeAway_html/TakeAway_fr.xls"/>
+        <!-- Xls EN -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/en/TakeAway_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/TakeAway_html/TakeAway_en.xls"/>
+        <!-- Xls ES -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/es/TakeAway_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/TakeAway_html/TakeAway_es.xls"/>
+        <!-- Xls NL -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/nl/TakeAway_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/TakeAway_html/TakeAway_nl.xls"/>
+
+        <echo>Copie du modèle d'écran Ordonner...</echo>
+
+        <!-- modèle HTML -->
+        <fileset id="Ordonner_html" dir="sources_cannelle_2020/screens/Ordonner_html">
+            <exclude name="**/*.xls"/>
+        </fileset>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/fr/Ordonner_html"
+              overwrite="true">
+            <fileset refid="Ordonner_html"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/en/Ordonner_html"
+              overwrite="true">
+            <fileset refid="Ordonner_html"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/es/Ordonner_html"
+              overwrite="true">
+            <fileset refid="Ordonner_html"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/nl/Ordonner_html"
+              overwrite="true">
+            <fileset refid="Ordonner_html"/>
+        </copy>
+
+        <!-- Xls FR -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/fr/Ordonner_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/Ordonner_html/Ordonner_fr.xls"/>
+        <!-- Xls EN -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/en/Ordonner_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/Ordonner_html/Ordonner_en.xls"/>
+        <!-- Xls ES -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/es/Ordonner_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/Ordonner_html/Ordonner_es.xls"/>
+        <!-- Xls NL -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/nl/Ordonner_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/Ordonner_html/Ordonner_nl.xls"/>
+
+        <echo>Copie du modèle d'écran TrueFalse...</echo>
+
+        <!-- modèle HTML -->
+        <fileset id="TrueFalse_html" dir="sources_cannelle_2020/screens/TrueFalse_html">
+            <exclude name="**/*.xls"/>
+        </fileset>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/fr/TrueFalse_html"
+              overwrite="true">
+            <fileset refid="TrueFalse_html"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/en/TrueFalse_html"
+              overwrite="true">
+            <fileset refid="TrueFalse_html"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/es/TrueFalse_html"
+              overwrite="true">
+            <fileset refid="TrueFalse_html"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/nl/TrueFalse_html"
+              overwrite="true">
+            <fileset refid="TrueFalse_html"/>
+        </copy>
+
+        <!-- Xls FR -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/fr/TrueFalse_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/TrueFalse_html/TrueFalse_fr.xls"/>
+        <!-- Xls EN -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/en/TrueFalse_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/TrueFalse_html/TrueFalse_en.xls"/>
+        <!-- Xls ES -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/es/TrueFalse_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/TrueFalse_html/TrueFalse_es.xls"/>
+        <!-- Xls NL -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/nl/TrueFalse_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/TrueFalse_html/TrueFalse_nl.xls"/>
+
+        <echo>Copie du modèle d'écran Video Interactive...</echo>
+
+        <!-- modèle HTML -->
+        <fileset id="InteractiveVideo_html" dir="sources_cannelle_2020/screens/InteractiveVideo_html">
+            <exclude name="**/*.xls"/>
+        </fileset>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/fr/InteractiveVideo_html"
+              overwrite="true">
+            <fileset refid="InteractiveVideo_html"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/en/InteractiveVideo_html"
+              overwrite="true">
+            <fileset refid="InteractiveVideo_html"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/es/InteractiveVideo_html"
+              overwrite="true">
+            <fileset refid="InteractiveVideo_html"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/nl/InteractiveVideo_html"
+              overwrite="true">
+            <fileset refid="InteractiveVideo_html"/>
+        </copy>
+
+        <!-- Xls FR -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/fr/InteractiveVideo_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/InteractiveVideo_html/InteractiveVideo_fr.xls"/>
+        <!-- Xls EN -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/en/InteractiveVideo_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/InteractiveVideo_html/InteractiveVideo_en.xls"/>
+        <!-- Xls EN -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/es/InteractiveVideo_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/InteractiveVideo_html/InteractiveVideo_es.xls"/>
+        <!-- Xls NL -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/nl/InteractiveVideo_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/InteractiveVideo_html/InteractiveVideo_nl.xls"/>
+
+        <echo>Copie du modèle d'écran Accordeon...</echo>
+
+        <!-- modèle HTML -->
+        <fileset id="Accordion_html" dir="sources_cannelle_2020/screens/Accordion_html">
+            <exclude name="**/*.xls"/>
+        </fileset>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/fr/Accordion_html"
+              overwrite="true">
+            <fileset refid="Accordion_html"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/en/Accordion_html"
+              overwrite="true">
+            <fileset refid="Accordion_html"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/es/Accordion_html"
+              overwrite="true">
+            <fileset refid="Accordion_html"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/nl/Accordion_html"
+              overwrite="true">
+            <fileset refid="Accordion_html"/>
+        </copy>
+
+        <!-- Xls FR -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/fr/Accordion_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/Accordion_html/Accordion_fr.xls"/>
+        <!-- Xls EN -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/en/Accordion_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/Accordion_html/Accordion_en.xls"/>
+        <!-- Xls EN -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/es/Accordion_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/Accordion_html/Accordion_es.xls"/>
+        <!-- Xls NL -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/nl/Accordion_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/Accordion_html/Accordion_nl.xls"/>
+
+        <echo>Copie du modèle d'écran Audio...</echo>
+
+        <!-- modèle HTML -->
+        <fileset id="Audio_html" dir="sources_cannelle_2020/screens/Audio_html">
+            <exclude name="**/*.xls"/>
+        </fileset>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/fr/Audio_html"
+              overwrite="true">
+            <fileset refid="Audio_html"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/en/Audio_html"
+              overwrite="true">
+            <fileset refid="Audio_html"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/es/Audio_html"
+              overwrite="true">
+            <fileset refid="Audio_html"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/nl/Audio_html"
+              overwrite="true">
+            <fileset refid="Audio_html"/>
+        </copy>
+
+        <!-- Xls FR -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/fr/Audio_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/Audio_html/Audio_fr.xls"/>
+        <!-- Xls EN -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/en/Audio_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/Audio_html/Audio_en.xls"/>
+        <!-- Xls EN -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/es/Audio_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/Audio_html/Audio_es.xls"/>
+        <!-- Xls NL -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/nl/Audio_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/Audio_html/Audio_nl.xls"/>
+
+        <!-- Fin de copie des exercices -->
+
+        <echo>Copie du modèle d'écran Vidéo interactive...</echo>
+
+        <!-- modèle HTML -->
+        <fileset id="InteractiveVideo_html" dir="sources_cannelle_2020/screens/InteractiveVideo_html">
+            <exclude name="**/*.xls"/>
+        </fileset>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/fr/InteractiveVideo_html"
+              overwrite="true">
+            <fileset refid="InteractiveVideo_html"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/en/InteractiveVideo_html"
+              overwrite="true">
+            <fileset refid="InteractiveVideo_html"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/es/InteractiveVideo_html"
+              overwrite="true">
+            <fileset refid="InteractiveVideo_html"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/nl/InteractiveVideo_html"
+              overwrite="true">
+            <fileset refid="InteractiveVideo_html"/>
+        </copy>
+
+        <!-- Xls FR -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/fr/InteractiveVideo_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/InteractiveVideo_html/InteractiveVideo_fr.xls"/>
+        <!-- Xls EN -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/en/InteractiveVideo_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/InteractiveVideo_html/InteractiveVideo_en.xls"/>
+        <!-- Xls ES -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/es/InteractiveVideo_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/InteractiveVideo_html/InteractiveVideo_es.xls"/>
+        <!-- Xls NL -->
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/ScreenFactory/nl/InteractiveVideo_html.xls"
+              overwrite="true"
+              file="sources_cannelle_2020/screens/InteractiveVideo_html/InteractiveVideo_nl.xls"/>
+
+        <!-- Fin de copie des exercices -->
+
+        <echo>Copie du modèle d'écran Cannelle final...</echo>
+
+        <!-- Xls FR -->
+        <copy tofile="cannelle-v6/src/main/resources/modele_cannelle_fr.xls" overwrite="true"
+              file="sources_cannelle_2020/screens/modele_cannelle_fr.xls"/>
+
+        <!-- Xls EN -->
+        <copy tofile="cannelle-v6/src/main/resources/modele_cannelle_en.xls" overwrite="true"
+              file="sources_cannelle_2020/screens/modele_cannelle_en.xls"/>
+
+        <!-- Xls EN -->
+        <copy tofile="cannelle-v6/src/main/resources/modele_cannelle_es.xls" overwrite="true"
+              file="sources_cannelle_2020/screens/modele_cannelle_es.xls"/>
+
+        <!-- Xls NL -->
+        <copy tofile="cannelle-v6/src/main/resources/modele_cannelle_nl.xls" overwrite="true"
+              file="sources_cannelle_2020/screens/modele_cannelle_nl.xls"/>
+
+        <echo>Copie du modèle d'écran Cannelle final accessible...</echo>
+
+        <!-- Xls FR -->
+        <copy tofile="cannelle-v6/src/main/resources/modele_cannelle_accessible_fr.xls" overwrite="true"
+              file="sources_cannelle_2020/screens/modele_cannelle_accessible_fr.xls"/>
+
+        <!-- Xls EN -->
+        <copy tofile="cannelle-v6/src/main/resources/modele_cannelle_accessible_en.xls" overwrite="true"
+              file="sources_cannelle_2020/screens/modele_cannelle_accessible_en.xls"/>
+
+        <!-- Xls EN -->
+        <copy tofile="cannelle-v6/src/main/resources/modele_cannelle_accessible_es.xls" overwrite="true"
+              file="sources_cannelle_2020/screens/modele_cannelle_accessible_es.xls"/>
+
+        <!-- Xls NL -->
+        <copy tofile="cannelle-v6/src/main/resources/modele_cannelle_accessible_nl.xls" overwrite="true"
+              file="sources_cannelle_2020/screens/modele_cannelle_accessible_nl.xls"/>
+
+        <echo>Copie du modèle de fichier ACT...</echo>
+        <copy toDir="cannelle-resources/src/main/resources/Resources_cannelle/act_files/types/solunea/ar/act"
+              overwrite="true"
+              file="sources_cannelle_2020/act/fichierACT.xml"/>
+        <copy toDir="cannelle-resources/src/main/resources/Resources_cannelle/act_files/types/solunea/de/act"
+              overwrite="true"
+              file="sources_cannelle_2020/act/fichierACT.xml"/>
+        <copy toDir="cannelle-resources/src/main/resources/Resources_cannelle/act_files/types/solunea/el/act"
+              overwrite="true"
+              file="sources_cannelle_2020/act/fichierACT.xml"/>
+        <copy toDir="cannelle-resources/src/main/resources/Resources_cannelle/act_files/types/solunea/en/act"
+              overwrite="true"
+              file="sources_cannelle_2020/act/fichierACT.xml"/>
+        <copy toDir="cannelle-resources/src/main/resources/Resources_cannelle/act_files/types/solunea/es/act"
+              overwrite="true"
+              file="sources_cannelle_2020/act/fichierACT.xml"/>
+        <copy toDir="cannelle-resources/src/main/resources/Resources_cannelle/act_files/types/solunea/fr/act"
+              overwrite="true"
+              file="sources_cannelle_2020/act/fichierACT.xml"/>
+        <copy toDir="cannelle-resources/src/main/resources/Resources_cannelle/act_files/types/solunea/he/act"
+              overwrite="true"
+              file="sources_cannelle_2020/act/fichierACT.xml"/>
+        <copy toDir="cannelle-resources/src/main/resources/Resources_cannelle/act_files/types/solunea/it/act"
+              overwrite="true"
+              file="sources_cannelle_2020/act/fichierACT.xml"/>
+        <copy toDir="cannelle-resources/src/main/resources/Resources_cannelle/act_files/types/solunea/nl/act"
+              overwrite="true"
+              file="sources_cannelle_2020/act/fichierACT.xml"/>
+        <copy toDir="cannelle-resources/src/main/resources/Resources_cannelle/act_files/types/solunea/pt/act"
+              overwrite="true"
+              file="sources_cannelle_2020/act/fichierACT.xml"/>
+        <copy toDir="cannelle-resources/src/main/resources/Resources_cannelle/act_files/types/solunea/ru/act"
+              overwrite="true"
+              file="sources_cannelle_2020/act/fichierACT.xml"/>
+        <copy toDir="cannelle-resources/src/main/resources/Resources_cannelle/act_files/types/solunea/sk/act"
+              overwrite="true"
+              file="sources_cannelle_2020/act/fichierACT.xml"/>
+        <copy toDir="cannelle-resources/src/main/resources/Resources_cannelle/act_files/types/solunea/tr/act"
+              overwrite="true"
+              file="sources_cannelle_2020/act/fichierACT.xml"/>
+        <copy toDir="cannelle-resources/src/main/resources/Resources_cannelle/act_files/types/solunea/zh/act"
+              overwrite="true"
+              file="sources_cannelle_2020/act/fichierACT.xml"/>
+
+        <echo>Copie des modèles de manifest 1.2 et 2004...</echo>
+        <fileset id="Manifest_1.2" dir="sources_cannelle_2020/manifest/scorm1.2"/>
+        <fileset id="Manifest_2004" dir="sources_cannelle_2020/manifest/scorm2004"/>
+        <fileset id="Manifest_cmi5" dir="sources_cannelle_2020/manifest/cmi5"/>
+
+        <!-- On ne copie les manifest que dans les langues d'édition des fichiers Excel -->
+
+        <!-- fr -->
+        <copy toDir="cannelle-resources/src/main/resources/Resources_cannelle/act_files/types/solunea/fr/manifest/scorm1.2"
+              overwrite="true">
+            <fileset refid="Manifest_1.2"/>
+        </copy>
+        <copy toDir="cannelle-resources/src/main/resources/Resources_cannelle/act_files/types/solunea/fr/manifest/scorm2004"
+              overwrite="true">
+            <fileset refid="Manifest_2004"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/act_files/types/solunea/fr/manifest/cmi5"
+              overwrite="true">
+            <fileset refid="Manifest_cmi5"/>
+        </copy>
+
+
+        <!-- en -->
+        <copy toDir="cannelle-resources/src/main/resources/Resources_cannelle/act_files/types/solunea/en/manifest/scorm1.2"
+              overwrite="true">
+            <fileset refid="Manifest_1.2"/>
+        </copy>
+        <copy toDir="cannelle-resources/src/main/resources/Resources_cannelle/act_files/types/solunea/en/manifest/scorm2004"
+              overwrite="true">
+            <fileset refid="Manifest_2004"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/act_files/types/solunea/en/manifest/cmi5"
+              overwrite="true">
+            <fileset refid="Manifest_cmi5"/>
+        </copy>
+
+        <!-- es -->
+        <copy toDir="cannelle-resources/src/main/resources/Resources_cannelle/act_files/types/solunea/es/manifest/scorm1.2"
+              overwrite="true">
+            <fileset refid="Manifest_1.2"/>
+        </copy>
+        <copy toDir="cannelle-resources/src/main/resources/Resources_cannelle/act_files/types/solunea/es/manifest/scorm2004"
+              overwrite="true">
+            <fileset refid="Manifest_2004"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/act_files/types/solunea/es/manifest/cmi5"
+              overwrite="true">
+            <fileset refid="Manifest_cmi5"/>
+        </copy>
+
+        <!-- nl -->
+        <copy toDir="cannelle-resources/src/main/resources/Resources_cannelle/act_files/types/solunea/nl/manifest/scorm1.2"
+              overwrite="true">
+            <fileset refid="Manifest_1.2"/>
+        </copy>
+        <copy toDir="cannelle-resources/src/main/resources/Resources_cannelle/act_files/types/solunea/nl/manifest/scorm2004"
+              overwrite="true">
+            <fileset refid="Manifest_2004"/>
+        </copy>
+        <copy todir="cannelle-resources/src/main/resources/Resources_cannelle/act_files/types/solunea/nl/manifest/cmi5"
+              overwrite="true">
+            <fileset refid="Manifest_cmi5"/>
+        </copy>
+
+        <echo>Copie de la personnalisation par défaut...</echo>
+        <copy tofile="cannelle-resources/src/main/resources/Resources_cannelle/content-customization-html.zip"
+              overwrite="true"
+              file="sources_cannelle_2020/customization/content-customization-html.zip"/>
+
+    </target>
+
+    <target name="end" depends="update">
+
+        <echo>+---------------------------------------------------+</echo>
+        <echo>| Yeah! |</echo>
+        <echo>| Si des fichiers ont été mis à jour, faire un |</echo>
+        <echo>| update/commit de Thaleia ! |</echo>
+        <echo>+---------------------------------------------------+</echo>
+
+    </target>
+
+    <target name="all" depends="end"/>
+
+</project>

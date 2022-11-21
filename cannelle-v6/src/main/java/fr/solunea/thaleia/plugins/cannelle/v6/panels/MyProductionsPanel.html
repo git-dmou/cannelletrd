@@ -1,0 +1,41 @@
+<!doctype html>
+<html
+        xmlns:wicket="http://git-wip-us.apache.org/repos/asf/wicket/repo?p=wicket.git;a=blob_plain;f=wicket-core/src/main/resources/META-INF/wicket-1.5.xsd;hb=master">
+<head>
+    <meta charset="utf-8">
+</head>
+<body>
+
+<wicket:panel>
+
+    <!--Lien vers la création d'un nouveau contenu.
+        N'est affiché que lorsqu'il n'y aucun module existant
+    -->
+
+    <h3 class="primary-color font-weight-bold gradient-text my-4 fadeIn">
+        <wicket:message key="titleMyProductions">Mes productions</wicket:message>
+    </h3>
+    <div wicket:id="noContentPanel" class="text-center col-12 col-sm-8 col-lg-7 mx-auto delayed">
+        <img wicket:id="illustrationProduction" class="img-fluid mb-5 fadeIn">
+        <a wicket:id="goToCreationPage" class="btn-thaleia btn p-4 text-center fadeIn"
+           type="button" href="./index.html">
+            <span class="mr-2 ml-0 mr-md-2 ml-lg-0 mr-lg-3">
+                <wicket:message key="createNewModule">Créer un nouveau module</wicket:message>
+            </span>
+            <span class="ml-0 ml-md-2 ml-lg-3 align-self-center">
+                <svg class="icon-small">
+                    <use href="#icon-new"></use>
+                </svg>
+            </span>
+        </a>
+    </div>
+
+    <!-- Liste des productions -->
+    <div class="fadeIn delayed d-flex flex-column" id="module-list" wicket:id="modules">
+        Panneau contenant la liste des modules existants
+    </div>
+
+</wicket:panel>
+</body>
+</html>
+

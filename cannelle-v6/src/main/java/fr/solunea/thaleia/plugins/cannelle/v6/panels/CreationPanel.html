@@ -1,0 +1,323 @@
+<wicket:panel xmlns:wicket="http://wicket.apache.org">
+
+    <div id="appCtrl" ng-app="myapp" ng-controller="MyCtrl" data-deferred-cloak>
+        <!-- Texte de présentation -->
+        <blockquote class="d-flex flex-column align-items-center justify-content-center text-center mb-4 mb-xl-5 fadeIn"
+                    ng-if="interface.workspaces.dropZone">
+            <h3 class="primary-color font-weight-bold gradient-text">
+                <wicket:message key="page.title">Créer une formation à partir d'un fichier Excel.</wicket:message>
+            </h3>
+            <p class="font-weight-light mb-0">
+                <wicket:message key="page.subtitle">
+                    Importez votre fichier Excel de description et les médias associés ci-dessous
+                    <br> pour fabriquer votre module de formation&nbsp; :
+                </wicket:message>
+            </p>
+        </blockquote>
+
+        <!--Bouton "Continuer"-->
+        <!--Ce bouton apparaît au lancement de la vidéo (de même que l'ajout de la classe "active" sur l'overlay).
+        Lors du clic, la vidéo et la classe "active" de l'overlay sont retirés. Puis ce bouton disparait
+        -->
+        <a type="button" href="#" class="btn-skip position-relative py-3 text-center fadeIn mx-3 text-white z-index-1 float-right "
+           ng-if="interface.buttons.continue"
+           ng-click="switchIntroVideo(false)">
+            <span class="mr-2 small">
+                <wicket:message key="button.continue">Continuer</wicket:message>
+            </span>
+            <span class="align-self-center">
+                <svg class="icon-small fill-white">
+                    <use href="#icon-arrow-r"></use>
+                </svg>
+            </span>
+        </a>
+        <!--Vidéo d'introduction présentant le produit.-->
+        <div class="embed-responsive embed-responsive-16by9 rounded fadeInUp m-auto d-flex justify-content-center align-items-center shadow bg-gradient"
+             ng-if="interface.workspaces.introVideo.visibility == true">
+
+            <!--Video 16:9 aspect ratio.-->
+            <video id="intro-video" controls preload="metadata" class="cursor-pointer"
+                   poster="{{interface.workspaces.introVideo.poster}}">
+                <source ng-src="{{interface.workspaces.introVideo.url}}" type="video/mp4">
+                <track label="English" kind="subtitles" srclang="en" ng-src="{{interface.workspaces.introVideo.vtt}}" default>
+                <track label="Français" kind="subtitles" srclang="fr" ng-src="{{interface.workspaces.introVideo.vtt_fr}}">
+                Your browser does not support the video tag.
+            </video>
+
+            <div class="justify-content-center flex-column text-center align-items-center">
+                <a type="button" href="#" id="play-video" class="btn-thaleia btn p-4 text-center fadeIn my-4">
+                    <span class="ml-0 align-self-center">
+                        <svg>
+                            <use href="#icon-play"></use>
+                        </svg>
+                    </span>
+                </a>
+            </div>
+            <script>
+                $('.overlay').addClass('pointer-none');
+                $('.embed-responsive').on('click', function () {
+                    $("video").get(0).play();
+                    $("video").attr('controls',true);
+                    $("#play-video").addClass('d-none');
+                });
+            </script>
+        </div>
+        <p class="text-white position-relative z-index-1 mt-3 text-center mx-5"
+           ng-if="interface.buttons.continue">
+            <wicket:message key="video.title">Pour bien démarrer prenez une minute pour voir cette vidéo d'introduction</wicket:message>
+        </p>
+
+        <!--Zone de travail-->
+        <div id="card-create" class="d-flex rounded fadeIn dragndrop mx-3"
+             ng-class="{true:'drop', false:''}[filesManager.getFiles().length > 0]"
+             ng-if="interface.workspaces.dropZone">
+
+            <!--Notifications-->
+            <div class="card card-body align-items-center justify-content-center text-center d-flex flex-row card-notifyer"
+                 ng-if="notifier.getShow()==true">
+                <div class="notifyer d-flex flex-wrap align-items-center justify-content-center h-100 w-100 overflow-auto">
+
+                    <!--Loader (ex: Création du module en cours)-->
+                    <div class="loading delayed"
+                         ng-if="notifier.getShow()==true && notifier.getType()=='loader'">
+                        <svg viewBox="0 0 100 100" class="filler-loader fadeIn">
+                            <circle class="stroke-opacity" cx="50" cy="50" r="40"/>
+                            <circle class="fill-path" cx="50" cy="50" r="40"/>
+                        </svg>
+                        <h5 class="mt-4 font-weight-light fadeInUp"
+                            ng-bind-html="notifier.getTitle()">
+                        </h5>
+                    </div>
+
+                    <!--Notification "Module prêt"-->
+                    <div class="delayed"
+                         ng-if="notifier.getShow()==true && notifier.getType()=='moduleIsReady'">
+                        <div class="success delayed mb-4">
+                            <div class="rounded-circle m-auto p-4 icon-alert align-self-center d-flex justify-content-center fadeInUp">
+                                <svg class="icon-medium align-self-center">
+                                    <use href="#icon-check"></use>
+                                </svg>
+                            </div>
+                            <h5 class="mt-4 font-weight-light fadeInUp"
+                                ng-bind-html="notifier.getTitle()">
+                            </h5>
+                        </div>
+
+                        <!-- Bouton 'Prévisualiser' -->
+                        <a id="notifyer-btn-preview" type="button" class="highlight btn-thaleia btn p-4 text-center fadeIn mb-1"
+                           ng-click="preview()">
+                            <span class="mr-2 ml-0 mr-md-2 ml-lg-0 mr-lg-3">
+                                <wicket:message key="button.preview">Prévisualiser</wicket:message>
+                            </span>
+                            <span class="ml-0 ml-md-2 ml-lg-3 align-self-center">
+                                <svg id="iconPreviewLoader" viewBox="0 0 100 100" class="filler-loader icon-small fadeIn d-none">
+                                    <circle class="stroke-opacity" cx="50" cy="50" r="40"></circle>
+                                    <circle class="fill-path" cx="50" cy="50" r="40"></circle>
+                                </svg>
+                                <svg class="icon-small">
+                                    <use href="#icon-play"></use>
+                                </svg>
+                            </span>
+                        </a>
+
+                        <!-- Bouton 'Modifier' -->
+                        <a type="button" href="#" class="btn-thaleia btn p-4 text-center fadeIn mb-1"
+                           ng-hide="notifier.getElementToHide('moduleIsReady.modifyBtn')"
+                           ng-click="notifier.clear();displayButtons(['createContent','deleteAll'], true)">
+                            <span class="mr-2 ml-0 mr-md-2 ml-lg-0 mr-lg-3">
+                                <wicket:message key="button.modify">Modifier</wicket:message>
+                            </span>
+                            <span class="ml-0 ml-md-2 ml-lg-3 align-self-center">
+                                <svg class="icon-small">
+                                    <use href="#icon-edit"></use>
+                                </svg>
+                            </span>
+                        </a>
+
+                        <!--Bouton 'Nouveau'-->
+                        <a type="button" href="#" class="btn-thaleia btn p-4 text-center fadeIn mb-1"
+                           ng-click="prepareWorkspaceFornewCreation()">
+                            <span class="mr-2 ml-0 mr-md-2 ml-lg-0 mr-lg-3">
+                                <wicket:message key="button.new">Nouveau</wicket:message>
+                            </span>
+                            <span class="ml-0 ml-md-2 ml-lg-3 align-self-center">
+                                <svg class="icon-small">
+                                    <use href="#icon-new"></use>
+                                </svg>
+                            </span>
+                        </a>
+
+
+                    </div>
+
+                    <!--Notification 'Erreur'-->
+                    <div class="delayed my-auto"
+                         ng-if="notifier.getShow()==true && notifier.getType()=='error'">
+
+                        <div class="error delayed mb-4 notification">
+                            <div class="rounded-circle m-auto p-4 icon-alert align-self-center d-flex justify-content-center fadeInUp">
+                                <svg class="icon-medium align-self-center">
+                                    <use href="#icon-quit"></use>
+                                </svg>
+                            </div>
+                            <h5 class="mt-4 font-weight-light fadeInUp"
+                                ng-bind-html="notifier.getTitle()">
+                            </h5>
+                        </div>
+
+                        <div class="d-flex flex-column my-4 col-md-auto col-xl-10 mx-auto">
+                            <div class="alert alert-warning"
+                                 ng-repeat="(key, value) in notifier.getDetail()"
+                                 ng-bind-html="value">
+                            </div>
+                        </div>
+
+                        <!--Bouton 'Fermer'-->
+                        <a type="button" href="#" class="btn-thaleia btn p-4 text-center fadeIn mb-1"
+                           ng-click="notifier.clear()">
+                            <span class="mr-2 ml-0 mr-md-2 ml-lg-0 mr-lg-3">
+                                <wicket:message key="button.close">Fermer</wicket:message>
+                            </span>
+                            <span class="ml-0 ml-md-2 ml-lg-3 align-self-center">
+                                <svg class="icon-small">
+                                    <use href="#icon-quit"></use>
+                                </svg>
+                            </span>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+
+            <!--    Espace de depot
+            Lors de l'ajout d'un fichier, la classe drop est ajoutée.
+            Ce qui provoque la séparation de l'écran et l'activation de la liste des fichiers
+            -->
+            <div class="card card-body card-drop align-items-center justify-content-center text-center d-flex flex-row"
+                 ng-if="notifier.getShow() == false">
+                <div class="d-flex flex-wrap align-items-center justify-content-center h-100 w-100 overflow-auto">
+
+                    <!--Glisser Deposer-->
+                    <div class="delayed">
+                        <svg class="icon-medium-large fadeInUp">
+                            <use href="#icon-upload"></use>
+                        </svg>
+                        <p class="font-weight-light mt-4 fadeInUp">
+                            <wicket:message key="dropzone.dragAndDrop">Glisser et déposer
+                                <br> vos fichiers ici.</wicket:message>
+                        </p>
+                        <h5 class="mb-4 font-weight-light fadeInUp">
+                            <wicket:message key="dropzone.or">ou</wicket:message>
+                        </h5>
+
+                        <input id="file_upload" class="h-100 border-0 file-upload"
+                               type="file" name="file_uploads" multiple>
+
+                        <!--Bouton 'Parcourir'-->
+                        <a type="button" href="" class="btn-thaleia btn p-4 text-center fadeIn">
+                            <span class="mr-2 ml-0 mr-md-2 ml-lg-0 mr-lg-3">
+                                <wicket:message key="browse">Parcourir</wicket:message>
+                            </span>
+                            <span class="ml-0 ml-md-2 ml-lg-3 align-self-center">
+                                <svg class="icon-small">
+                                    <use href="#icon-folder"></use>
+                                </svg>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!--Liste des fichiers ajoutés/droppés-->
+            <nav class="sidebar col-6 p-0"
+                 ng-if="notifier.getShow() == false">
+                <div class="d-flex flex-wrap align-content-between justify-content-center h-100 overflow-auto">
+                    <ul class="list-group py-2 font-weight-light w-100 p-2 delayed">
+                        <!--Fichier-->
+                        <li class="list-group-item d-flex justify-content-between align-items-center mb-2 rounded border-0 shadow-sm py-1 pl-1 pr-2 fadeInUp overflow-hidden"
+                            id="file-{{file.getId()}}"
+                            ng-repeat="(key, file) in filesManager.getFiles()"
+                            ng-class="{true:'error'}[file.getStatus() == 'error']">
+
+                            <!--ProgressBar - on verra plus tard pour la remettre et la rendre fonctionnelle-->
+                            <div class="file-progressbar progress"
+                                 ng-class="{true:'',false:'d-none'}[file.getProgressbar()]">
+                                <div class="progress-bar" role="progressbar" style="width: 100%"
+                                     aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+                                </div>
+                            </div>
+
+                            <div class="media w-100">
+                                <a href="#" class="icon-large btn-link btn-thaleia d-flex align-self-start mr-2 rounded pointer-none {{file.getIcon()}}">
+                                    <svg class="icon-medium m-auto">
+                                        <use href="#{{file.getIcon()}}"></use>
+                                    </svg>
+                                </a>
+                                <div class="media-body align-self-center font-weight-light">
+                                    <span ng-bind-html="file.getName()">Nom du fichier</span>
+                                    <p class="m-0 small font-weight-light" ng-bind-html="file.getSize()">poids du fichier</p>
+                                </div>
+
+                                <a class="ml-2 btn-link error rounded-circle p-2 d-flex align-self-center"
+                                   ng-click="deleteFile(file)">
+                                    <svg class="icon-small fill-opacity">
+                                        <use href="#icon-trash"></use>
+                                    </svg>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+        </div>
+
+        <!-- Zone de boutons -->
+        <div class="text-center mt-4 mt-xl-5 delayed">
+
+            <!--Bouton "Créer un nouveau module"-->
+            <a type="button" href="#" class="btn-thaleia btn p-4 text-center fadeIn m-2"
+               ng-if="interface.buttons.createContent.display"
+               ng-click="createContent()"
+               ng-class="{'disabled': (filesManager.allFilesUploaded() == false), '': (filesManager.getFiles().length > 0)}">
+                <span class="mr-2 ml-0 mr-md-2 ml-lg-0 mr-lg-3">
+                    <wicket:message key="button.createNewModule">Créer un nouveau module</wicket:message>
+                </span>
+                <span class="ml-0 ml-md-2 ml-lg-3 align-self-center">
+                    <svg class="icon-small">
+                        <use href="#icon-new"></use>
+                    </svg>
+                </span>
+            </a>
+
+            <!--Bouton "Tout supprimer"-->
+            <a type="button" href="#" class="btn-thaleia btn p-4 text-center fadeIn error m-2"
+               ng-if="interface.buttons.deleteAll.display"
+               ng-class="{true:'disabled', false:''}[filesManager.getFiles().length == 0]"
+               ng-click="deleteAllFiles()">
+                <span class="mr-2 ml-0 mr-md-2 ml-lg-0 mr-lg-3">
+                    <wicket:message key="button.deleteAll">Vider la liste</wicket:message>
+                </span>
+                <span class="ml-0 ml-md-2 ml-lg-3 align-self-center">
+                    <svg class="icon-small">
+                        <use href="#icon-trash"></use>
+                    </svg>
+                </span>
+            </a>
+        </div>
+
+        <script type="text/javascript">
+            function reloadJs(src) {
+                console.log("reload js src : " + src);
+                src = $('script[src$="' + src + '"]').attr("src");
+                $('script[src$="' + src + '"]').remove();
+                $('<script/>').attr('src', src).appendTo('head');
+            }
+        </script>
+    </div>
+    <svg viewBox="0 0 100 100" class="d-flex filler-loader icon-large fadeIn align-self-center justify-content-center m-auto ">
+        <circle class="stroke-opacity" cx="50" cy="50" r="40"/>
+        <circle class="fill-path" cx="50" cy="50" r="40"/>
+    </svg>
+
+</wicket:panel>

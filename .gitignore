@@ -1,0 +1,26 @@
+## pour ne garder que les repertoires :
+# cannelle-v6
+# cannelle-lib
+
+#repertoires :
+font/
+target/
+.idea/
+img/
+js/
+cannelle-resources/
+cannelle-v5/
+doc/
+documentation/
+exemples_canelle/
+personnalisations/
+sources_cannelle_2020/
+
+#fichiers :
+*.zip
+*.pdf
+*.xls
+*.png
+*.jpg
+*.jpeg
+*.svg

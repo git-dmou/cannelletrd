@@ -1,0 +1,159 @@
+<wicket:panel xmlns:wicket="http://wicket.apache.org">
+
+<div class="d-flex flex-column sidebar-fh-100">
+    <a id="closeTutorial" class="text-right my-3 mr-3 font-weight-light">
+        <wicket:message key="understood">
+            J'ai compris, ne plus voir
+        </wicket:message>
+    </a>
+    <div class="d-flex flex-wrap align-items-stretch  h-100 fh-100 w-100 overflow-auto align-items-center overflow-overlay">
+        <div class="m-auto">
+            <div id="helpCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
+                <div class="carousel-inner px-5">
+
+                    <!--Vignette 1-->
+                    <div class="carousel-item active">
+                        <p>
+                            <wicket:message key="step1.1">
+                                Pour créer votre premier module de formation Thaleia XL, rien de plus simple, il vous
+                                faut :
+                            </wicket:message>
+                        </p>
+                        <ul>
+                            <li>
+                                <wicket:message key="step1.2">
+                                    3 minutes de disponibilité
+                                </wicket:message>
+                            </li>
+                            <li>
+                                <wicket:message key="step1.3">
+                                    Et un fichier Excel (nous vous en avons rempli un pour démarrer)
+                                </wicket:message>
+                            </li>
+                        </ul>
+                        <a wicket:id="getDefaultXls" type="button" href=""
+                           class="btn-thaleia btn p-4 text-center fadeIn d-flex justify-content-between btn-block mb-2" >
+                            <span class="ml-2 mr-4">
+                                <wicket:message key="step1.4">
+                                    Cliquez ici pour le télécharger
+                                </wicket:message>
+                            </span>
+                            <span class="ml-4">
+                                <svg class="icon-small">
+                                    <use href="#icon-download"></use>
+                                </svg>
+                            </span>
+                        </a>
+                        <img wicket:id="img-help-1" class="img-fluid shadow rounded my-3">
+                        <p>
+                            <wicket:message key="step1.5">
+                                Rendez vous dans votre répertoire de téléchargement pour ouvrir le fichier.
+                            </wicket:message>
+                        </p>
+                        <a type="button" href="#helpCarousel" class="btn-thaleia btn p-4 text-center fadeIn d-flex justify-content-between btn-block mb-2"
+                           data-slide-to='1'>
+                            <span class="ml-2 mr-4">
+                                <wicket:message key="step2on3">
+                                    étape 2/3
+                                </wicket:message>
+                            </span>
+                            <span class="ml-4">
+                                <svg class="icon-small">
+                                    <use href="#icon-arrow-r"></use>
+                                </svg>
+                            </span>
+                        </a>
+                    </div>
+
+                    <!--Vignette 2-->
+                    <div class="carousel-item">
+                        <p>
+                            <wicket:message key="step2.1">
+                                Le fichier Excel est ouvert ! Nous avons pré-rempli pour vous 3 écrans différents
+                                dans l’onglet « Ecrans à importer ».
+                            </wicket:message>
+                        </p>
+                        <img wicket:id="img-help-2" class="img-fluid shadow rounded my-3">
+                        <p>
+                            <wicket:message key="step2.2">
+                                Vous souhaitez les personnaliser ?
+                            </wicket:message>
+                        </p>
+                        <p>
+                            <wicket:message key="step2.3">
+                                Aucun souci : changer les textes des cellules blanches selon vos besoins puis enregistrez
+                                le document dans votre espace de travail.​​
+                            </wicket:message>
+                        </p>
+                        <p>
+                            <wicket:message key="step2.4">
+                                Par exemple sur votre bureau.​​​
+                            </wicket:message>
+                        </p>
+                        <a type="button" href="#helpCarousel" class="btn-thaleia btn p-4 text-center fadeIn d-flex justify-content-between btn-block mb-2"
+                           data-slide-to='2'>
+                            <span class="ml-2 mr-4">
+                                <wicket:message key="step3on3">
+                                    étape 3/3
+                                </wicket:message>
+                            </span>
+                            <span class="ml-4">
+                                <svg class="icon-small">
+                                    <use href="#icon-arrow-r"></use>
+                                </svg>
+                            </span>
+                        </a>
+                    </div>
+
+                    <!--Vignette 3-->
+                    <div class="carousel-item">
+                        <p>
+                            <wicket:message key="step3.1">
+                                Votre module est scénarisé, vous pouvez maintenant le fabriquer en commençant par l’import de votre fichier Excel et les médias associés.
+                            </wicket:message>
+                        </p>
+                        <img wicket:id="img-help-3" class="img-fluid my-3">
+                        <p>
+                            <wicket:message key="step3.2">
+                                Ensuite, il ne vous reste plus qu’à cliquer sur « Générer » pour visualiser votre
+                                nouvelle formation.
+                            </wicket:message>
+                        </p>
+                        <a wicket:id="goToResources" type="button" href="#" class="btn-thaleia btn p-4 text-center fadeIn d-flex justify-content-between btn-block" >
+                            <span class="ml-2 mr-4">
+                                <wicket:message key="step3.4">
+                                    J'ai des questions...
+                                </wicket:message>
+                            </span>
+                            <span class="ml-4">
+                                <svg class="icon-small">
+                                    <use href="#icon-pending"></use>
+                                </svg>
+                            </span>
+                        </a>
+                        <a type="button" href="#" class="btn-thaleia btn p-4 text-center fadeIn d-flex justify-content-between btn-block mb-2 close-tuto">
+                            <span class="ml-2 mr-4">
+                                <wicket:message key="step3.3">
+                                    J'ai tout compris
+                                </wicket:message>
+                            </span>
+                            <span class="ml-4">
+                                <svg class="icon-small">
+                                    <use href="#icon-check"></use>
+                                </svg>
+                            </span>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <ol class="carousel-bullet m-auto p-3">
+        <li data-target="#helpCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#helpCarousel" data-slide-to="1"></li>
+        <li data-target="#helpCarousel" data-slide-to="2"></li>
+    </ol>
+</div>
+
+</wicket:panel>>

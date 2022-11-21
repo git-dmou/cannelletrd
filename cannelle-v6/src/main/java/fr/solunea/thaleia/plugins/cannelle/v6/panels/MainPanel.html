@@ -1,0 +1,72 @@
+<wicket:panel xmlns:wicket="http://wicket.apache.org">
+
+    <!--Plugin sidebar-->
+    <nav id="sidebar" class="d-md-flex sidebar-left">
+
+        <div class="d-flex flex-wrap align-content-between justify-content-center sidebar-fh-100 py-5 sticky-top">
+
+            <!--Inner-plugin navigation panel-->
+            <ul class="list-unstyled py-3 text-right font-weight-light text-nowrap w-100"
+                wicket:id="pluginMenuPanel">
+            </ul>
+
+            <ul class="list-unstyled text-center font-weight-light text-nowrap w-100">
+                <!--Help-->
+                <li>
+                    <a type="button" id="nav-help">
+                        <span>
+                            <wicket:message key="help">Aide</wicket:message>
+                        </span>
+                        <span class="ml-3">
+                            <svg class="icon-small fill-white" style="width:14px;height:14px;">
+                                <use href="#icon-help"></use>
+                            </svg>
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!--Tutorial-->
+    <nav wicket:id="tutorialPanel"
+         id="tutorial" class="d-md-flex sticky-top overflow-hidden">
+    </nav>
+
+    <!--Plugin content-->
+    <div class="w-100 d-flex flex-column align-items-stretch justify-content-between">
+
+        <div wicket:id="feedbackPanel">
+            Le panneau des messages d'avertissement et d'erreur
+        </div>
+
+        <!--Loader pour les transitions entre menus-->
+        <svg id="loader" viewBox="0 0 100 100"
+             class="hide d-flex filler-loader icon-large fadeIn align-self-center justify-content-center m-auto">
+            <circle class="stroke-opacity" cx="50" cy="50" r="40"></circle>
+            <circle class="fill-path" cx="50" cy="50" r="40"></circle>
+        </svg>
+
+        <div id="plugin-content" class="container-lg align-self-center px-0 px-md-3 px-xl-5 py-2 m-auto delayed">
+
+            <div wicket:id="contentPanel"></div>
+
+        </div>
+        <!--Sert à assombrir la zone de travail lors de l'affichage de la sidebar des plugins Thaleia (Thaleia XL (Cannelle), Dialogue).-->
+        <div class="overlay"></div>
+    </div>
+
+    <script type="application/javascript">
+        // Ajout des délégations d'événement pour activer le loader lors du clic sur un onglet
+        $("#plugin-navigation-menu a").on("click", function () {
+            console.log("Show loader");
+            $("#loader").removeClass("hide");
+        });
+        $("#plugin-navigation-menu .active").on("change", function () {
+            console.log("hide loader");
+            $("#loader").addClass("hide");
+        });
+
+    </script>
+
+</wicket:panel>

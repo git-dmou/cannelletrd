@@ -1,0 +1,332 @@
+<!doctype html>
+<html
+        xmlns:wicket="http://git-wip-us.apache.org/repos/asf/wicket/repo?p=wicket.git;a=blob_plain;f=wicket-core/src/main/resources/META-INF/wicket-1.5.xsd;hb=master">
+<head>
+    <meta charset="utf-8">
+</head>
+<body>
+<wicket:panel>
+
+    <div class="w-100 d-flex flex-column align-items-stretch justify-content-between pt-lg-3">
+        <!-- Ressources -->
+        <div id="home" class="container align-self-center m-auto delayed">
+
+            <!--Panneau "Télécharger un modèle de création vierge"-->
+            <div wicket:id="getDefaultXls" id="panel-download" href="#"
+               class="d-flex align-items-center justify-content-between panel featured p-5 rounded">
+                <div class="col-md-7 col-lg-auto pl-0">
+                    <h3>
+                        <wicket:message key="downloadNewModel">Télécharger un modele de création vierge</wicket:message>
+                    </h3>
+
+                    <!--Elément de sélection du type de modèle Excel.-->
+                    <div class="btn-group mt-3">
+                        <div class="btn-group">
+                            <button id="dropdownExcelTypeSelector" class="btn btn-thaleia dropdown-toggle p-4"
+                                    type="button" data-toggle="dropdown"
+                                    aria-expanded="false" aria-haspopup="true">
+                                <span wicket:id="currentSelectedTemplate">FR</span>
+                                <span class="caret"></span>
+                                <span class="sr-only">Toggle Dropdown</span>
+                            </button>
+                            <div id="dropdownExcelTypeSelectorMenu" class="dropdown-menu border-0 py-0 shadow-sm minw-100"
+                                 role="menu" aria-labelledby="dropdownExcelTypeSelector">
+                                <div wicket:id="excelSelectorRow" class="dropdown-item">
+                                    <a wicket:id="excelSelectorLink">
+                                        <span class="d-flex py-3 px-4 w-100" wicket:id="excelSelectorLabel"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-thaleia p-4" wicket:id="getDefaultXlsBtn">
+                            <svg class="icon-small">
+                                <use href="#icon-download-1"></use>
+                            </svg>
+                        </button>
+                    </div>
+                    <!--Bouton de téléchargement du modèle Excel par défaut-->
+
+                </div>
+                <div class="col-5 col-lg-4">
+                    <img wicket:id="illustrationNewCreationModel" class="image-featured">
+                </div>
+            </div>
+
+            <p class="lead my-3 my-xl-4 fadeIn delay position-relative z-index-0">
+                <wicket:message key="someExemples">Quelques exemples pour vous inspirer</wicket:message>
+            </p>
+            <!--Exemples de modèles Excel-->
+            <div class="card-deck fadeInUp card-content">
+
+                <!--Quiz aléatoire-->
+                <div class="card featured rounded">
+                    <a wicket:id="linkToQuiz" target="_blank"
+                       class="card-body rounded-top btn-link d-flex">
+                        <div class="col-12 col-lg d-flex align-self-center justify-content-center">
+                            <div class="row">
+                                <div class="col-12 col-lg-auto text-center m-auto pb-2 pb-lg-0">
+                                    <svg class="icon-medium fill-thaleia m-auto">
+                                        <use href="#icon-random"></use>
+                                    </svg>
+                                </div>
+                                <div class="pl-lg-0 col-12 col-lg align-self-center">
+                                    <p class="mb-0 text-center text-lg-left">
+                                        <wicket:message key="randomQuizz">Quiz aléatoire</wicket:message>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-auto align-self-center text-center mb-1 d-none d-lg-block px-0">
+                            <svg class="icon-small">
+                                <use href="#icon-play"></use>
+                            </svg>
+                        </div>
+                    </a>
+                    <a wicket:id="getRandomQuizModel" href="#" class="d-flex card-footer rounded-bottom px-2 btn-link">
+                        <div class="col-auto col-lg align-self-center d-none d-lg-block">
+                            <p class="mb-0 text-center text-lg-left small">
+                                <wicket:message key="downloadModel">Télécharger le modèle</wicket:message>
+                            </p>
+                        </div>
+                        <div class="col col-lg-auto text-center">
+                            <svg class="icon-small mb-1">
+                                <use href="#icon-download-1"></use>
+                            </svg>
+                        </div>
+                    </a>
+                </div>
+
+                <!--Présentation produit-->
+                <div class="card featured rounded mx-0">
+                    <a wicket:id="linkToProductPresentation" target="_blank"
+                       class="card-body rounded-top btn-link d-flex">
+                        <div class="col-12 col-lg d-flex align-self-center justify-content-center">
+                            <div class="row">
+                                <div class="col-12 col-lg-auto text-center m-auto pb-2 pb-lg-0">
+                                    <svg class="icon-medium fill-thaleia m-auto">
+                                        <use href="#icon-thaleia-sm"></use>
+                                    </svg>
+                                </div>
+                                <div class="pl-lg-0 col-12 col-lg align-self-center">
+                                    <p class="mb-0 text-center text-lg-left">
+                                        <wicket:message key="productPresentation">Présentation produit</wicket:message>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-auto align-self-center text-center mb-1 d-none d-lg-block px-0">
+                            <svg class="icon-small">
+                                <use href="#icon-play"></use>
+                            </svg>
+                        </div>
+                    </a>
+                    <a wicket:id="getProductPresentationModel" href="#" class="d-flex card-footer rounded-bottom px-2 btn-link">
+                        <div class="col-auto col-lg align-self-center d-none d-lg-block">
+                            <p class="mb-0 text-center text-lg-left small">
+                                <wicket:message key="downloadModel">Télécharger le modèle</wicket:message>
+                            </p>
+                        </div>
+                        <div class="col col-lg-auto text-center">
+                            <svg class="icon-small mb-1">
+                                <use href="#icon-download-1"></use>
+                            </svg>
+                        </div>
+                    </a>
+                </div>
+
+                <!--Tutoriel-->
+                <div class="card featured rounded mx-0 mx-sm-3">
+                    <a wicket:id="linkToTutorial" target="_blank"
+                       class="card-body rounded-top btn-link d-flex">
+                        <div class="col-12 col-lg d-flex align-self-center justify-content-center">
+                            <div class="row">
+                                <div class="col-12 col-lg-auto text-center m-auto pb-2 pb-lg-0">
+                                    <svg class="icon-medium fill-thaleia m-auto">
+                                        <use href="#icon-tutorial"></use>
+                                    </svg>
+                                </div>
+                                <div class="pl-lg-0 col-12 col-lg align-self-center">
+                                    <p class="mb-0 text-center text-lg-left">
+                                        <wicket:message key="tutorial">Tutoriel</wicket:message>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-auto align-self-center text-center mb-1 d-none d-lg-block px-0">
+                            <svg class="icon-small">
+                                <use href="#icon-play"></use>
+                            </svg>
+                        </div>
+                    </a>
+                    <a wicket:id="getTutorialModel" href="#" class="d-flex card-footer rounded-bottom px-2 btn-link">
+                        <div class="col-auto col-lg align-self-center d-none d-lg-block">
+                            <p class="mb-0 text-center text-lg-left small">
+                                <wicket:message key="downloadModel">Télécharger le modèle</wicket:message>
+                            </p>
+                        </div>
+                        <div class="col col-lg-auto text-center">
+                            <svg class="icon-small mb-1">
+                                <use href="#icon-download-1"></use>
+                            </svg>
+                        </div>
+                    </a>
+                </div>
+
+                <!--Les basiques de la classe virtuelle-->
+                <div class="card featured rounded mx-0 mx-sm-3">
+                    <a wicket:id="linkToVirtualClassroomBasics" target="_blank"
+                       class="card-body rounded-top btn-link d-flex">
+                        <div class="col-12 col-lg d-flex align-self-center justify-content-center">
+                            <div class="row">
+                                <div class="col-12 col-lg-auto text-center m-auto pb-2 pb-lg-0">
+                                    <svg class="icon-medium fill-thaleia m-auto">
+                                        <use href="#icon-tutorial"></use>
+                                    </svg>
+                                </div>
+                                <div class="pl-lg-0 col-12 col-lg align-self-center">
+                                    <p class="mb-0 text-center text-lg-left">
+                                        <wicket:message key="virtualClassroomBasics">Les basiques de la classe virtuelle</wicket:message>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-auto align-self-center text-center mb-1 d-none d-lg-block px-0">
+                            <svg class="icon-small">
+                                <use href="#icon-play"></use>
+                            </svg>
+                        </div>
+                    </a>
+                    <a wicket:id="getVirtualClassroomBasicsModel" href="#" class="d-flex card-footer rounded-bottom px-2 btn-link">
+                        <div class="col-auto col-lg align-self-center d-none d-lg-block">
+                            <p class="mb-0 text-center text-lg-left small">
+                                <wicket:message key="downloadModel">Télécharger le modèle</wicket:message>
+                            </p>
+                        </div>
+                        <div class="col col-lg-auto text-center">
+                            <svg class="icon-small mb-1">
+                                <use href="#icon-download-1"></use>
+                            </svg>
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+            <p class="lead my-3 my-xl-4 fadeIn delay">
+                <wicket:message key="howTo">Comment faire ... tutoriels et documentations :</wicket:message>
+            </p>
+            <!-- Panels Tutoriels & Communauté -->
+            <div class="row align-items-stretch justify-content-center mx-0 fadeInUp">
+
+                <!--Thaleia-Link-->
+                <div class="col-12 col-lg-6 col-xl-7 mb-3 mb-lg-0">
+                    <a href="https://thaleia.link/"
+                       class="row panel featured btn-link py-4 px-3 rounded h-100 align-items-center justify-content-between"
+                       target="_blank"
+                       id="panel-hub">
+                        <div class="d-flex align-items-center justify-content-center col">
+                            <div class="col-auto pr-0">
+                                <svg class="icon-large fill-white">
+                                    <use href="#icon-thaleia-link"></use>
+                                </svg>
+                            </div>
+                            <div class="col col-lg-8 col-xl">
+                                <h5 class="m-0 h4-xl">
+                                    <wicket:message key="askThaleiaHubCommunity">Interroger la communauté ThaleiaLink
+                                    </wicket:message>
+                                </h5>
+                            </div>
+                        </div>
+                        <svg class="icon-medium fill-white mr-3 align-self-end col-auto px-0">
+                            <use href="#icon-link"></use>
+                        </svg>
+                    </a>
+                </div>
+
+
+                <div class="col-12 col-lg">
+                    <!--Pour le moment, nous n'avons pas d'éléments à intégrer dans ces boutons donc ils sont masqués-->
+                    <!--<div class="row">
+                        &lt;!&ndash;Remplir le fichier Excel&ndash;&gt;
+                        <div class="col px-0 pr-xl-0 pl-xl-3">
+                            <a href="#" class="panel btn-link py-4 px-4 px-lg-5 py-lg-4 rounded h-100 d-flex">
+                                <div class="row mx-auto">
+                                    <div class="col-12 col-lg-auto text-center align-self-center p-0">
+                                        <svg class="icon-medium fill-thaleia">
+                                            <use href="#icon-excel"></use>
+                                        </svg>
+                                    </div>
+                                    <div class="col-12 col-lg align-self-center">
+                                        <p class="mb-0 mt-1 text-center text-lg-left">
+                                            <wicket:message key="fillExcelFile">Remplir le fichier Excel
+                                            </wicket:message>
+                                        </p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        &lt;!&ndash;Astuces et bonnes pratiques&ndash;&gt;
+                        <div class="col px-0 pr-xl-0 pl-xl-3">
+                            <a href="#" class="panel btn-link py-4 px-4 px-lg-5 py-lg-4 rounded h-100 d-flex">
+                                <div class="row mx-auto">
+                                    <div class="col-12 col-lg-auto text-center align-self-center p-0">
+                                        <svg class="icon-medium fill-thaleia">
+                                            <use href="#icon-tips"></use>
+                                        </svg>
+                                    </div>
+                                    <div class="col-12 col-lg align-self-center">
+                                        <p class="mb-0 mt-1 text-center text-lg-left">
+                                            <wicket:message key="tipsAndGoodPractices">Astuces et bonnes pratiques
+                                            </wicket:message>
+                                        </p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>-->
+                    <div class="row h-100">
+                        <div class="col col-lg-12 pl-sm-0 pr-sm-2 pr-md-0 pr-lg-0 pl-md-0 pl-lg-2 px-0">
+                            <a href="#" class="panel btn-link p-4 p-lg-3 rounded h-100 d-flex"
+                               onclick="document.querySelector('#tutorial').classList.add('show');document.querySelector('#sidebar').classList.add('shrinked');">
+                                <div class="row mx-auto">
+                                    <div class="col-12 col-lg-auto text-center align-self-center p-0">
+                                        <svg class="icon-medium fill-thaleia">
+                                            <use href="#icon-replay"></use>
+                                        </svg>
+                                    </div>
+                                    <div class="col-12 col-lg align-self-center">
+                                        <p class="mb-0 mt-1 text-center text-lg-left">
+                                            <wicket:message key="reviewStartingTutorial">Revoir le tutoriel de
+                                                démarrage
+                                            </wicket:message>
+                                        </p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col col-lg-12 pr-sm-0 pl-sm-2 px-0 pt-3 pt-sm-0 pt-lg-2">
+                            <a wicket:id="getHelpFile" target="_blank"
+                               class="panel btn-link p-4 p-lg-3 rounded h-100 d-flex">
+                                <div class="row mx-auto">
+                                    <div class="col-12 col-lg-auto text-center align-self-center p-0">
+                                        <svg class="icon-medium fill-thaleia">
+                                            <use href="#icon-doc"></use>
+                                        </svg>
+                                    </div>
+                                    <div class="col-12 col-lg align-self-center">
+                                        <p class="mb-0 mt-1 text-center text-lg-left">
+                                            <wicket:message key="fullDocumentation">Documentation complète
+                                            </wicket:message>
+                                        </p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</wicket:panel>
+</body>
+</html>
