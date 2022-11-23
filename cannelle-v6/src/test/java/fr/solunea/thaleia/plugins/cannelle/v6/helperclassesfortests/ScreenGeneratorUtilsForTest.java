@@ -1,3 +1,5 @@
+package fr.solunea.thaleia.plugins.cannelle.v6.helperclassesfortests;
+
 import fr.solunea.thaleia.plugins.cannelle.xls.screens.generator.ScreenGeneratorUtils;
 
 /**

@@ -1,3 +1,5 @@
+package fr.solunea.thaleia.plugins.cannelle.v6.UcTranslateModule;
+
 import fr.solunea.thaleia.plugins.IPluginImplementation;
 import fr.solunea.thaleia.plugins.cannelle.utils.PackagedFiles;
 import fr.solunea.thaleia.plugins.cannelle.utils.ResourcesHandler;
@@ -6,7 +8,7 @@ import fr.solunea.thaleia.utils.DetailedException;
 import java.io.File;
 
 
-class ResourcesHandlerForTest extends ResourcesHandler {
+public class ResourcesHandlerForTest extends ResourcesHandler {
 
 
 //    public File tempDirTest;

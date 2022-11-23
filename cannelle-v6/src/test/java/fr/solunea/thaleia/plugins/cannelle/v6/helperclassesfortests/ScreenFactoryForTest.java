@@ -1,3 +1,5 @@
+package fr.solunea.thaleia.plugins.cannelle.v6.helperclassesfortests;
+
 import fr.solunea.thaleia.plugins.cannelle.utils.CellsRange;
 import fr.solunea.thaleia.plugins.cannelle.utils.Parameters;
 import fr.solunea.thaleia.plugins.cannelle.utils.ResourcesHandler;
@@ -10,6 +12,8 @@ import java.util.List;
 
 public class ScreenFactoryForTest extends ScreenFactory{
 
+
+    private int screenDirName = 0;
 
     /**
      * Instancie les classes de traitement de templates qui sont définis dans la
@@ -43,7 +47,7 @@ public class ScreenFactoryForTest extends ScreenFactory{
 
     /*protected IContentGenerator getContentGenerator(IExcelTemplate template) throws DetailedException {
 
-        IContentGenerator contentGenerator = new ApportScreenGeneratorForTest();
+        IContentGenerator contentGenerator = new fr.solunea.thaleia.plugins.cannelle.v6.helperclassesfortests.ApportScreenGeneratorForTest();
 
         return contentGenerator;
     }*/
@@ -55,6 +59,14 @@ public class ScreenFactoryForTest extends ScreenFactory{
         IContentGenerator contentGenerator = new ApportScreenGeneratorForTest();
         return contentGenerator;
     }
+
+    @Override
+    protected String getScreenDirName() {
+        screenDirName += 1;
+        return String.valueOf(screenDirName);
+//        return "commonTestFolder";
+    }
+
 
 
 

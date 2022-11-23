@@ -1,3 +1,5 @@
+package fr.solunea.thaleia.plugins.cannelle.v6.helperclassesfortests;
+
 import fr.solunea.thaleia.plugins.cannelle.contents.parsing.ExcelDefinition;
 import fr.solunea.thaleia.plugins.cannelle.messages.LocalizedMessages;
 import fr.solunea.thaleia.plugins.cannelle.parsers.xls.XlsScreenParserService;
@@ -32,7 +34,7 @@ public class XlsScreenParserServiceForTest extends XlsScreenParserService {
 
 
      @Override
-    protected ScreenFactory getScreenFactory(Parameters parameters, ResourcesHandler resourcesHandler) throws DetailedException {
+    public ScreenFactory getScreenFactory(Parameters parameters, ResourcesHandler resourcesHandler) throws DetailedException {
         return (ScreenFactory) new ScreenFactoryForTest(parameters, resourcesHandler);
     }
 

@@ -277,13 +277,17 @@ public class ScreenFactory {
         // écran
         File screenDestination = new File(
                 resourcesHandler.getTempDir() + File.separator + SCREENS_TEMP_DIR_NAME + File.separator
-                        + Long.toString(Calendar.getInstance().getTimeInMillis()));
+                        + getScreenDirName());
         logger.debug("Les fichiers seront copiés dans le répertoire " + screenDestination.getAbsolutePath());
 
         // On instancie les fichiers de l'écran
         logger.debug("Génération des fichiers");
         IContent screen = contentGenerator.generateFiles(screenParameters, screenDestination, locale, user);
         return screen;
+    }
+
+    protected String getScreenDirName() {
+        return Long.toString(Calendar.getInstance().getTimeInMillis());
     }
 
     protected IContentGenerator getContentGenerator(IExcelTemplate template) throws DetailedException {

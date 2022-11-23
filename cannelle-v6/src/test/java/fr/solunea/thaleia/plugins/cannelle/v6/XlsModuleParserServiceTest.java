@@ -1,3 +1,5 @@
+package fr.solunea.thaleia.plugins.cannelle.v6;
+
 import fr.solunea.thaleia.model.Domain;
 import fr.solunea.thaleia.model.Locale;
 import fr.solunea.thaleia.model.User;
@@ -8,8 +10,9 @@ import fr.solunea.thaleia.plugins.cannelle.parsers.xls.XlsModuleParserService;
 import fr.solunea.thaleia.plugins.cannelle.utils.PackagedFiles;
 import fr.solunea.thaleia.plugins.cannelle.utils.Parameters;
 import fr.solunea.thaleia.plugins.cannelle.utils.ResourcesHandler;
-import fr.solunea.thaleia.plugins.cannelle.v6.CannelleV6Plugin;
-import fr.solunea.thaleia.plugins.cannelle.v6.ExcelTemplate;
+import fr.solunea.thaleia.plugins.cannelle.v6.UcTranslateModule.ResourcesHandlerForTest;
+import fr.solunea.thaleia.plugins.cannelle.v6.helperclassesfortests.XlsModuleParserServiceForTest;
+import fr.solunea.thaleia.plugins.cannelle.v6.helperclassesfortests.XlsScreenParserServiceForTest;
 import fr.solunea.thaleia.plugins.cannelle.xls.screens.parameters.IScreenParameter;
 import fr.solunea.thaleia.utils.DetailedException;
 import org.junit.jupiter.api.Test;
@@ -41,8 +44,8 @@ public class XlsModuleParserServiceTest {
             //        File xlSourceModuleFile = new File(getClass().getClassLoader().getResource("modele_excel_tutoriel_fr.zip").toURI());
             File xlSourceModuleFile = new File(getClass().getClassLoader().getResource("modele_excel_classe_virtuelle_fr.zip").toURI());
             InputStream propertiesStream = ExcelTemplate.class.getClassLoader().getResourceAsStream("Properties/cannelle_v6_fr.properties");
-            File tempDir = new File("C:\\Users\\dmou\\Documents\\solunea_dev\\_thaleia_files\\newArch\\temp\\XlsModuleParserServiceTest\\tempDir");
-            File resourceDir = new File("C:\\Users\\dmou\\Documents\\solunea_dev\\_thaleia_files\\newArch\\temp\\XlsModuleParserServiceTest\\resourceDir");
+            File tempDir = new File("C:\\Users\\dmou\\Documents\\solunea_dev\\_thaleia_files\\newArch\\temp\\fr.solunea.thaleia.plugins.cannelle.v6.XlsModuleParserServiceTest\\tempDir");
+            File resourceDir = new File("C:\\Users\\dmou\\Documents\\solunea_dev\\_thaleia_files\\newArch\\temp\\fr.solunea.thaleia.plugins.cannelle.v6.XlsModuleParserServiceTest\\resourceDir");
 
             // map qui permet de transmettre des properties à requeter
             // on veux tout récupéré, donc rien à transmettre !
@@ -131,8 +134,8 @@ public class XlsModuleParserServiceTest {
             //        File xlSourceModuleFile = new File(getClass().getClassLoader().getResource("modele_excel_tutoriel_fr.zip").toURI());
             File xlSourceModuleFile = new File(getClass().getClassLoader().getResource("modele_excel_classe_virtuelle_fr.zip").toURI());
             InputStream propertiesStream = ExcelTemplate.class.getClassLoader().getResourceAsStream("Properties/cannelle_v6_fr.properties");
-            File tempDir = new File("C:\\Users\\dmou\\Documents\\solunea_dev\\_thaleia_files\\newArch\\temp\\XlsModuleParserServiceTest\\tempDir");
-            File resourceDir = new File("C:\\Users\\dmou\\Documents\\solunea_dev\\_thaleia_files\\newArch\\temp\\XlsModuleParserServiceTest\\resourceDir");
+            File tempDir = new File("C:\\Users\\dmou\\Documents\\solunea_dev\\_thaleia_files\\newArch\\temp\\fr.solunea.thaleia.plugins.cannelle.v6.XlsModuleParserServiceTest\\tempDir");
+            File resourceDir = new File("C:\\Users\\dmou\\Documents\\solunea_dev\\_thaleia_files\\newArch\\temp\\fr.solunea.thaleia.plugins.cannelle.v6.XlsModuleParserServiceTest\\resourceDir");
 
             // map qui permet de transmettre des properties à requeter
             // on veux tout récupéré, donc rien à transmettre !

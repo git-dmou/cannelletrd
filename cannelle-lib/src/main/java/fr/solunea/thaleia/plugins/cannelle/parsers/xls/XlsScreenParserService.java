@@ -317,11 +317,11 @@ public class XlsScreenParserService extends AbstractXlsParserService implements 
         return screens;
     }
 
-    protected IContent getScreen(Locale locale, User user, ScreenFactory screenFactory, CellsRange cellsRange) throws DetailedException {
+    public IContent getScreen(Locale locale, User user, ScreenFactory screenFactory, CellsRange cellsRange) throws DetailedException {
         return screenFactory.parseScreen(cellsRange, getResourcesHandler(), locale, user);
     }
 
-    protected List<ExcelDefinition> getExcelDefinitions() throws DetailedException {
+    public List<ExcelDefinition> getExcelDefinitions() throws DetailedException {
         List<ExcelDefinition> cellsRanges;
 
         // Ouverture de la feuille
@@ -345,7 +345,7 @@ public class XlsScreenParserService extends AbstractXlsParserService implements 
         return cellsRanges;
     }
 
-    protected ScreenFactory getScreenFactory(Parameters parameters, ResourcesHandler resourcesHandler) throws DetailedException {
+    public ScreenFactory getScreenFactory(Parameters parameters, ResourcesHandler resourcesHandler) throws DetailedException {
         ScreenFactory screenFactory = new ScreenFactory(parameters, resourcesHandler);
         return screenFactory;
     }
