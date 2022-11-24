@@ -56,8 +56,8 @@ public class ModuleScreensCreationNONREGRESSIONTest {
             //        File xlSourceModuleFile = new File(getClass().getClassLoader().getResource("modele_excel_tutoriel_fr.zip").toURI());
             File xlSourceModuleFile = new File(getClass().getClassLoader().getResource("modele_excel_classe_virtuelle_fr.zip").toURI());
             InputStream propertiesStream = ExcelTemplate.class.getClassLoader().getResourceAsStream("Properties/cannelle_v6_fr.properties");
-            File tempDir = new File("C:\\Users\\dmou\\Documents\\solunea_dev\\_thaleia_files\\newArch\\temp\\fr.solunea.thaleia.plugins.cannelle.v6.XlsModuleParserServiceTest\\tempDir");
-            File resourceDir = new File("C:\\Users\\dmou\\Documents\\solunea_dev\\_thaleia_files\\newArch\\temp\\fr.solunea.thaleia.plugins.cannelle.v6.XlsModuleParserServiceTest\\resourceDir");
+            File tempDir = new File("C:\\Users\\dmou\\Documents\\solunea_dev\\_thaleia_files\\newArch\\temp\\" + getClass().toString() + "\\tempDir");
+            File resourceDir = new File("C:\\Users\\dmou\\Documents\\solunea_dev\\_thaleia_files\\newArch\\temp\\" + getClass().toString() + "\\resourceDir");
 
             // map qui permet de transmettre des properties à requeter
             // on veux tout récupéré, donc rien à transmettre !

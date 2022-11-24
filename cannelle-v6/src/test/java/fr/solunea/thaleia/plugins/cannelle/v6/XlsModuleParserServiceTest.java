@@ -34,6 +34,17 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class XlsModuleParserServiceTest {
 
 
+    /**
+     *
+     * récupère les paramètre directement dans la feuille XL
+     *
+     * pour la traduction des modules, on se basera plutôt sur CannelleScreenParameters.java
+     * qui est le résultat du traitement des feuilles XL et qui est utilisé pour la génération des écrans
+     *
+     * @throws DetailedException
+     * @throws URISyntaxException
+     */
+
     @Test
     void parseXLFileModuleProperties() throws DetailedException, URISyntaxException {
         Parameters parameters;

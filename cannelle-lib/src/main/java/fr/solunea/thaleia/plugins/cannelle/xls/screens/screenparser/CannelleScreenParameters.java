@@ -4,18 +4,14 @@ import fr.solunea.thaleia.plugins.cannelle.xls.screens.parameters.AbstractScreen
 import fr.solunea.thaleia.plugins.cannelle.xls.screens.parameters.IScreenParameter;
 import fr.solunea.thaleia.plugins.cannelle.xls.screens.parameters.StaticParameter;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Classe contenant les paramètres d'un écran cannelle.
  */
-public class CannelleScreenParameters {
+public class CannelleScreenParameters implements Iterable<String> {
 
     private final Map<String, IScreenParameter> _screenParameters = new HashMap<String, IScreenParameter>();
-
 
     public CannelleScreenParameters() {
 
@@ -47,5 +43,10 @@ public class CannelleScreenParameters {
             }
         }
         return result;
+    }
+
+    @Override
+    public Iterator<String> iterator() {
+        return  _screenParameters.keySet().iterator();
     }
 }

@@ -253,7 +253,8 @@ public class CannelleScreenParamTranslatorTest {
         }
 
         then: {
-            assertThat(translatedParams.getScreenParameter("monParam").getValue()).isEqualTo("blue car");
+            assertThat(translatedParams.getScreenParameter("monParam1").getValue()).isEqualTo("blue car");
+            assertThat(translatedParams.getScreenParameter("monParam2").getValue()).isEqualTo("green horse");
         }
     }
 
