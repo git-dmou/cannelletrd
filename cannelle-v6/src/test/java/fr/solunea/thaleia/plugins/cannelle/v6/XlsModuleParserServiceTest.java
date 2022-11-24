@@ -10,7 +10,7 @@ import fr.solunea.thaleia.plugins.cannelle.parsers.xls.XlsModuleParserService;
 import fr.solunea.thaleia.plugins.cannelle.utils.PackagedFiles;
 import fr.solunea.thaleia.plugins.cannelle.utils.Parameters;
 import fr.solunea.thaleia.plugins.cannelle.utils.ResourcesHandler;
-import fr.solunea.thaleia.plugins.cannelle.v6.UcTranslateModule.ResourcesHandlerForTest;
+import fr.solunea.thaleia.plugins.cannelle.v6.uctranslatemodule.ResourcesHandlerForTest;
 import fr.solunea.thaleia.plugins.cannelle.v6.helperclassesfortests.XlsModuleParserServiceForTest;
 import fr.solunea.thaleia.plugins.cannelle.v6.helperclassesfortests.XlsScreenParserServiceForTest;
 import fr.solunea.thaleia.plugins.cannelle.xls.screens.parameters.IScreenParameter;

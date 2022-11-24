@@ -10,7 +10,7 @@ import fr.solunea.thaleia.plugins.cannelle.parsers.xls.XlsModuleParserService;
 import fr.solunea.thaleia.plugins.cannelle.utils.PackagedFiles;
 import fr.solunea.thaleia.plugins.cannelle.utils.Parameters;
 import fr.solunea.thaleia.plugins.cannelle.utils.ResourcesHandler;
-import fr.solunea.thaleia.plugins.cannelle.v6.UcTranslateModule.ResourcesHandlerForTest;
+import fr.solunea.thaleia.plugins.cannelle.v6.uctranslatemodule.ResourcesHandlerForTest;
 import fr.solunea.thaleia.plugins.cannelle.v6.helperclassesfortests.XlsModuleParserServiceForTest;
 import fr.solunea.thaleia.plugins.cannelle.v6.helperclassesfortests.XlsScreenParserServiceForTest;
 import fr.solunea.thaleia.utils.DetailedException;
@@ -26,7 +26,18 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * Classe de test pour comprendre le fonctionnement de XlsModuleParserService
+ *
+ * ATTENTION :
+ * pensez à supprimer le dossier :
+ *
+ * C:\Users\dmou\Documents\solunea_dev\_thaleia_files\newArch\temp\fr.solunea.thaleia.plugins.cannelle.v6.XlsModuleParserServiceTest
+ *
+ * AVANT de lancer le test !!!
+ *
  */
+
+
+
 
 
 

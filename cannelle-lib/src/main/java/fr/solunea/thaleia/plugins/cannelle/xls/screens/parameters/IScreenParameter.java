@@ -1,10 +1,11 @@
 package fr.solunea.thaleia.plugins.cannelle.xls.screens.parameters;
 
+import fr.solunea.thaleia.plugins.cannelle.v6.uctranslatemodule.ITranslatable;
 import fr.solunea.thaleia.utils.DetailedException;
 
 import java.util.Properties;
 
-public interface IScreenParameter {
+public interface IScreenParameter extends ITranslatable {
 
     /**
      * @param properties les propriétés qui concernent ce ScreenParameter : Par exemple, si les paramètres définissent

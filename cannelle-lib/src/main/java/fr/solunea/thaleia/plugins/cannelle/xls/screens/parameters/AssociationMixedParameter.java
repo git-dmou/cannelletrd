@@ -2,6 +2,8 @@ package fr.solunea.thaleia.plugins.cannelle.xls.screens.parameters;
 
 import fr.solunea.thaleia.utils.DetailedException;
 
+import java.util.Optional;
+
 /**
  * Value contient la valeur gauche ("value") = valeur gauche du fichier Excel,
  * Response contient la valeur droite ("correct").
@@ -55,6 +57,11 @@ public class AssociationMixedParameter extends AbstractScreenParameter {
 	@Override
 	public boolean valueIsAFileName() {
 		return false;
+	}
+
+	@Override
+	public Optional<String> getTranslatableValue() {
+		return Optional.of(getValue());
 	}
 
 }

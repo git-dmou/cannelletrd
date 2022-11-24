@@ -1,11 +1,11 @@
 package fr.solunea.thaleia.plugins.cannelle.xls.screens.parameters;
 
+import fr.solunea.thaleia.utils.DetailedException;
+
 import java.util.List;
 import java.util.Properties;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import fr.solunea.thaleia.utils.DetailedException;
 
 public abstract class AbstractScreenParameter implements IScreenParameter {
 

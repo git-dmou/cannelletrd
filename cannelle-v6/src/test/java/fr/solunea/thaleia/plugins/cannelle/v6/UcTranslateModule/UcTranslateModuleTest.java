@@ -1,4 +1,4 @@
-package fr.solunea.thaleia.plugins.cannelle.v6.UcTranslateModule;
+package fr.solunea.thaleia.plugins.cannelle.v6.uctranslatemodule;
 
 import fr.solunea.thaleia.model.Locale;
 import fr.solunea.thaleia.plugins.cannelle.contents.IContent;
@@ -11,7 +11,6 @@ import fr.solunea.thaleia.plugins.cannelle.v6.CannelleV6Plugin;
 import fr.solunea.thaleia.plugins.cannelle.v6.ExcelTemplate;
 import fr.solunea.thaleia.plugins.cannelle.v6.helperclassesfortests.XlsModuleParserServiceForTest;
 import fr.solunea.thaleia.plugins.cannelle.v6.helperclassesfortests.XlsScreenParserServiceForTest;
-import fr.solunea.thaleia.plugins.cannelle.v6.uctranslatemodule.ScreensTranslator;
 import fr.solunea.thaleia.utils.DetailedException;
 import org.junit.jupiter.api.Test;
 
@@ -86,7 +85,7 @@ public class UcTranslateModuleTest {
 //        {SCORMCommunication=Oui,
 //         Contenu de la ressource (fichier ou URL)=Libellé de la ressource,         ---> !!! ligne de titre !!!
 //         Description=Cette formation décrit les principales caractéristiques d'une solution de classe virtuelle en termes de fonctionnalités et d'usage. (Date de mise à jour : 12/09/2022),
-//         Langue=Français,
+//         Langue=Français,                                                          ---> langue de la méta
 //         PassageNote=80,
 //         Ressources du module=,                                                    ---> !!! correspond à xls.parser.content.resources.header !!!
 //         Title=Les basiques de la classe virtuelle HTML,
