@@ -60,7 +60,7 @@ public class CannelleScreenParamTranslator {
                String key = translatableParamsIter.next();
                textToTranslate = toTranslateParams.getScreenParameter(key).getTranslatableValue();
                textTranslation = translatorAPI.from(originLanguage).to(targetLanguage).translate(textToTranslate.get());
-               toTranslateParams.getScreenParameter(key).setValue(textTranslation);
+               toTranslateParams.getScreenParameter(key).setTranslatableValue(textTranslation);
            }
 
 

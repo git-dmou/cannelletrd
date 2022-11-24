@@ -9,4 +9,6 @@ public interface ITranslatable {
         return s;
     }
 
+    default void setTranslatableValue(String value) {}
+
 }

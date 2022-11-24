@@ -39,6 +39,7 @@ public class CannelleScreenParamTranslatorTest {
         }
 
         then: {
+            // on teste .getValue() parce que getTranslatedValue() renvoie une valeur vide si le Type n'est pas traductible
             assertThat(translatedParams.getScreenParameter("monParam").getValue()).isEqualTo("voiture bleue");
         }
 
@@ -70,7 +71,7 @@ public class CannelleScreenParamTranslatorTest {
         }
 
         then: {
-            assertThat(translatedParams.getScreenParameter("monParam").getValue()).isEqualTo("blue car");
+            assertThat(translatedParams.getScreenParameter("monParam").getTranslatableValue().get()).isEqualTo("blue car");
         }
     }
 
@@ -100,7 +101,7 @@ public class CannelleScreenParamTranslatorTest {
         }
 
         then: {
-            assertThat(translatedParams.getScreenParameter("monParam").getValue()).isEqualTo("blue car");
+            assertThat(translatedParams.getScreenParameter("monParam").getTranslatableValue().get()).isEqualTo("blue car");
         }
     }
 
@@ -130,7 +131,7 @@ public class CannelleScreenParamTranslatorTest {
         }
 
         then: {
-            assertThat(translatedParams.getScreenParameter("monParam").getValue()).isEqualTo("blue car");
+            assertThat(translatedParams.getScreenParameter("monParam").getTranslatableValue().get()).isEqualTo("blue car");
         }
     }
 
@@ -160,7 +161,7 @@ public class CannelleScreenParamTranslatorTest {
         }
 
         then: {
-            assertThat(translatedParams.getScreenParameter("monParam").getValue()).isEqualTo("blue car");
+            assertThat(translatedParams.getScreenParameter("monParam").getTranslatableValue().get()).isEqualTo("blue car");
         }
     }
 
@@ -190,7 +191,7 @@ public class CannelleScreenParamTranslatorTest {
         }
 
         then: {
-            assertThat(translatedParams.getScreenParameter("monParam").getValue()).isEqualTo("blue car");
+            assertThat(translatedParams.getScreenParameter("monParam").getTranslatableValue().get()).isEqualTo("blue car");
         }
     }
 
@@ -220,7 +221,7 @@ public class CannelleScreenParamTranslatorTest {
         }
 
         then: {
-            assertThat(translatedParams.getScreenParameter("monParam").getValue()).isEqualTo("blue car");
+            assertThat(translatedParams.getScreenParameter("monParam").getTranslatableValue().get()).isEqualTo("blue car");
         }
     }
 
@@ -253,10 +254,118 @@ public class CannelleScreenParamTranslatorTest {
         }
 
         then: {
-            assertThat(translatedParams.getScreenParameter("monParam1").getValue()).isEqualTo("blue car");
-            assertThat(translatedParams.getScreenParameter("monParam2").getValue()).isEqualTo("green horse");
+            assertThat(translatedParams.getScreenParameter("monParam1").getTranslatableValue().get()).isEqualTo("blue car");
+            assertThat(translatedParams.getScreenParameter("monParam2").getTranslatableValue().get()).isEqualTo("green horse");
         }
     }
+
+    @Test
+    void twoDifferentParam_ShouldBeTranslated() {
+
+        CannelleScreenParameters cannelleScreenParameters;
+        CannelleScreenParamTranslator translator;
+        given: {
+            // *********************
+            IScreenParameter paramToTranslate1 = new QruParameter();
+            IScreenParameter paramToTranslate2 = new FormattedTextParameter();
+            // *********************
+            paramToTranslate1.setValue("voiture bleue");
+            paramToTranslate2.setValue("cheval vert");
+
+            cannelleScreenParameters = new CannelleScreenParameters();
+            cannelleScreenParameters.addScreenParameter("monParam1", paramToTranslate1);
+            cannelleScreenParameters.addScreenParameter("monParam2", paramToTranslate2);
+
+            translator = new CannelleScreenParamTranslator();
+            ITranslatorAPI translatorAPI = new FakeDeeplTranslator();
+            translator.with(translatorAPI);
+        }
+
+
+        CannelleScreenParameters translatedParams;
+        when:   {
+            translatedParams = translator.from("FR").to("EN").translate(cannelleScreenParameters);
+        }
+
+        then: {
+            assertThat(translatedParams.getScreenParameter("monParam1").getTranslatableValue().get()).isEqualTo("blue car");
+            assertThat(translatedParams.getScreenParameter("monParam2").getTranslatableValue().get()).isEqualTo("green horse");
+        }
+    }
+
+    @Test
+    void twoDifferentParam_ShouldBeTranslated2() {
+
+        CannelleScreenParameters cannelleScreenParameters;
+        CannelleScreenParamTranslator translator;
+        given: {
+            // *********************
+            IScreenParameter paramToTranslate1 = new QruParameter();
+            IScreenParameter paramToTranslate2 = new AssociationURLorFileParameter();
+
+            // *********************
+            paramToTranslate1.setValue("voiture bleue");
+            ((AssociationURLorFileParameter) paramToTranslate2).setResponse("cheval vert"); // c'est le champ "response" qui doit être traduit !
+
+            cannelleScreenParameters = new CannelleScreenParameters();
+            cannelleScreenParameters.addScreenParameter("monParam1", paramToTranslate1);
+            cannelleScreenParameters.addScreenParameter("monParam2", paramToTranslate2);
+
+            translator = new CannelleScreenParamTranslator();
+            ITranslatorAPI translatorAPI = new FakeDeeplTranslator();
+            translator.with(translatorAPI);
+        }
+
+
+        CannelleScreenParameters translatedParams;
+        when:   {
+            translatedParams = translator.from("FR").to("EN").translate(cannelleScreenParameters);
+        }
+
+        then: {
+            assertThat(translatedParams.getScreenParameter("monParam1").getTranslatableValue().get()).isEqualTo("blue car");
+            assertThat(translatedParams.getScreenParameter("monParam2").getTranslatableValue().get()).isEqualTo("green horse");
+        }
+
+    }
+
+    @Test
+    void twoDifferentParam_ShouldBeTranslated3() {
+
+        CannelleScreenParameters cannelleScreenParameters;
+        CannelleScreenParamTranslator translator;
+        given: {
+            // *********************
+            IScreenParameter paramToTranslate1 = new QruParameter();
+            IScreenParameter paramToTranslate2 = new FormattedTextParameter();
+            IScreenParameter paramToTranslate3 = new FormattedTextParameter();
+            // *********************
+            paramToTranslate1.setValue("voiture bleue");
+            paramToTranslate2.setValue("cheval vert");
+            paramToTranslate3.setValue("chien jaune");
+
+            cannelleScreenParameters = new CannelleScreenParameters();
+            cannelleScreenParameters.addScreenParameter("monParam1", paramToTranslate1);
+            cannelleScreenParameters.addScreenParameter("monParam2", paramToTranslate2);
+            cannelleScreenParameters.addScreenParameter("monParam3", paramToTranslate2);
+
+            translator = new CannelleScreenParamTranslator();
+            ITranslatorAPI translatorAPI = new FakeDeeplTranslator();
+            translator.with(translatorAPI);
+        }
+
+
+        CannelleScreenParameters translatedParams;
+        when:   {
+            translatedParams = translator.from("FR").to("EN").translate(cannelleScreenParameters);
+        }
+
+        then: {
+            assertThat(translatedParams.getScreenParameter("monParam1").getTranslatableValue().get()).isEqualTo("blue car");
+            assertThat(translatedParams.getScreenParameter("monParam2").getTranslatableValue().get()).isEqualTo("green horse");
+        }
+    }
+
 
 
 

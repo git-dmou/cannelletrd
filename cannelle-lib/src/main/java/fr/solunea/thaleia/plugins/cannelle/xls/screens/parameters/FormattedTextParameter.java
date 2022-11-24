@@ -26,4 +26,12 @@ public class FormattedTextParameter extends TextParameter {
 		return  Optional.of(getValue());
 	}
 
+	@Override
+	public void setTranslatableValue(String value) {
+		setValue(value);
+	}
+
+
+
+
 }

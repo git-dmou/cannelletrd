@@ -13,6 +13,8 @@ public class FakeDeeplTranslator implements ITranslatorAPI {
     public FakeDeeplTranslator() {
         dic.put("voiture bleue", "blue car");
         dic.put("cheval vert", "green horse");
+//        dic.put("<monParam1>voiture bleue</monParam1><monParam2>cheval vert</monParam2>", "<monParam1>blue car</monParam1><monParam2>green horse</monParam2>");
+        dic.put("<params><monParam1>voiture bleue</monParam1><monParam2>cheval vert</monParam2><monParam3>chien jaune</monParam3>", "<monParam1>blue car</monParam1><monParam2>green horse</monParam2><monParam3>yellow dog</monParam3></params>");
 
     }
 
@@ -29,6 +31,11 @@ public class FakeDeeplTranslator implements ITranslatorAPI {
     @Override
     public String translate(String textToTranslate) {
 
-       return dic.get(textToTranslate);
+//       return dic.get(textToTranslate);
+        if (dic.containsKey(textToTranslate)) {
+            return dic.get(textToTranslate);
+        } else {
+            return "";
+        }
     }
 }

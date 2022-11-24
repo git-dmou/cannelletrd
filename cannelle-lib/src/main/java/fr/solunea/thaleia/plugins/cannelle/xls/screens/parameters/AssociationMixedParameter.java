@@ -64,4 +64,9 @@ public class AssociationMixedParameter extends AbstractScreenParameter {
 		return Optional.of(getValue());
 	}
 
+	@Override
+	public void setTranslatableValue(String value) {
+		setValue(value);
+	}
+
 }
