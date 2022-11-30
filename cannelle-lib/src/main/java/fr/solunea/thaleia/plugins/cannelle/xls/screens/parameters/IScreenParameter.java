@@ -46,6 +46,12 @@ public interface IScreenParameter extends ITranslatable {
 
     void setValue(String parameterValue);
 
+    default void setSafeKey(String safeKey) {}
+
+    default String getSafeKey() {
+        return "";
+    }
+
     /**
      * @return true si la valeur de ce paramètre correspond au nom d'un fichier qui se trouve dans les fichiers
      * importés.

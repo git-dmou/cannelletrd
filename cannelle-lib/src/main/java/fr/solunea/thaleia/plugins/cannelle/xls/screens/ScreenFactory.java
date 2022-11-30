@@ -6,6 +6,9 @@ import fr.solunea.thaleia.plugins.cannelle.contents.IContent;
 import fr.solunea.thaleia.plugins.cannelle.utils.CellsRange;
 import fr.solunea.thaleia.plugins.cannelle.utils.Parameters;
 import fr.solunea.thaleia.plugins.cannelle.utils.ResourcesHandler;
+import fr.solunea.thaleia.plugins.cannelle.v6.uctranslatemodule.CannelleScreenParamTranslator;
+import fr.solunea.thaleia.plugins.cannelle.v6.uctranslatemodule.DeeplTranslator;
+import fr.solunea.thaleia.plugins.cannelle.v6.uctranslatemodule.ITranslatorAPI;
 import fr.solunea.thaleia.plugins.cannelle.xls.screens.generator.IContentGenerator;
 import fr.solunea.thaleia.plugins.cannelle.xls.screens.parameters.Dictionary;
 import fr.solunea.thaleia.plugins.cannelle.xls.screens.parameters.IScreenParameter;
@@ -143,7 +146,9 @@ public class ScreenFactory {
         try {
             for (int j = 0; j <= paramsMaxIndex; j++) {
                 // Titre du paramètre
-                String paramName = parameters.getValue(template.getParamsKey() + "." + j + ".name");
+//                String safeKey =
+                String safeKey = template.getParamsKey() + "." + j + ".name";
+                String paramName = parameters.getValue(safeKey);
                 // Classe du paramètre
                 String paramClassname = parameters.getValue(template.getParamsKey() + "." + j + ".type");
                 IScreenParameter parameter = (IScreenParameter) ClassFactory.getInstanceOf(paramClassname,
@@ -152,11 +157,13 @@ public class ScreenFactory {
                 // On récupère les paramètres propres à ce ScreenParameter pour les lui donner comme propriétés.
                 String prefix = template.getParamsKey() + "." + j + ".";
                 Properties screenParameterProperties = translateProperties(parameters, prefix);
-                // On initialise le paramètre avec les clés qui le concerne
+                // On initialise le paramètre avec les clés qui le concernent
                 parameter.setProperties(screenParameterProperties);
+                parameter.setSafeKey(safeKey);
 
                 // On stocke ce ScreenParameter
                 cannelleScreenParameters.addScreenParameter(paramName, parameter);
+//                cannelleScreenParameters.addScreenParameter(, parameter);
             }
 
         } catch (DetailedException e) {
@@ -340,6 +347,14 @@ public class ScreenFactory {
         cannelleScreenParameters = prepareCannelleScreenParametersFromTemplate(template);
 
         screenParameters = template.parseScreenParameters(cells, cannelleScreenParameters);
+
+        //todo: retirer la traduction pour le traitement de genération des Ecran Normal !
+        CannelleScreenParamTranslator translator = new CannelleScreenParamTranslator();
+        ITranslatorAPI deeplTranslator = new DeeplTranslator();
+        translator.from("FR").to("EN").with(deeplTranslator);
+        translator.translate(cannelleScreenParameters);
+
+
 //        return template;
         return screenParameters;
     }

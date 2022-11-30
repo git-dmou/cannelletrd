@@ -419,7 +419,5 @@ class DeepLApiXmlFileNoAssertTest {
             return responseJson ;
         }
 
-
-
     }
 }

@@ -27,6 +27,8 @@ public abstract class AbstractScreenParameter implements IScreenParameter {
 
 	protected String value;
 
+	protected String safeKey;
+
 	private Properties properties = new Properties();
 
 	@Override
@@ -59,7 +61,15 @@ public abstract class AbstractScreenParameter implements IScreenParameter {
 	@Override
 	public String getContentPropertyName() {
 		return getProperty("contentproperty", null);
-	};
+	}
+
+	public void setSafeKey(String safeKey) {
+		this.safeKey = safeKey;
+	}
+
+	public String getSafeKey() {
+		return safeKey;
+	}
 	
 	@Override
 	public boolean isValueAHtmlText() {

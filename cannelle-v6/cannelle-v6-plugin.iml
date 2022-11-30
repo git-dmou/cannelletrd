@@ -86,9 +86,6 @@
     <orderEntry type="library" scope="PROVIDED" name="Maven: com.google.errorprone:error_prone_annotations:2.2.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: com.google.j2objc:j2objc-annotations:1.1" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.codehaus.mojo:animal-sniffer-annotations:1.17" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.9.9.3" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.9.0" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: com.fasterxml.jackson.core:jackson-core:2.9.9" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: com.jcraft:jsch:0.1.55" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.wicketstuff:wicketstuff-progressbar:6.26.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.wicket:wicket-extensions:6.26.0" level="project" />
@@ -112,7 +109,6 @@
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.santuario:xmlsec:2.0.7" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.codehaus.woodstox:woodstox-core-asl:4.4.1" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: javax.xml.stream:stax-api:1.0-2" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.codehaus.woodstox:stax2-api:3.1.4" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.bouncycastle:bcprov-jdk15on:1.65" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.bouncycastle:bcpkix-jdk15on:1.65" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.opensaml:opensaml-security-api:3.2.0" level="project" />
@@ -160,6 +156,12 @@
     <orderEntry type="module" module-name="thaleia-plugin-welcomev6" />
     <orderEntry type="library" name="Maven: com.paypal.sdk:rest-api-sdk:1.13.1" level="project" />
     <orderEntry type="library" name="Maven: com.google.code.gson:gson:2.8.6" level="project" />
+    <orderEntry type="library" name="Maven: com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.14.0" level="project" />
+    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-core:2.14.0" level="project" />
+    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.14.0" level="project" />
+    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.14.0" level="project" />
+    <orderEntry type="library" name="Maven: org.codehaus.woodstox:stax2-api:4.2.1" level="project" />
+    <orderEntry type="library" name="Maven: com.fasterxml.woodstox:woodstox-core:6.4.0" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.junit.jupiter:junit-jupiter-api:5.9.0-M1" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.opentest4j:opentest4j:1.2.0" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.junit.platform:junit-platform-commons:1.9.0-M1" level="project" />
