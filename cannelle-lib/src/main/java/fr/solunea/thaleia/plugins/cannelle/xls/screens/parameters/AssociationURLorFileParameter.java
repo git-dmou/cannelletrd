@@ -59,8 +59,19 @@ public class AssociationURLorFileParameter extends AbstractScreenParameter {
         return false;
     }
 
+//    @Override
+//    public Optional<String> getTranslatableValue() {return  Optional.of(getResponse());}
+
+
     @Override
-    public Optional<String> getTranslatableValue() {return  Optional.of(getResponse());}
+    public Optional<String> getTranslatableValue() {
+        String translatableValue = getResponse();
+        if (translatableValue == null) {
+            translatableValue = "";
+        }
+        return  Optional.of(translatableValue);
+    }
+
 
     @Override
     public void setTranslatableValue(String value) {

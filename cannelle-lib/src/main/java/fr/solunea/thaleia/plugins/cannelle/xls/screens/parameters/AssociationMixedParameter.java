@@ -59,9 +59,18 @@ public class AssociationMixedParameter extends AbstractScreenParameter {
 		return false;
 	}
 
+//	@Override
+//	public Optional<String> getTranslatableValue() {
+//		return Optional.of(getValue());
+//	}
+
 	@Override
 	public Optional<String> getTranslatableValue() {
-		return Optional.of(getValue());
+		String translatableValue = getValue();
+		if (translatableValue == null) {
+			translatableValue = "";
+		}
+		return  Optional.of(translatableValue);
 	}
 
 	@Override

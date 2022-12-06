@@ -22,8 +22,8 @@ public class TextParameter extends AbstractScreenParameter {
      */
     public static final String COMMENT_CONTENT_PROPERTY = "comment.contentproperty";
 
-    private String commentPropertyName = "";
-    private String commentPropertyValue = "";
+    protected String commentPropertyName = "";
+    protected String commentPropertyValue = "";
 
     @Override
     public void isValid() throws DetailedException {

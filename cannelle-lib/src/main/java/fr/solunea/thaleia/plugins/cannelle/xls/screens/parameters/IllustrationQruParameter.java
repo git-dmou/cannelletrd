@@ -2,6 +2,8 @@ package fr.solunea.thaleia.plugins.cannelle.xls.screens.parameters;
 
 import fr.solunea.thaleia.utils.DetailedException;
 
+import java.util.Optional;
+
 public class IllustrationQruParameter extends AssociationParameter {
 
     /**
@@ -65,4 +67,14 @@ public class IllustrationQruParameter extends AssociationParameter {
     public boolean valueIsAFileName() {
         return true;
     }
+
+
+
+//    ne doit pas être traduit, getValue() retourne le nom du fichier !
+//    comme on hérite icic de AssociationParameter qui lui doit être traduit,
+    @Override
+    public Optional<String> getTranslatableValue() {
+        return  Optional.empty();
+    }
+
 }

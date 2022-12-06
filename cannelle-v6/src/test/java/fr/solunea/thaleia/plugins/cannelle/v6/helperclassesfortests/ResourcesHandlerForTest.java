@@ -1,4 +1,4 @@
-package fr.solunea.thaleia.plugins.cannelle.v6.uctranslatemodule;
+package fr.solunea.thaleia.plugins.cannelle.v6.helperclassesfortests;
 
 import fr.solunea.thaleia.plugins.IPluginImplementation;
 import fr.solunea.thaleia.plugins.cannelle.utils.PackagedFiles;

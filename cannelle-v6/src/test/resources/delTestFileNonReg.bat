@@ -1,0 +1,1 @@
+del /s "C:\Users\dmou\Documents\solunea_dev\_thaleia_files\newArch\temp\class fr.solunea.thaleia.plugins.cannelle.v6.ModuleScreensCreationNONREGRESSIONTest"

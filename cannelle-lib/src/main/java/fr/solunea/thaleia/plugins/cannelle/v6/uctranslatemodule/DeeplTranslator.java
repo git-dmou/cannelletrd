@@ -82,6 +82,9 @@ public class DeeplTranslator implements ITranslatorAPI {
 
         HttpResponse<String> response = client.send(DeepLRequest, HttpResponse.BodyHandlers.ofString());
         String responseJson = response.body();
+
+        System.out.println("translation response : " + responseJson);
+
         return responseJson ;
     }
 

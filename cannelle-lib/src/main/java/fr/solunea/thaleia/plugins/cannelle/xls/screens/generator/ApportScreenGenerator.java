@@ -109,7 +109,7 @@ public class ApportScreenGenerator extends AbstractContentGenerator implements I
             logger.debug(ExceptionUtils.getFullStackTrace(e));
 
             // Le message localisé correspondant
-            String message = LocalizedMessages.getMessage(LocalizedMessages.REPLACE_FUNCTION_ON_SCREEN_ERROR, screenId);
+            String message = getMessage(screenId);
 
             // On demande sa présentation
             notifiySession(message);
@@ -120,6 +120,11 @@ public class ApportScreenGenerator extends AbstractContentGenerator implements I
 
         return result;
 
+    }
+
+    protected String getMessage(String screenId) {
+        String message = LocalizedMessages.getMessage(LocalizedMessages.REPLACE_FUNCTION_ON_SCREEN_ERROR, screenId);
+        return message;
     }
 
     protected A7Content getA7Content(File destination, Locale locale, User user) throws DetailedException {
