@@ -25,7 +25,7 @@ public abstract class AbstractScreenParameter implements IScreenParameter {
 
 	public static final String OPTIONAL_DEFAULT_VALUE = "value.default";
 
-	protected String value;
+	protected String value = "";
 
 	protected String safeKey;
 

@@ -26,7 +26,7 @@ public class AssociationParameter extends AbstractScreenParameter {
 	/**
 	 * La valeur de la réponse à la proposition
 	 */
-	private String response;
+	private String response = "";
 
 	/**
 	 * @return une string correspondant à la réponse à la proposition
@@ -77,8 +77,16 @@ public class AssociationParameter extends AbstractScreenParameter {
 	@Override
 	public void setTranslatableValue(String value) {
 		String [] translationSeparation = value.split("::");
-		setValue(translationSeparation[0]);
-		setResponse(translationSeparation[1]);
+		if (translationSeparation.length > 0) {
+			setValue(translationSeparation[0]);
+		} else {
+			setValue("");
+		}
+		if (translationSeparation.length > 1) {
+			setResponse(translationSeparation[1]);
+		} else {
+			setResponse("");
+		}
 	}
 
 

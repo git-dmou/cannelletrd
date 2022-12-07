@@ -373,7 +373,7 @@ public class CannelleScreenParamTranslatorTest {
             }
 
             then: {
-                assertThat(translatedParams.getScreenParameter("monParam").getTranslatableValue().get()).containsAnyOf("car  \"blue\"  or yellow or  \"green\"");
+                assertThat(translatedParams.getScreenParameter("monParam").getTranslatableValue().get()).containsAnyOf("car  \"blue\"  or yellow or  \"green\"  ");
 //                assertThat(translatedParams.getScreenParameter("monParam").getTranslatableValue().get()).isEqualTo("blue car ... ");
             }
         }
@@ -412,6 +412,42 @@ public class CannelleScreenParamTranslatorTest {
 //                assertThat(translatedParams.getScreenParameter("monParam").getTranslatableValue().get()).isEqualTo("blue car ... ");
             }
         }
+
+        @Test
+        void specialString_quotes_suroundedBy_tags_someQuotesMayBeLost() throws DetailedException {
+
+            CannelleScreenParameters cannelleScreenParameters;
+            CannelleScreenParamTranslator translator;
+            given: {
+                // *********************
+                IScreenParameter paramToTranslate = new FormattedTextParameter();
+                // *********************
+                paramToTranslate.setValue("voiture \"<b>bleue</b>\"</br> ou jaunes ou \"vert\"");
+                Properties properties1 = new Properties();
+//            properties1.setProperty("contentproperty", "safeKeyParam1");
+                paramToTranslate.setProperties(properties1);
+                paramToTranslate.setSafeKey("safeKeyParam1");
+
+                cannelleScreenParameters = new CannelleScreenParameters();
+                cannelleScreenParameters.addScreenParameter("monParam", paramToTranslate);
+
+                translator = new CannelleScreenParamTranslator();
+                ITranslatorAPI translatorAPI = new DeeplTranslator();
+                translator.with(translatorAPI);
+            }
+
+
+            CannelleScreenParameters translatedParams;
+            when:   {
+                translatedParams = translator.from("FR").to("EN").translate(cannelleScreenParameters);
+            }
+
+            then: {
+                assertThat(translatedParams.getScreenParameter("monParam").getTranslatableValue().get()).containsAnyOf("car  \"<b>blue</b>\" </br>or yellow or green  ");
+//                assertThat(translatedParams.getScreenParameter("monParam").getTranslatableValue().get()).isEqualTo("blue car ... ");
+            }
+        }
+
 
 
         @Test
@@ -1097,6 +1133,48 @@ public class CannelleScreenParamTranslatorTest {
                 assertThat(((AssociationParameter) (translatedParams.getScreenParameter("monParam"))).getResponse()).isEqualTo("green horse");
             }
         }
+
+        @Test
+        void valueOf_AssociationParameter_ShouldBeTranslated_evenIfNoResponse() throws DetailedException {
+
+            CannelleScreenParameters cannelleScreenParameters;
+            CannelleScreenParamTranslator translator;
+            given: {
+                // *********************
+                IScreenParameter paramToTranslate = new AssociationParameter();
+                // *********************
+                paramToTranslate.setValue("voiture bleue");
+//                ((AssociationParameter) paramToTranslate).setResponse("cheval vert");
+
+                Properties properties1 = new Properties();
+//            properties1.setProperty("contentproperty", "safeKeyParam1");
+                paramToTranslate.setProperties(properties1);
+                paramToTranslate.setSafeKey("safeKeyParam1");
+
+                cannelleScreenParameters = new CannelleScreenParameters();
+                cannelleScreenParameters.addScreenParameter("monParam", paramToTranslate);
+
+                translator = new CannelleScreenParamTranslator();
+//            ITranslatorAPI translatorAPI = new FakeDeeplTranslator();
+                ITranslatorAPI translatorAPI = new DeeplTranslator();
+                translator.with(translatorAPI);
+            }
+
+
+            CannelleScreenParameters translatedParams;
+            when:   {
+                translatedParams = translator.from("FR").to("EN").translate(cannelleScreenParameters);
+            }
+
+            then: {
+//                la propriété AssociationParameter a 2 champs à traduire au lieu d'un !
+//                - value
+//                - response
+                assertThat(translatedParams.getScreenParameter("monParam").getValue()).isEqualTo("blue car");
+                assertThat(((AssociationParameter) (translatedParams.getScreenParameter("monParam"))).getResponse()).isEqualTo("");
+            }
+        }
+
 
         @Test
         void valueOf_AssociationURLorFileParameter_ShouldBeTranslated() throws DetailedException {

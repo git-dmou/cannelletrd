@@ -231,6 +231,16 @@ public class CannelleScreenParamTranslator {
         Pattern p = Pattern.compile(quotedTextFindRegex);
         Matcher matcher = p.matcher(tagged_s);
 
+        quoteSubstitutionBeforeEveryThing:{
+            while (matcher.find()) {
+//            String replacedQuoteRegex =   subtitutionStringForTag.stripLeading() + matcher.group(1) + subtitutionStringForTag.stripTrailing() ;
+//                String replacedQuoteRegex = quoteSubsText.stripLeading() + matcher.group(1) + quoteSubsText.stripTrailing();
+                String replacedQuoteRegex = matcher.group(0);
+                String newQuotedText = " \"" + matcher.group(1) + "\" ";
+                tagged_s = tagged_s.replaceAll(replacedQuoteRegex, newQuotedText);
+            }
+        }
+
         while(substitutionIterator.hasNext()) {
             subtitutionKeyValue = substitutionIterator.next();
 
@@ -243,11 +253,15 @@ public class CannelleScreenParamTranslator {
             }
 
             if (subtitutionStringForTag.equals(quoteSubsText)) {
+                // on supprime les guillemets qui ne sont pas substituable ?
+                tagged_s = tagged_s.replaceAll(quoteSubsText.trim(), "");
+                /*
                 while (matcher.find()) {
                     String replacedQuoteRegex =   subtitutionStringForTag.stripLeading() + matcher.group(1) + subtitutionStringForTag.stripTrailing() ;
                     String newQuotedText = " \"" + matcher.group(1) + "\" ";
                     tagged_s = tagged_s.replaceAll(replacedQuoteRegex, newQuotedText);
                 }
+                */
             } else if (subtitutionStringForTag.equals("vars")) {
                 tagged_s = substituteBracketsVarsBack(tagged_s);
             } else  {
