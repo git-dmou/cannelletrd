@@ -34,5 +34,9 @@ public class PropertiesPanel extends Panel {
                 return true;
             }
         });
+//        Component moduleTranslationPanel = new ModuleTranslationPanel("moduleTranslation","", locale.getObject());
+//        moduleTranslationPanel.setVisible(true);
+//        add(moduleTranslationPanel) ;
+
     }
 }
