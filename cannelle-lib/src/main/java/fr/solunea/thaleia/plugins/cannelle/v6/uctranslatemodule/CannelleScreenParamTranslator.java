@@ -136,6 +136,7 @@ public class CannelleScreenParamTranslator {
                 textTranslation = translatorAPI.from(originLanguage).to(targetLanguage).translateXML(textToTranslateXML);
             } catch (Exception e) {
                 logger.debug("probleme de traduction ");
+                throw new DetailedException(e).addMessage("Problème de traduction de l'API, vérifiez votre compte !");
             }
             integrateXmlTranslationIntoCannelleScreenParam(textTranslation, toTranslateParams, safeLocaleKeys);
         }

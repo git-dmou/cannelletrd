@@ -1,0 +1,8 @@
+POST http://https://prt-dmou/thaleia/api/v1/transform/
+Content-Type: application/x-www-form-urlencoded
+Authorization: krbZYjzxa8wc3jUBtY18jXR8kpNHbFFt
+
+type=cannelle_translate_module-FR-ES
+###
+
+

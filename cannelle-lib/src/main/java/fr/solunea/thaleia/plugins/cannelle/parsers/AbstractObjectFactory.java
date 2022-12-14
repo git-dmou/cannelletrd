@@ -16,6 +16,9 @@ public class AbstractObjectFactory<T> {
     private Class<T> type;
     private String classNameParameter;
 
+    private String origLanguage;
+    private String getOrigLanguage;
+
     /**
      * Une fabrique d'objets qui héritent de cette classe.
      *
@@ -32,7 +35,7 @@ public class AbstractObjectFactory<T> {
      * @return un objet de la classe className, qui doit hériter de T
      */
     @SuppressWarnings("unchecked")
-    public T getObject(Parameters parameters, ResourcesHandler resourcesHandler) throws DetailedException {
+    public T getObject(Parameters parameters, ResourcesHandler resourcesHandler, String origLanguage, String targetLanguage) throws DetailedException {
 
         // Recherche de la propriété qui contient le nom de la classe
         // d'implémentation
@@ -64,8 +67,13 @@ public class AbstractObjectFactory<T> {
             try {
                 // On recherche le constructeur avec les paramètres de type
                 // Parameters et ResourcesHandler
-                constructor = clazz.getDeclaredConstructor(Parameters.class, ResourcesHandler.class);
-                return constructor.newInstance(parameters, resourcesHandler);
+                if (targetLanguage.equals("")) {
+                    constructor = clazz.getDeclaredConstructor(Parameters.class, ResourcesHandler.class);
+                    return constructor.newInstance(parameters, resourcesHandler);
+                } else {
+                    constructor = clazz.getDeclaredConstructor(Parameters.class, ResourcesHandler.class, String.class, String.class);
+                    return constructor.newInstance(parameters, resourcesHandler, origLanguage, targetLanguage);
+                }
 
             } catch (Exception e) {
                 throw new DetailedException(e).addMessage(
@@ -77,4 +85,9 @@ public class AbstractObjectFactory<T> {
         }
 
     }
+
+    public T getObject(Parameters parameters, ResourcesHandler resourcesHandler) throws DetailedException {
+        return getObject(parameters, resourcesHandler,"","");
+    }
+
 }

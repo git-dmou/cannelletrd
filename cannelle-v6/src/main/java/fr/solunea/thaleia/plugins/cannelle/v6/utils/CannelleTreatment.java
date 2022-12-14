@@ -15,7 +15,6 @@ import fr.solunea.thaleia.plugins.cannelle.v6.CannelleV6Plugin;
 import fr.solunea.thaleia.plugins.cannelle.v6.panels.CannelleContentsPanel;
 import fr.solunea.thaleia.plugins.welcomev6.messages.LocalizedMessages;
 import fr.solunea.thaleia.service.PreviewService;
-import fr.solunea.thaleia.service.utils.IPreviewHelper;
 import fr.solunea.thaleia.service.utils.ZipUtils;
 import fr.solunea.thaleia.service.utils.export.ExportFormat;
 import fr.solunea.thaleia.utils.DetailedException;
@@ -43,7 +42,7 @@ public class CannelleTreatment {
      *
      * @return L'URL de prévisualisation.
      */
-    public String preview(ContentVersion contentVersion, User user, java.util.Locale locale) throws DetailedException {
+    public String preview(ContentVersion contentVersion, User user, java.util.Locale locale, String origLanguage, String TargetLanguage) throws DetailedException {
         // Vérification qu'on a bien un module Cannelle
         if (contentVersion.getContentType().getIsModuleType() && contentVersion.getContentType().getName().equals(CannelleContentsPanel.MODULE_CONTENT_TYPE_NAME)) {
             File file;
@@ -93,8 +92,12 @@ public class CannelleTreatment {
      *
      * @param locale la locale pour la présentation des messages d'erreur dans l'exception, si elle est levée.
      */
-    public ContentVersion generateFromSource(File input, User user, java.util.Locale locale) throws Exception {
-        return (ContentVersion) process(input, user, locale, false);
+    public ContentVersion generateFromSource(File input, User user, java.util.Locale locale, String origLanguage, String TargetLanguage) throws Exception {
+        return (ContentVersion) process(input, user, locale, false,"","");
+    }
+
+    public ContentVersion translateFromSource(File input, User user, java.util.Locale locale, String origLanguage, String targetLanguage) throws Exception {
+        return (ContentVersion) process(input, user, locale, false, origLanguage, targetLanguage);
     }
 
     /**
@@ -104,8 +107,8 @@ public class CannelleTreatment {
      *
      * @param locale la locale pour la présentation des messages d'erreur dans l'exception, si elle est levée.
      */
-    public File generateAndExportFromSource(File input, User user, java.util.Locale locale) throws Exception {
-        return (File) process(input, user, locale, true);
+    public File generateAndExportFromSource(File input, User user, java.util.Locale locale, String origLanguage, String TargetLanguage) throws Exception {
+        return (File) process(input, user, locale, true,"","");
     }
 
     /**
@@ -115,9 +118,9 @@ public class CannelleTreatment {
      *
      * @param contentLocale la locale dans laquelle exporter le contenu.
      */
-    public File publicationExport(ContentVersion contentVersion, User user, java.util.Locale contentLocale) throws Exception {
+    public File publicationExport(ContentVersion contentVersion, User user, java.util.Locale contentLocale, String origLanguage, String TargetLanguage) throws Exception {
         fr.solunea.thaleia.model.Locale localeToPublish = new LocaleDao(ThaleiaApplication.get().contextService.getContextSingleton()).findByName(contentLocale.getLanguage());
-        return publicationExport(contentVersion, user, localeToPublish, java.util.Locale.ENGLISH);
+        return publicationExport(contentVersion, user, localeToPublish, java.util.Locale.ENGLISH,"","");
     }
 
 
@@ -128,7 +131,7 @@ public class CannelleTreatment {
      * @param messagesLocale la locale pour la présentation des messages d'erreur dans l'exception, si elle est levée.
      * @param contentLocale  la locale dans laquelle exporter le contenu.
      */
-    public File publicationExport(ContentVersion contentVersion, User user, Locale contentLocale, java.util.Locale messagesLocale) throws Exception {
+    public File publicationExport(ContentVersion contentVersion, User user, Locale contentLocale, java.util.Locale messagesLocale, String origLanguage, String TargetLanguage) throws Exception {
         // La liste des clés de localisation des messages d'erreur à présenter
         List<String> errorMessagesKeys = new ArrayList<>();
 
@@ -142,7 +145,7 @@ public class CannelleTreatment {
         }
     }
 
-    private Object process(File input, User user, java.util.Locale locale, boolean export) throws Exception {
+    private Object process(File input, User user, java.util.Locale locale, boolean export, String origLanguage, String targetLanguage) throws Exception {
         // La liste des clés de localisation des messages d'erreur à présenter
         List<String> errorMessagesKeys = new ArrayList<>();
 
@@ -196,7 +199,7 @@ public class CannelleTreatment {
             ImportModuleService importModuleService = new ImportModuleService(parameters, resourcesHandler,
                     ThaleiaApplication.get().getConfiguration(), ThaleiaApplication.get().contextService);
             ContentVersion contentVersion = importModuleService.importModule(input, errorMessagesKeys,
-                    sourceFileLocale, user);
+                    sourceFileLocale, user, origLanguage, targetLanguage);
 
             Analytics.getImplementation().logEvent(CannelleEvent.CannelleContentCreationOk);
             ThaleiaApplication.get().getEventService().storeEvent(EVENT_PROCESS_IMPORT, contentVersion.getContentIdentifier(), user);

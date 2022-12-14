@@ -11,6 +11,7 @@ import fr.solunea.thaleia.plugins.cannelle.utils.CellsRange;
 import fr.solunea.thaleia.plugins.cannelle.utils.Parameters;
 import fr.solunea.thaleia.plugins.cannelle.utils.ResourcesHandler;
 import fr.solunea.thaleia.plugins.cannelle.xls.screens.ScreenFactory;
+import fr.solunea.thaleia.plugins.cannelle.xls.screens.ScreenFactoryWithTranslation;
 import fr.solunea.thaleia.utils.DetailedException;
 import org.apache.log4j.Logger;
 import org.apache.poi.ss.usermodel.Cell;
@@ -35,8 +36,17 @@ public class XlsScreenParserService extends AbstractXlsParserService implements 
     private List<String> separators;
     protected ScreenFactory screenFactory;
 
+    private String origLanguage;
+    private String targetLanguage;
+
     public XlsScreenParserService(Parameters parameters, ResourcesHandler resourcesHandler) {
+        this(parameters, resourcesHandler, "",  "");
+    }
+
+    public XlsScreenParserService(Parameters parameters, ResourcesHandler resourcesHandler, String origLanguage, String targetLanguage) {
         super(parameters, resourcesHandler);
+        this.origLanguage = origLanguage;
+        this.targetLanguage = targetLanguage;
     }
 
     /**
@@ -239,7 +249,7 @@ public class XlsScreenParserService extends AbstractXlsParserService implements 
         cellsRanges = getExcelDefinitions();
 
         // On instancie la fabrique d'écrans
-        screenFactory = getScreenFactory(getParameters(), getResourcesHandler());
+        screenFactory = getScreenFactory(getParameters(), getResourcesHandler(), origLanguage, targetLanguage);
 
         // Les écrans générés
         List<ParsedObject<IContent>> screens = new ArrayList<>();
@@ -347,6 +357,16 @@ public class XlsScreenParserService extends AbstractXlsParserService implements 
 
     public ScreenFactory getScreenFactory(Parameters parameters, ResourcesHandler resourcesHandler) throws DetailedException {
         ScreenFactory screenFactory = new ScreenFactory(parameters, resourcesHandler);
+        return screenFactory;
+    }
+    public ScreenFactory getScreenFactory(Parameters parameters, ResourcesHandler resourcesHandler, String origLanguage, String targetLanguage) throws DetailedException {
+
+        ScreenFactory screenFactory;
+        if (targetLanguage.equals("")) {
+            screenFactory = new ScreenFactory(parameters, resourcesHandler);
+        } else {
+            screenFactory = new ScreenFactoryWithTranslation(parameters, resourcesHandler, origLanguage, targetLanguage);
+        }
         return screenFactory;
     }
 

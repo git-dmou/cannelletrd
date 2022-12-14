@@ -6,9 +6,6 @@ import fr.solunea.thaleia.plugins.cannelle.contents.IContent;
 import fr.solunea.thaleia.plugins.cannelle.utils.CellsRange;
 import fr.solunea.thaleia.plugins.cannelle.utils.Parameters;
 import fr.solunea.thaleia.plugins.cannelle.utils.ResourcesHandler;
-import fr.solunea.thaleia.plugins.cannelle.v6.uctranslatemodule.CannelleScreenParamTranslator;
-import fr.solunea.thaleia.plugins.cannelle.v6.uctranslatemodule.DeeplTranslator;
-import fr.solunea.thaleia.plugins.cannelle.v6.uctranslatemodule.ITranslatorAPI;
 import fr.solunea.thaleia.plugins.cannelle.xls.screens.generator.IContentGenerator;
 import fr.solunea.thaleia.plugins.cannelle.xls.screens.parameters.Dictionary;
 import fr.solunea.thaleia.plugins.cannelle.xls.screens.parameters.IScreenParameter;
@@ -45,22 +42,33 @@ public class ScreenFactory {
      * clé est leur intitulé (paramètre templates.X.title, que l'on recherche
      * dans les cellules XLS pour identifier le template).
      */
-    final private Map<String, IExcelTemplate> templates;
+    private Map<String, IExcelTemplate> templates;
     /**
      * Les paramètres de configuration.
      */
-    final private Parameters parameters;
+    protected Parameters parameters;
     protected List<IScreenParameter> screenParameters;
     protected CannelleScreenParameters cannelleScreenParameters;
     private IExcelTemplate template;
+    protected String origLanguage = "";
+    protected String targetLanguage = "";
+
+    public ScreenFactory(Parameters parameters, ResourcesHandler resourcesHandle) throws DetailedException {
+        this(parameters, resourcesHandle, "", "");
+    }
 
     /**
      * Instancie les classes de traitement de templates qui sont définis dans la
      * conf.
      */
-    public ScreenFactory(Parameters parameters, ResourcesHandler resourcesHandler) throws DetailedException {
+
+
+
+    public ScreenFactory(Parameters parameters, ResourcesHandler resourcesHandler, String origLanguage, String targetLanguage) throws DetailedException {
         this.templates = new HashMap<String, IExcelTemplate>();
         this.parameters = parameters;
+        this.origLanguage = origLanguage;
+        this.targetLanguage = targetLanguage;
 
         Dictionary dictionary = new Dictionary(parameters);
 
@@ -265,6 +273,7 @@ public class ScreenFactory {
     public IContent parseScreen(CellsRange cells, ResourcesHandler resourcesHandler, Locale locale, User user) throws DetailedException {
 
         prepareTemplate(cells);
+        translateScreen(user);
 
         IContent screen = generateScreen(resourcesHandler, locale, user, template);
 
@@ -348,14 +357,9 @@ public class ScreenFactory {
 
         screenParameters = template.parseScreenParameters(cells, cannelleScreenParameters);
 
-        //todo: retirer la traduction pour le traitement de genération des Ecran Normal !
-        CannelleScreenParamTranslator translator = new CannelleScreenParamTranslator();
-        ITranslatorAPI deeplTranslator = new DeeplTranslator();
-        translator.from("FR").to("EN").with(deeplTranslator);
-        translator.translate(cannelleScreenParameters);
-
-
-//        return template;
+        //        return template;
         return screenParameters;
     }
+
+    private void translateScreen(User user) throws DetailedException {}
 }

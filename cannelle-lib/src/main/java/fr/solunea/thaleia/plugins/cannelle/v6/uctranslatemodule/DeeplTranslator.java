@@ -12,10 +12,13 @@ import java.net.http.HttpResponse;
 
 public class DeeplTranslator implements ITranslatorAPI {
 
+
+
     private String originLanguage = "FR";
     private String targetLanguage = "EN-GB";
 
-    private String authKey = "3bab90c2-a11d-422f-3357-a628955c1ffb:fx";
+//    private String authKey = "3bab90c2-a11d-422f-3357-a628955c1ffb:fx";
+    private String authKey = "";
     private String deeplUrl = "https://api-free.deepl.com/v2/translate";
 
     private Translator translator;
@@ -89,7 +92,12 @@ public class DeeplTranslator implements ITranslatorAPI {
     }
 
 
+    public DeeplTranslator(String serviceKey) {
+        this.authKey = serviceKey;
+    }
+
+    // pour usage en Test
     public DeeplTranslator() {
-//        this.translator = new Translator(authKey);
+        this.authKey = "3bab90c2-a11d-422f-3357-a628955c1ffb:fx";
     }
 }

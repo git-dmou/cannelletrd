@@ -522,6 +522,13 @@ public class Parameters implements Serializable {
     public static final String SCREEN_PARSER_IMPLEMENTATION = "screen.parser.implementation";
 
     /**
+     * Le nom du paramètre dont la valeur est la classe d'implémentation de la
+     * recherche des propriétés des écrans pour la traduction du module . Doit implémenter
+     * fr.solunea.thaleia.plugins.cannelle.parsers.IScreenParserService
+     */
+    public static final String SCREEN_PARSER_TRANSLATOR_IMPLEMENTATION = "screen.parser.translator.implementation";
+
+    /**
      * Le nom du paramètre dont la valeur est la valeur de la cellule qui
      * identifie l'en-tête du tableau des ressources du module.
      */

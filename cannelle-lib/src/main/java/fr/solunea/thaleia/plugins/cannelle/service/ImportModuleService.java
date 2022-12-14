@@ -58,7 +58,7 @@ public class ImportModuleService extends ParametersAwareService {
      *                         libellé localisé correspondant à ce code.
      * @param sourceFileLocale la locale du fichier source, qui n'est pas forcément la locale dans laquelle les
      */
-    public ContentVersion importModule(File uploadedFile, List<String> errorKeys, Locale sourceFileLocale, User user) throws DetailedException {
+    public ContentVersion importModule(File uploadedFile, List<String> errorKeys, Locale sourceFileLocale, User user, String origLanguage, String targetLanguage) throws DetailedException {
 
         ContentVersion module = null;
         List<ContentVersion> screens = new ArrayList<>();
@@ -142,8 +142,13 @@ public class ImportModuleService extends ParametersAwareService {
             // Création des écrans
             try {
                 // Récupération du parser d'écrans
-                IScreenParserService screenParserService =
-                        new ScreenParserServiceFactory(Parameters.SCREEN_PARSER_IMPLEMENTATION).getObject(getParameters(), getResourcesHandler());
+                IScreenParserService screenParserService;
+                if (targetLanguage.equals("")) {
+                    screenParserService = new ScreenParserServiceFactory(Parameters.SCREEN_PARSER_IMPLEMENTATION).getObject(getParameters(), getResourcesHandler());
+                } else {
+                    screenParserService = new ScreenParserServiceFactory(Parameters.SCREEN_PARSER_TRANSLATOR_IMPLEMENTATION).getObject(getParameters(), getResourcesHandler(), origLanguage, targetLanguage);
+
+                }
 
                 //TODO traitement des fichiers aléatoire
 
