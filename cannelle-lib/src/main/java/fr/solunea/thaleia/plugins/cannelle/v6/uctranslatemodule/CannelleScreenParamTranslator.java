@@ -202,8 +202,9 @@ public class CannelleScreenParamTranslator {
             screenData = screensData.get("screendata");
 
         } catch (Exception e) {
-//            throw new DetailedException("problème retour API traduction").addMessage("traduction : " + textTranslation);
             System.out.println("problème retour API traduction, traduction : " + translationString);
+            logger.debug("problème retour API traduction, traduction : " + translationString);
+            throw new DetailedException("problème retour API traduction").addMessage("traduction : " + textTranslation);
         }
 
         HtmlTagsSubstitution(screenData);
@@ -282,11 +283,11 @@ public class CannelleScreenParamTranslator {
             String LocalKey = safeLocaleKeys.get(paramSafeKey);
             toTranslateParams.getScreenParameter(LocalKey).setTranslatableValue(translationValue);
         }
-        System.out.println();
+//        System.out.println();
 
     }
 
-    private String convertParamToXML(Map<String, String> safeTranslatableParams) {
+    private String convertParamToXML(Map<String, String> safeTranslatableParams) throws DetailedException {
 
         ScreenData screenData = new ScreenData(safeTranslatableParams);
 //        @JacksonXmlRootElement(localName = "toto")
@@ -304,6 +305,8 @@ public class CannelleScreenParamTranslator {
             xmlText = mapper.writeValueAsString(screenData);
         } catch (JsonProcessingException e) {
             System.out.println("pb conversion ScreenData vers xml !!!");
+            logger.debug("pb conversion ScreenData vers xml !!!");
+            throw new DetailedException(e).addMessage("pb conversion ScreenData vers xml !!!");
         }
 
         return xmlText;

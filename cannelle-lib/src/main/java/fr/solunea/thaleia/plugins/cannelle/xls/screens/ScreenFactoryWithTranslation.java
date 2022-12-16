@@ -7,13 +7,17 @@ import fr.solunea.thaleia.plugins.cannelle.v6.uctranslatemodule.CannelleScreenPa
 import fr.solunea.thaleia.plugins.cannelle.v6.uctranslatemodule.DeeplTranslator;
 import fr.solunea.thaleia.plugins.cannelle.v6.uctranslatemodule.ITranslatorAPI;
 import fr.solunea.thaleia.utils.DetailedException;
+import org.apache.log4j.Logger;
 
 public class ScreenFactoryWithTranslation extends ScreenFactory{
+
+    private static final Logger logger = Logger.getLogger(ScreenFactoryWithTranslation.class);
+
     public ScreenFactoryWithTranslation(Parameters parameters, ResourcesHandler resourcesHandler, String origLanguage, String targetLanguage) throws DetailedException {
         super(parameters, resourcesHandler, origLanguage, targetLanguage);
     }
 
-    private void translateScreen(User user) throws DetailedException {
+    protected void translateScreen(User user) throws DetailedException {
         //todo: retirer la traduction pour le traitement de genération des Ecran Normal !
         CannelleScreenParamTranslator translator = new CannelleScreenParamTranslator();
         ITranslatorAPI translatorAPI = getTranslatorAPI(user);
@@ -22,7 +26,7 @@ public class ScreenFactoryWithTranslation extends ScreenFactory{
     }
 
     private ITranslatorAPI getTranslatorAPI(User user) {
-        ITranslatorAPI deeplTranslator = new DeeplTranslator(user.getThirdPartyServiceKey("Deepl"));
+        ITranslatorAPI deeplTranslator = new DeeplTranslator(user.getThirdPartyServiceKey("DeepL", "DeepL-Auth-Key"));
         return deeplTranslator;
     }
 }

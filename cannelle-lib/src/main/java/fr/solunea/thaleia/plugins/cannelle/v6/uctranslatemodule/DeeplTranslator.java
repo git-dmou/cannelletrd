@@ -2,6 +2,7 @@ package fr.solunea.thaleia.plugins.cannelle.v6.uctranslatemodule;
 
 import com.deepl.api.*;
 import fr.solunea.thaleia.utils.DetailedException;
+import org.apache.log4j.Logger;
 
 import java.io.IOException;
 import java.net.URI;
@@ -12,6 +13,7 @@ import java.net.http.HttpResponse;
 
 public class DeeplTranslator implements ITranslatorAPI {
 
+    private static final Logger logger = Logger.getLogger(DeeplTranslator.class);
 
 
     private String originLanguage = "FR";
@@ -72,7 +74,8 @@ public class DeeplTranslator implements ITranslatorAPI {
                 .append("text=")
                 .append(textXML);
 
-        System.out.println("translation param : " + paramBuilder.toString());
+//        System.out.println("translation param : " + paramBuilder.toString());
+        logger.debug("translation param : " + paramBuilder.toString());
 
         HttpRequest DeepLRequest = HttpRequest.newBuilder(new URI(deeplUrl))
                 .POST(HttpRequest.BodyPublishers.ofString(paramBuilder.toString()))
@@ -86,7 +89,8 @@ public class DeeplTranslator implements ITranslatorAPI {
         HttpResponse<String> response = client.send(DeepLRequest, HttpResponse.BodyHandlers.ofString());
         String responseJson = response.body();
 
-        System.out.println("translation response : " + responseJson);
+//        System.out.println("translation response : " + responseJson);
+        logger.debug("translation response : " + responseJson);
 
         return responseJson ;
     }

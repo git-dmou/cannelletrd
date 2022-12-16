@@ -36,20 +36,20 @@ public class ScreenFactory {
      * Dans le répertoire temporaire du traitement, le nom du répertoire dans
      * lequel seront préparés les fichiers des écrans produits.
      */
-    private static final String SCREENS_TEMP_DIR_NAME = "screens";
+    protected static final String SCREENS_TEMP_DIR_NAME = "screens";
     /**
      * Les gabarits d'écran, et leur configuration, définis en configuration. La
      * clé est leur intitulé (paramètre templates.X.title, que l'on recherche
      * dans les cellules XLS pour identifier le template).
      */
-    private Map<String, IExcelTemplate> templates;
+    protected Map<String, IExcelTemplate> templates;
     /**
      * Les paramètres de configuration.
      */
     protected Parameters parameters;
     protected List<IScreenParameter> screenParameters;
     protected CannelleScreenParameters cannelleScreenParameters;
-    private IExcelTemplate template;
+    protected IExcelTemplate template;
     protected String origLanguage = "";
     protected String targetLanguage = "";
 
@@ -135,7 +135,7 @@ public class ScreenFactory {
      * @return
      * @param template
      */
-    private CannelleScreenParameters prepareCannelleScreenParametersFromTemplate(IExcelTemplate template)
+    protected CannelleScreenParameters prepareCannelleScreenParametersFromTemplate(IExcelTemplate template)
             throws DetailedException {
         logger.debug("On instancie un objet CannelleScreenParameters en se servant du template courant " + template);
 
@@ -187,7 +187,7 @@ public class ScreenFactory {
      * Instancie le template i : recherche le titre, la classe de traitement, et
      * tous ses paramètres (ScreenParameters).
      */
-    private AbstractExcelTemplate parseTemplateFromParameters(int i) throws DetailedException {
+    protected AbstractExcelTemplate parseTemplateFromParameters(int i) throws DetailedException {
         AbstractExcelTemplate result = null;
         try {
             // On recherche le nom de la classe de traitement demandée pour ce
@@ -242,7 +242,7 @@ public class ScreenFactory {
      * @param prefix le préfixe à supprimer pour les clés des propriétés. Par
      *               exemple 'templates.1.contentgenerator.'
      */
-    private Properties translateProperties(Parameters parameters, String prefix) {
+    protected Properties translateProperties(Parameters parameters, String prefix) {
 
         Properties properties = new Properties();
 
@@ -280,7 +280,7 @@ public class ScreenFactory {
         return screen;
     }
 
-    private IContent generateScreen(ResourcesHandler resourcesHandler, Locale locale, User user, IExcelTemplate template) throws DetailedException {
+    protected IContent generateScreen(ResourcesHandler resourcesHandler, Locale locale, User user, IExcelTemplate template) throws DetailedException {
         logger.debug("Recherche de la classe d'instanciation des écrans");
         // On recherche la classe d'instanciation des écrans
         IContentGenerator contentGenerator = getContentGenerator(template);
@@ -361,5 +361,5 @@ public class ScreenFactory {
         return screenParameters;
     }
 
-    private void translateScreen(User user) throws DetailedException {}
+    protected void translateScreen(User user) throws DetailedException {}
 }

@@ -96,6 +96,19 @@ public class CannelleTreatment {
         return (ContentVersion) process(input, user, locale, false,"","");
     }
 
+
+    /**
+     * Procède à l'import et à la traduction de ce fichier source, comme si l'utilisateur l'importait depuis la page de l'outil. En cas
+     * d'erreur, les messages normalement présentés dans l'IHM Thaleia sont placés dans l'exception.
+     *
+     * @param input
+     * @param user
+     * @param locale
+     * @param origLanguage : langue du document
+     * @param targetLanguage : langue dans lequel on veut traduire le document
+     * @return
+     * @throws Exception
+     */
     public ContentVersion translateFromSource(File input, User user, java.util.Locale locale, String origLanguage, String targetLanguage) throws Exception {
         return (ContentVersion) process(input, user, locale, false, origLanguage, targetLanguage);
     }

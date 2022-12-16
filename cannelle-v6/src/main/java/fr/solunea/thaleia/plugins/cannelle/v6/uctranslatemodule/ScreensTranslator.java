@@ -8,6 +8,7 @@ import fr.solunea.thaleia.utils.DetailedException;
 
 import java.util.List;
 
+@Deprecated
 public class ScreensTranslator {
 
 

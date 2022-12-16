@@ -16,8 +16,8 @@ public class AbstractObjectFactory<T> {
     private Class<T> type;
     private String classNameParameter;
 
-    private String origLanguage;
-    private String getOrigLanguage;
+    protected String origLanguage;
+    protected String getOrigLanguage;
 
     /**
      * Une fabrique d'objets qui héritent de cette classe.
