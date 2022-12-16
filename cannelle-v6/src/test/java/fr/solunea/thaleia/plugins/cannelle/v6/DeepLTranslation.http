@@ -39,7 +39,49 @@ Content-Type: application/json
 
 {"type":"http_download","url":"https://prt-dmou/thaleia/api/v1/tempdirs/f43284b2b8a348a282f14b0425dc30d7/export?format=zip","headers":[{"name":"Authorization","value":"vxCbxhLr8uYhG9rpnFt1gcoRTfY7nA8u"}]}
 
+
 ####
+# traduction d'un module à partir d'un fichier XL + ressources
+#
+# API transform/translate
+#
+# versionID en entree !
+#
+# -> utiliser un token valide (header et json)
+# -> mettre les info de traduction dans un JSON dans le corps de la requête :
+#       -> origLanguage
+#       -> targetLanguage
+#       -> contentversionid
+#
+# le dossier transmis est ensuite "exporté" au format zip, avant d'être traité
+# ce n'est le comportement attendu car :
+# - les ressources des version_content sont dans des localizedFile sous forme fdgcsdg.tmp --> = zip
+# - voir pour jouer sur export?format=zip / ou autre ?
+# ATTENTION, comme on dois utiliser un fichier temp, il faudrait décompresser le zip dans un fichier temp avant de faire la requête !
+POST https://prt-dmou/thaleia/api/v1/transform/translate?locale=fr
+Accept: */*
+Accept-Language: fr-FR,fr;q=0.9
+Authorization: 6Ozn3l8xbR9uDr5iunCL1NE6dEYN0SkM
+user: admin
+Connection: keep-alive
+#Cookie: anonid=fd6c01bdf132; LoggedIn=BR_JYBUaPUz1KY7t9JVxe2SXaOLayPam; JSESSIONID=EFE1544E8543B94CB8AFC98D4BA12C1D; thaleia-cannelle-createContent-alreadyViewedPage-https://prt-dmou/thaleia/=true; thaleia-cannelle-createContent-workingTempdirhttps://prt-dmou/thaleia/=https://prt-dmou/thaleia/api/v1/tempdirs/f43284b2b8a348a282f14b0425dc30d7; cookieconsent_dismissed=yes
+Origin: https://prt-dmou
+Referer: https://prt-dmou/thaleia/home?5
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+sec-ch-ua: "Not?A_Brand";v="8", "Chromium";v="108", "Google Chrome";v="108"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Windows"
+Content-Type: application/json
+
+{"origLanguage": "FR","targetLanguage":"ES" ,"contentversionid":"xxxx"}
+
+####
+#
+# DEPRECATED : cf nouvelle API transform/translate
+#
 # traduction d'un module à partir d'un fichier XL + ressources
 #
 # NON ZIP en entree !
@@ -98,3 +140,56 @@ curl "https://thaleiaxl.solunea.net/thaleia/api/v1/transform?type=cannelle_impor
 "-----------------------------163479680630416650292648820300--"^
 
 ""
+
+######
+# RQ "telecharger la source"
+# ecran mes-production / paramètres
+# DEV
+#
+#
+#
+#
+# curl "https://prt-dmou/thaleia/home?1-1.ILinkListener-content-contentPanel-editPropertiesPanel-sourceLink" -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:108.0) Gecko/20100101 Firefox/108.0" -H "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8" -H "Accept-Language: fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3" -H "Accept-Encoding: gzip, deflate, br" -H "DNT: 1" -H "Connection: keep-alive" -H "Referer: https://prt-dmou/thaleia/home" -H "Cookie: anonid=6d10c9813c65; LoggedIn=BR_JYBUaPUz1KY7t9JVxe2SXaOLayPam; JSESSIONID=EDC77D538698F81DBA7B6D6B0814E096; thaleia-cannelle-createContent-alreadyViewedPage-https://prt-dmou/thaleia/=true; thaleia-cannelle-createContent-workingTempdirhttps://prt-dmou/thaleia/=https://prt-dmou/thaleia/api/v1/tempdirs/936aef300d2a475292e7803878c42872; cookieconsent_dismissed=yes" -H "Upgrade-Insecure-Requests: 1" -H "Sec-Fetch-Dest: document" -H "Sec-Fetch-Mode: navigate" -H "Sec-Fetch-Site: same-origin" -H "Sec-Fetch-User: ?1"
+GET https://prt-dmou/thaleia/home?1-1.ILinkListener-content-contentPanel-editPropertiesPanel-sourceLink
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:108.0) Gecko/20100101 Firefox/108.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8
+Accept-Language: fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+DNT: 1
+Connection: keep-alive
+Referer: https://prt-dmou/thaleia/home
+Cookie: anonid=6d10c9813c65; LoggedIn=BR_JYBUaPUz1KY7t9JVxe2SXaOLayPam; JSESSIONID=EDC77D538698F81DBA7B6D6B0814E096; thaleia-cannelle-createContent-alreadyViewedPage-https://prt-dmou/thaleia/=true; thaleia-cannelle-createContent-workingTempdirhttps://prt-dmou/thaleia/=https://prt-dmou/thaleia/api/v1/tempdirs/936aef300d2a475292e7803878c42872; cookieconsent_dismissed=yes
+Upgrade-Insecure-Requests: 1
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: same-origin
+Sec-Fetch-User: ?1
+
+###
+# RQ "telecharger la source"
+# ecran mes-production / paramètres
+# PROD
+#
+#
+#
+#
+# curl "https://thaleiaxl.solunea.net/thaleia/home?1-1.ILinkListener-content-contentPanel-editPropertiesPanel-sourceLink" -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:108.0) Gecko/20100101 Firefox/108.0" -H "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8" -H "Accept-Language: fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3" -H "Accept-Encoding: gzip, deflate, br" -H "DNT: 1" -H "Connection: keep-alive" -H "Referer: https://thaleiaxl.solunea.net/thaleia/home" -H "Cookie: anonid=e23c7aea4276; LoggedIn=BR_JYBUaPUz1KY7t9JVxe2SXaOLayPam; JSESSIONID=1B8D6FA1BA11BE10CD58A4BE450CBAF0.worker1; thaleia-cannelle-createContent-alreadyViewedPage-https://thaleiaxl.solunea.net/thaleia/=true; thaleia-cannelle-createContent-workingTempdirhttps://thaleiaxl.solunea.net/thaleia/=https://thaleiaxl.solunea.net/thaleia/api/v1/tempdirs/6b3007e190594cf19c42bfd6324b5bd2; cookieconsent_dismissed=yes" -H "Upgrade-Insecure-Requests: 1" -H "Sec-Fetch-Dest: document" -H "Sec-Fetch-Mode: navigate" -H "Sec-Fetch-Site: same-origin" -H "Sec-Fetch-User: ?1"
+GET https://thaleiaxl.solunea.net/thaleia/home?1-1.ILinkListener-content-contentPanel-editPropertiesPanel-sourceLink
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:108.0) Gecko/20100101 Firefox/108.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8
+Accept-Language: fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+DNT: 1
+Connection: keep-alive
+Referer: https://thaleiaxl.solunea.net/thaleia/home
+Cookie: anonid=e23c7aea4276; LoggedIn=BR_JYBUaPUz1KY7t9JVxe2SXaOLayPam; JSESSIONID=1B8D6FA1BA11BE10CD58A4BE450CBAF0.worker1; thaleia-cannelle-createContent-alreadyViewedPage-https://thaleiaxl.solunea.net/thaleia/=true; thaleia-cannelle-createContent-workingTempdirhttps://thaleiaxl.solunea.net/thaleia/=https://thaleiaxl.solunea.net/thaleia/api/v1/tempdirs/6b3007e190594cf19c42bfd6324b5bd2; cookieconsent_dismissed=yes
+Upgrade-Insecure-Requests: 1
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: same-origin
+Sec-Fetch-User: ?1
+
+###
+
+
+
