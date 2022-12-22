@@ -6,7 +6,6 @@ import fr.solunea.thaleia.model.Publication;
 import fr.solunea.thaleia.plugins.analyze.pages.PublicationEditPage;
 import fr.solunea.thaleia.plugins.publish.MainPage;
 import fr.solunea.thaleia.plugins.welcomev6.contents.ActionsOnContent;
-import fr.solunea.thaleia.plugins.welcomev6.properties.EditPropertiesPanel;
 import fr.solunea.thaleia.webapp.panels.ThaleiaFeedbackPanel;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
@@ -18,7 +17,7 @@ public class PropertiesPanel extends Panel {
                            ActionsOnContent actionsOnContent,
                            ThaleiaFeedbackPanel feedbackPanel) {
         super(id);
-        add(new EditPropertiesPanel(content, locale, actionsOnContent, "editPropertiesPanel", feedbackPanel) {
+        add(new CannelleEditPropertiesPanel(content, locale, actionsOnContent, "editPropertiesPanel", feedbackPanel) {
             @Override
             protected void onEditPublication(IModel<Publication> model) {
                 setResponsePage(new PublicationEditPage(model, MainPage.class));
@@ -34,9 +33,5 @@ public class PropertiesPanel extends Panel {
                 return true;
             }
         });
-//        Component moduleTranslationPanel = new ModuleTranslationPanel("moduleTranslation","", locale.getObject());
-//        moduleTranslationPanel.setVisible(true);
-//        add(moduleTranslationPanel) ;
-
     }
 }
