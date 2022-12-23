@@ -90,7 +90,7 @@ public class ImportModuleService extends ParametersAwareService {
                 IModuleParserService moduleParserService = new ModuleParserServiceFactory().getObject(getParameters()
                         , getResourcesHandler());
 
-                moduleProperties = moduleParserService.getModuleProperties();
+                moduleProperties = moduleParserService.getModuleProperties(origLanguage, targetLanguage);
 
                 // L'objet d'analyse des propriétés pour la génération du module
                 moduleGeneratorService = new ModuleGeneratorService(getParameters(), getResourcesHandler());

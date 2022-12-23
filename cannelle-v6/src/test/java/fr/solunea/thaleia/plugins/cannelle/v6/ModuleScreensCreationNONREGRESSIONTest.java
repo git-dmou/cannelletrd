@@ -87,7 +87,7 @@ public class ModuleScreensCreationNONREGRESSIONTest {
 
             recuperationDesPropertiesDuModule:
             {
-                moduleProperties = parserProperties.getModuleProperties();
+                moduleProperties = parserProperties.getModuleProperties("FR","EN");
                 System.out.println(moduleProperties.toString());
 
 // exemple de sortie :
@@ -241,7 +241,7 @@ public class ModuleScreensCreationNONREGRESSIONTest {
 
             recuperationDesPropertiesDuModule:
             {
-                moduleProperties = parserProperties.getModuleProperties();
+                moduleProperties = parserProperties.getModuleProperties("","");
                 System.out.println(moduleProperties.toString());
 
 // exemple de sortie :

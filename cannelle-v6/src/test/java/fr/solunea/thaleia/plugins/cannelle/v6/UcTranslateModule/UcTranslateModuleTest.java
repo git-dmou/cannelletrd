@@ -86,7 +86,7 @@ public class UcTranslateModuleTest {
 
             recuperationDesPropertiesDuModule:
             {
-                moduleProperties = parserProperties.getModuleProperties();
+                moduleProperties = parserProperties.getModuleProperties("","");
                 System.out.println(moduleProperties.toString());
 
 // exemple de sortie :

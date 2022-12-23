@@ -86,7 +86,7 @@ public class XlsModuleParserServiceTest {
 
             recuperationDesPropertiesDuModule:
             {
-                moduleGeneralProperties = parserProperties.getModuleProperties();
+                moduleGeneralProperties = parserProperties.getModuleProperties("","");
                 System.out.println(moduleGeneralProperties.toString());
 
 // exemple de sortie :
@@ -176,7 +176,7 @@ public class XlsModuleParserServiceTest {
 
             recuperationDesPropertiesDuModule:
             {
-                moduleProperties = parserProperties.getModuleProperties();
+                moduleProperties = parserProperties.getModuleProperties("","");
                 System.out.println(moduleProperties.toString());
 
 // exemple de sortie :

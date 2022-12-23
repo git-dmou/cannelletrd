@@ -1,8 +1,8 @@
 package fr.solunea.thaleia.plugins.cannelle.parsers;
 
-import java.util.Map;
-
 import fr.solunea.thaleia.utils.DetailedException;
+
+import java.util.Map;
 
 /**
  * Un parser qui intéprète des données fournies en entrée pour produire les
@@ -15,6 +15,6 @@ public interface IModuleParserService {
 	 * @return Tous les couples clé / valeur retrouvés par le parser qui
 	 *         décrivent les propriétés du module.
 	 */
-	public Map<String, String> getModuleProperties() throws DetailedException;
+	public Map<String, String> getModuleProperties(String origLanguage, String targetLanguage) throws DetailedException;
 
 }

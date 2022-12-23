@@ -100,7 +100,7 @@ public class ResourceHandlerService extends ParametersAwareService {
                 IModuleParserService moduleParserService = new ModuleParserServiceFactory()
                         .getObject(getParameters(), getResourcesHandler());
 
-                moduleProperties = moduleParserService.getModuleProperties();
+                moduleProperties = moduleParserService.getModuleProperties("","");
 
                 // On recherche la propriété qui porte le nom demandé
                 String configurationName = moduleProperties

@@ -22,16 +22,21 @@ public class ModulePropertiesTranslator {
 
 	private final Parameters parameters;
 
-	public ModulePropertiesTranslator(Parameters parameters) {
+	private String origLanguage;
+	private String targetLanguage;
+
+	public ModulePropertiesTranslator(Parameters parameters, String origLanguage, String targetLanguage) {
 		this.parameters = parameters;
+		this.origLanguage = origLanguage;
+		this.targetLanguage = targetLanguage;
 	}
 
 	/**
 	 * @param parameters
 	 * @return
 	 */
-	public static ModulePropertiesTranslator getInstance(Parameters parameters) {
-		return new ModulePropertiesTranslator(parameters);
+	public static ModulePropertiesTranslator getInstance(Parameters parameters, String origLanguage, String targetLanguage) {
+		return new ModulePropertiesTranslator(parameters, origLanguage, targetLanguage);
 	}
 
 	/**
@@ -74,6 +79,10 @@ public class ModulePropertiesTranslator {
 				String contentpropertyProperty = propertyRoot + ".contentProperty";
 				String label = parameters.getValue(labelProperty);
 				String contentproperty = parameters.getValue(contentpropertyProperty);
+				String contentPropertyTranslation = translatePropertiesForModuleTranslation(contentpropertyProperty);
+				if (!contentPropertyTranslation.equals("")) {
+					contentproperty = contentPropertyTranslation;
+				}
 				translations.put(label, contentproperty);
 			}
 
@@ -84,5 +93,11 @@ public class ModulePropertiesTranslator {
 		}
 
 		return translations;
+	}
+
+	private String translatePropertiesForModuleTranslation(String contentpropertyProperty) {
+		if (contentpropertyProperty.equals("xls.parser.content.langage.title")) {
+		}
+		return "";
 	}
 }

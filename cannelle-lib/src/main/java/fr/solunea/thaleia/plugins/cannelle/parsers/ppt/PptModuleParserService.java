@@ -1,21 +1,15 @@
 package fr.solunea.thaleia.plugins.cannelle.parsers.ppt;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
+import fr.solunea.thaleia.plugins.cannelle.parsers.IModuleParserService;
+import fr.solunea.thaleia.plugins.cannelle.utils.Parameters;
+import fr.solunea.thaleia.plugins.cannelle.utils.ResourcesHandler;
+import fr.solunea.thaleia.utils.DetailedException;
 import org.apache.poi.xslf.usermodel.XMLSlideShow;
 import org.apache.poi.xslf.usermodel.XSLFShape;
 import org.apache.poi.xslf.usermodel.XSLFSlide;
 import org.apache.poi.xslf.usermodel.XSLFTextShape;
 
-import fr.solunea.thaleia.plugins.cannelle.parsers.IModuleParserService;
-import fr.solunea.thaleia.plugins.cannelle.utils.Parameters;
-import fr.solunea.thaleia.plugins.cannelle.utils.ResourcesHandler;
-import fr.solunea.thaleia.utils.DetailedException;
+import java.util.*;
 
 public class PptModuleParserService extends AbstractPptParserService implements
 		IModuleParserService {
@@ -37,7 +31,7 @@ public class PptModuleParserService extends AbstractPptParserService implements
 	 * @throws DetailedException
 	 */
 	@Override
-	public Map<String, String> getModuleProperties() throws DetailedException {
+	public Map<String, String> getModuleProperties(String origLanguage, String targetLanguage) throws DetailedException {
 		if (moduleProperties == null) {
 			loadModuleProperties();
 		}
