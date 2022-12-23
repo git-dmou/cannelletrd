@@ -19,24 +19,29 @@ public class ModulePropertiesTranslator {
 	private static final Logger logger = Logger.getLogger(ModulePropertiesTranslator.class);
 
 	private Map<String, String> translations;
+	private Map<String, String> translations_InvariantKey;
 
 	private final Parameters parameters;
 
-	private String origLanguage;
-	private String targetLanguage;
+//	private String origLanguage;
+//	private String targetLanguage;
 
-	public ModulePropertiesTranslator(Parameters parameters, String origLanguage, String targetLanguage) {
+//	public ModulePropertiesTranslator(Parameters parameters, String origLanguage, String targetLanguage) {
+	public ModulePropertiesTranslator(Parameters parameters) {
 		this.parameters = parameters;
-		this.origLanguage = origLanguage;
-		this.targetLanguage = targetLanguage;
+//		this.origLanguage = origLanguage;
+//		this.targetLanguage = targetLanguage;
 	}
 
 	/**
 	 * @param parameters
 	 * @return
 	 */
-	public static ModulePropertiesTranslator getInstance(Parameters parameters, String origLanguage, String targetLanguage) {
-		return new ModulePropertiesTranslator(parameters, origLanguage, targetLanguage);
+//	public static ModulePropertiesTranslator getInstance(Parameters parameters, String origLanguage, String targetLanguage) {
+//		return new ModulePropertiesTranslator(parameters, origLanguage, targetLanguage);
+//	}
+	public static ModulePropertiesTranslator getInstance(Parameters parameters) {
+		return new ModulePropertiesTranslator(parameters);
 	}
 
 	/**
@@ -62,6 +67,7 @@ public class ModulePropertiesTranslator {
 	private Map<String, String> getTranslations() throws DetailedException {
 		if (translations == null) {
 			translations = new HashMap<String, String>();
+			translations_InvariantKey = new HashMap<String, String>();
 
 			// On recherche le nombre de propriétés
 			int max;
@@ -76,14 +82,16 @@ public class ModulePropertiesTranslator {
 			for (int i = 0; i <= max; i++) {
 				String propertyRoot = XLS_PARSER_MODULE_PROPERTIES + "." + i;
 				String labelProperty = propertyRoot + ".label";
-				String contentpropertyProperty = propertyRoot + ".contentProperty";
+				String contentpropertyProperty = propertyRoot + ".contentProperty"; // nom invariable de la prop
 				String label = parameters.getValue(labelProperty);
 				String contentproperty = parameters.getValue(contentpropertyProperty);
-				String contentPropertyTranslation = translatePropertiesForModuleTranslation(contentpropertyProperty);
+				// mal placé : ne gère que les clés !!!
+				/*String contentPropertyTranslation = translatePropertiesForModuleTranslation(contentpropertyProperty);
 				if (!contentPropertyTranslation.equals("")) {
 					contentproperty = contentPropertyTranslation;
-				}
+				}*/
 				translations.put(label, contentproperty);
+				translations_InvariantKey.put(contentproperty, contentpropertyProperty);
 			}
 
 			logger.debug("Traductions de propriétés retrouvées : ");
@@ -95,9 +103,9 @@ public class ModulePropertiesTranslator {
 		return translations;
 	}
 
-	private String translatePropertiesForModuleTranslation(String contentpropertyProperty) {
-		if (contentpropertyProperty.equals("xls.parser.content.langage.title")) {
-		}
-		return "";
+	public String gettranslations_InvariantKey(String property) {
+		String invariantKey = translations_InvariantKey.get(property);
+		return invariantKey;
+
 	}
 }

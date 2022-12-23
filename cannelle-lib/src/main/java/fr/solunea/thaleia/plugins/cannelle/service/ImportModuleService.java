@@ -92,6 +92,9 @@ public class ImportModuleService extends ParametersAwareService {
 
                 moduleProperties = moduleParserService.getModuleProperties(origLanguage, targetLanguage);
 
+                //todo: placer ici un traitement des properties ? --> traduction Titre + Description + nouvelle langue !!!
+                //utiliser un POJO qui conserve la clé de la propriété du fichier Properties !!!!!
+
                 // L'objet d'analyse des propriétés pour la génération du module
                 moduleGeneratorService = new ModuleGeneratorService(getParameters(), getResourcesHandler());
 

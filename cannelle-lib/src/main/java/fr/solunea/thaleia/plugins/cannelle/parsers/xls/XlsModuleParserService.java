@@ -25,6 +25,14 @@ public class XlsModuleParserService extends AbstractXlsParserService implements 
 
     private static final Logger logger = Logger.getLogger(XlsModuleParserService.class);
 
+    private enum ModulePropToBeTranslated {
+        TITLE("xls.parser.module.properties.0.contentProperty"),
+        DESCRIPTION("xls.parser.module.properties.1.contentProperty");
+
+        ModulePropToBeTranslated(String propertyKeyInPropertiesFiles) {
+        }
+    }
+
     private enum LanguagePropertyName  {
         FR("Langue"),
         EN("Langue"),
@@ -34,6 +42,11 @@ public class XlsModuleParserService extends AbstractXlsParserService implements 
         private String languagePropertyName;
 
         LanguagePropertyName(String languageName) {
+            this.languagePropertyName = languageName;
+        }
+
+        public String getLanguagePropertyName() {
+            return languagePropertyName;
         }
     }
 
@@ -52,14 +65,22 @@ public class XlsModuleParserService extends AbstractXlsParserService implements 
         RU(Parameters.LOCALE_RU_NAME_RU),
         SK(Parameters.LOCALE_SK_NAME_SK);
 
+        String languageFullName;
         LanguagesNames(String locale) {
+            this.languageFullName = locale;
         }
+        public String getLanguageFullName() {
+            return languageFullName;
+        }
+
+
     }
 
     /**
      * Tous les couples clé / valeur définis dans la feuille du fichier Excel qui décrit les propriétés du module.
      */
     private Map<String, String> moduleProperties;
+//    private Map<String, String> keys_TranslatedKeys;
 
     public XlsModuleParserService(Parameters parameters, ResourcesHandler resourcesHandler) {
         super(parameters, resourcesHandler);
@@ -100,8 +121,17 @@ public class XlsModuleParserService extends AbstractXlsParserService implements 
             loadModuleProperties(sheet, origLanguage, targetLanguage);
 
             loadModuleResources(sheet);
+
+            if (!targetLanguage.equals("")) {
+             translateTranslatableProperties();   
+            }
+            return moduleProperties;
+
         }
         return moduleProperties;
+    }
+
+    private void translateTranslatableProperties() {
     }
 
     /**
@@ -117,6 +147,7 @@ public class XlsModuleParserService extends AbstractXlsParserService implements 
      */
     private void loadModuleProperties(Sheet sheet, String origLanguage, String targetLanguage) throws DetailedException {
         moduleProperties = new HashMap<>();
+//        keys_TranslatedKeys = new HashMap<>();
 
         logger.debug("Récupération des propriétés du module dans le fichier Excel...");
 
@@ -130,7 +161,8 @@ public class XlsModuleParserService extends AbstractXlsParserService implements 
                 "Analyse des lignes " + firstRowNum + " à " + lastRowNum + " de la feuille '" + sheet.getSheetName()
                         + "'...");
 
-        ModulePropertiesTranslator translator = ModulePropertiesTranslator.getInstance(getParameters(), origLanguage, targetLanguage);
+//        ModulePropertiesTranslator translator = ModulePropertiesTranslator.getInstance(getParameters(), origLanguage, targetLanguage);
+        ModulePropertiesTranslator translatorFromLabelToContentProp = ModulePropertiesTranslator.getInstance(getParameters());
 
         for (int i = firstRowNum; i <= lastRowNum; i++) {
             try {
@@ -162,13 +194,20 @@ public class XlsModuleParserService extends AbstractXlsParserService implements 
                             // en conf, alors on la stocke sous le nom de cette
                             // ContentProperty
 
-                            String translatedkey = translator.translate(key, key);
-                            if (isModulePropertyNeedTranslation(targetLanguage, translatedkey)) {
-                                value = String.valueOf(LanguagesNames.valueOf(targetLanguage));
+                            String translatedkey = translatorFromLabelToContentProp.translate(key, key);
+                            if (isModulePropertyNeedTranslation(targetLanguage, value)) {
+                                //todo: APPEL Traducteur DeepL pour traduction Titre et Description
+//                                value = String.valueOf(LanguagesNames.valueOf(targetLanguage));
+                                // APPEL au Module DeepL pour traduire les propriétés
+                                // et remplacement par la valeur traduite
+                            }
+                            if (isModuleLanguage(targetLanguage, key)) {
+                                value = String.valueOf(LanguagesNames.valueOf(targetLanguage).getLanguageFullName());
                             }
 
-                            logger.debug("Prise en compte du couple " + translatedkey + "=" + value);
+                            logger.debug("Prise en compte du couple (" + key + " / " + translatedkey + ")=" + value);
                             moduleProperties.put(translatedkey, value);
+//                            keys_TranslatedKeys.put(key, translatedkey);
                         }
                     }
 
@@ -180,9 +219,13 @@ public class XlsModuleParserService extends AbstractXlsParserService implements 
 
     }
 
-    private static boolean isModulePropertyNeedTranslation(String targetLanguage, String translatedkey) {
+    private static boolean isModulePropertyNeedTranslation(String targetLanguage, String key) {
+        return !targetLanguage.equals("") && Arrays.stream(ModulePropToBeTranslated.values()).anyMatch((l) -> {
+            return key.equals(ModulePropToBeTranslated.valueOf(String.valueOf(l)));
+        });
+    }private static boolean isModuleLanguage(String targetLanguage, String value) {
         return !targetLanguage.equals("") && Arrays.stream(LanguagePropertyName.values()).anyMatch((l) -> {
-            return translatedkey.equals(l);
+            return value.equals(LanguagePropertyName.valueOf(String.valueOf(l)).getLanguagePropertyName());
         });
     }
 
