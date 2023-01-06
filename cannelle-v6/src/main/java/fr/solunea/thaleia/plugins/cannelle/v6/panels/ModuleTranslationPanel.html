@@ -4,54 +4,53 @@
         <wicket:message key="TranslationTitle">Traduire le module dans une autre langue</wicket:message>
     </h4>
 
-    <form id="translateForm"><label for="OrigLanguage">
+    <label for="OrigLanguage">
         <wicket:message key="OrigLanguage">Langue d'origine :</wicket:message>
     </label>
-        <select id="OrigLanguage" name="OrigLanguage" size="1" class="btn btn-link btn-primary dropdown-toggle border-0 ml-3 text-decoration-none">
-            <option value="FR">FR</option>
-            <option value="EN">EN</option>
-            <option value="ES">ES</option>
-            <option value="DE">DE</option>
-            <option value="NL">NL</option>
-            <option value="ZH">ZH</option>
-            <option value="PT">PT</option>
-            <option value="TR">TR</option>
-            <option value="EL">EL</option>
-            <option value="AR">AR</option>
-            <option value="HE">HE</option>
-            <option value="RU">RU</option>
-            <option value="Sk">SK</option>
-        </select>
+    <select id="OrigLanguage" name="OrigLanguage" size="1" class="btn btn-link btn-primary dropdown-toggle border-0 ml-3 text-decoration-none">
+        <option value="FR">FR</option>
+        <option value="EN">EN</option>
+        <option value="ES">ES</option>
+        <option value="DE">DE</option>
+        <option value="NL">NL</option>
+        <option value="ZH">ZH</option>
+        <option value="PT">PT</option>
+        <option value="TR">TR</option>
+        <option value="EL">EL</option>
+<!--        <option value="AR - non disponible">AR</option>-->
+<!--        <option value="HE - non disponible">HE</option>-->
+        <option value="RU">RU</option>
+        <option value="Sk">SK</option>
+    </select>
 
-        <label for="TargetLanguage">
-            <wicket:message key="TargetLanguage">Langue cible :</wicket:message>
-        </label>
-        <select id="TargetLanguage" name="TargetLanguage" size="1" class="btn btn-link btn-primary dropdown-toggle border-0 ml-3 text-decoration-none">
-            <option value="FR">FR</option>
-            <option value="EN" selected>EN</option>
-            <option value="ES">ES</option>
-            <option value="DE">DE</option>
-            <option value="NL">NL</option>
-            <option value="ZH">ZH</option>
-            <option value="PT">PT</option>
-            <option value="TR">TR</option>
-            <option value="EL">EL</option>
-            <option value="AR">AR</option>
-            <option value="HE">HE</option>
-            <option value="RU">RU</option>
-            <option value="Sk">SK</option>
-        </select>
+    <label for="TargetLanguage">
+        <wicket:message key="TargetLanguage">Langue cible :</wicket:message>
+    </label>
+    <select id="TargetLanguage" name="TargetLanguage" size="1" class="btn btn-link btn-primary dropdown-toggle border-0 ml-3 text-decoration-none">
+        <option value="FR">FR</option>
+        <option value="EN" selected>EN</option>
+        <option value="ES">ES</option>
+        <option value="DE">DE</option>
+        <option value="NL">NL</option>
+        <option value="ZH">ZH</option>
+        <option value="PT">PT</option>
+        <option value="TR">TR</option>
+        <option value="EL">EL</option>
+<!--        <option value="AR - non disponible">AR</option>-->
+<!--        <option value="HE - non disponible">HE</option>-->
+        <option value="RU">RU</option>
+        <option value="Sk">SK</option>
+    </select>
 
-        <div id="contentVersionId" wicket:id="wContentVersionId" hidden>PK content version pour appel translate() rq
-            HTTP api Transform/translate
-        </div>
+    <div id="contentVersionId" wicket:id="wContentVersionId" hidden>PK content version pour appel translate() rq
+        HTTP api Transform/translate
+    </div>
 
-        <div id="translationhtmlform" class="input-thaleia mb-3 fadeIn delayed">
-            <button type="submit" class="btn-thaleia btn p-4 text-center fadeIn ml-2"
-                    onclick="translate(this,document.querySelector('#OrigLanguage').value,document.querySelector('#TargetLanguage').value, getElementById('contentVersionId').innerHTML)">
-                <wicket:message key="TranslationButton">Traduire</wicket:message>
-            </button>
-        </div>
-    </form>
+    <div id="translationhtmlform" class="input-thaleia mb-3 fadeIn delayed">
+        <button type="submit" class="btn-thaleia btn p-4 text-center fadeIn ml-2"
+                onclick="translate(this,document.querySelector('#OrigLanguage').value,document.querySelector('#TargetLanguage').value, getElementById('contentVersionId').innerHTML)">
+            <wicket:message key="TranslationButton">Traduire</wicket:message>
+        </button>
+    </div>
 
 </wicket:panel>

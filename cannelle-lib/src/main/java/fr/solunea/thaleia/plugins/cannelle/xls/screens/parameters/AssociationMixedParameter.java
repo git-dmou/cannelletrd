@@ -1,5 +1,6 @@
 package fr.solunea.thaleia.plugins.cannelle.xls.screens.parameters;
 
+import fr.solunea.thaleia.plugins.cannelle.utils.ResourcesHandler;
 import fr.solunea.thaleia.utils.DetailedException;
 
 import java.util.Optional;
@@ -59,23 +60,41 @@ public class AssociationMixedParameter extends AbstractScreenParameter {
 		return false;
 	}
 
-//	@Override
-//	public Optional<String> getTranslatableValue() {
-//		return Optional.of(getValue());
-//	}
-
 	@Override
 	public Optional<String> getTranslatableValue() {
-		String translatableValue = getValue();
-		if (translatableValue == null) {
+		//verification que response ne contient pas un nom de fichier
+		String response = getResponse();
+		String value = getValue();
+		if (resourcesHandler.isFileInUploadedFiles(response)) {
+			response = "";
+		}
+		String translatableValue = value + "::" + response;
+		if (translatableValue.equals("::")) {
 			translatableValue = "";
 		}
 		return  Optional.of(translatableValue);
+
 	}
 
 	@Override
 	public void setTranslatableValue(String value) {
-		setValue(value);
+		String [] translationSeparation = value.split("::");
+		if (translationSeparation.length > 0) {
+			setValue(translationSeparation[0]);
+		} else {
+			setValue("");
+		}
+		if (translationSeparation.length > 1) {
+			setResponse(translationSeparation[1]);
+		} else {
+			setResponse("");
+		}
 	}
+
+	public void useResources(ResourcesHandler resourcesHandler) {
+		this.resourcesHandler = resourcesHandler;
+	}
+
+
 
 }

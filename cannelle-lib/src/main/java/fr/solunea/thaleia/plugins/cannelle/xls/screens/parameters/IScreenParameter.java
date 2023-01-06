@@ -1,5 +1,6 @@
 package fr.solunea.thaleia.plugins.cannelle.xls.screens.parameters;
 
+import fr.solunea.thaleia.plugins.cannelle.utils.ResourcesHandler;
 import fr.solunea.thaleia.plugins.cannelle.v6.uctranslatemodule.ITranslatable;
 import fr.solunea.thaleia.utils.DetailedException;
 
@@ -51,6 +52,10 @@ public interface IScreenParameter extends ITranslatable {
     default String getSafeKey() {
         return "";
     }
+
+    // pour mettre à disposition la liste des fichiers du module pour controle de la présence d'un fichier
+    public void useResources(ResourcesHandler resourcesHandler);
+
 
     /**
      * @return true si la valeur de ce paramètre correspond au nom d'un fichier qui se trouve dans les fichiers

@@ -389,6 +389,10 @@ public class ResourcesHandler {
         return uploadedFiles;
     }
 
+    public boolean isFileInUploadedFiles(String fileName) {
+        return getUploadedFiles().findStringFile(fileName)!=null;
+    }
+
     public void setUploadedFiles(PackagedFiles uploadedFiles) {
         this.uploadedFiles = uploadedFiles;
     }

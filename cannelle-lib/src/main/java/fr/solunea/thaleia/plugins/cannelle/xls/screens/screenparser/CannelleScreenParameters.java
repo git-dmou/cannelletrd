@@ -47,7 +47,7 @@ public class CannelleScreenParameters implements Iterable<String> {
 
     @Override
     public Iterator<String> iterator() {
-        Map<String, IScreenParameter> toto = new HashMap<>(_screenParameters);
+//        Map<String, IScreenParameter> toto = new HashMap<>(_screenParameters);
         return  _screenParameters.keySet().iterator();
     }
 }

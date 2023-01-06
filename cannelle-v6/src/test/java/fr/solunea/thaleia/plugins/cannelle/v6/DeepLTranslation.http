@@ -1,3 +1,11 @@
+# Requete pour info sur le compte DeepL :
+GET /v2/usage HTTP/2
+Host: api-free.deepl.com
+Authorization: DeepL-Auth-Key 3bab90c2-a11d-422f-3357-a628955c1ffb:fx
+User-Agent: YourApp/1.2.3
+
+
+####
 # creation d'un Module à partir d'un fichier XL + ressources
 #
 # NON ZIPPE

@@ -1,5 +1,6 @@
 package fr.solunea.thaleia.plugins.cannelle.xls.screens.parameters;
 
+import fr.solunea.thaleia.plugins.cannelle.utils.ResourcesHandler;
 import fr.solunea.thaleia.utils.DetailedException;
 
 import java.util.List;
@@ -28,6 +29,8 @@ public abstract class AbstractScreenParameter implements IScreenParameter {
 	protected String value = "";
 
 	protected String safeKey;
+
+	protected ResourcesHandler resourcesHandler;
 
 	private Properties properties = new Properties();
 
@@ -70,7 +73,11 @@ public abstract class AbstractScreenParameter implements IScreenParameter {
 	public String getSafeKey() {
 		return safeKey;
 	}
-	
+
+	public void useResources(ResourcesHandler resourcesHandler) {
+	// on ne fait rien dans le cas général
+	}
+
 	@Override
 	public boolean isValueAHtmlText() {
 		return false;

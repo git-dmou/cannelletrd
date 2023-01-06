@@ -52,6 +52,7 @@ public class ScreenFactory {
     protected IExcelTemplate template;
     protected String origLanguage = "";
     protected String targetLanguage = "";
+    private ResourcesHandler resourcesHandler;
 
     public ScreenFactory(Parameters parameters, ResourcesHandler resourcesHandle) throws DetailedException {
         this(parameters, resourcesHandle, "", "");
@@ -69,6 +70,7 @@ public class ScreenFactory {
         this.parameters = parameters;
         this.origLanguage = origLanguage;
         this.targetLanguage = targetLanguage;
+        this.resourcesHandler = resourcesHandler;
 
         Dictionary dictionary = new Dictionary(parameters);
 
@@ -168,6 +170,9 @@ public class ScreenFactory {
                 // On initialise le paramètre avec les clés qui le concernent
                 parameter.setProperties(screenParameterProperties);
                 parameter.setSafeKey(safeKey);
+
+                // pour permettre à AssociationMixedParameter.java de controler si le contenu de response est un fichier ou non !
+                parameter.useResources(resourcesHandler);
 
                 // On stocke ce ScreenParameter
                 cannelleScreenParameters.addScreenParameter(paramName, parameter);

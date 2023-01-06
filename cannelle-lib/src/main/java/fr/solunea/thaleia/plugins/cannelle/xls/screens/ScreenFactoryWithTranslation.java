@@ -18,7 +18,6 @@ public class ScreenFactoryWithTranslation extends ScreenFactory{
     }
 
     protected void translateScreen(User user) throws DetailedException {
-        //todo: retirer la traduction pour le traitement de genération des Ecran Normal !
         CannelleScreenParamTranslator translator = new CannelleScreenParamTranslator();
         ITranslatorAPI translatorAPI = getTranslatorAPI(user);
         translator.from(origLanguage).to(targetLanguage).with(translatorAPI);
