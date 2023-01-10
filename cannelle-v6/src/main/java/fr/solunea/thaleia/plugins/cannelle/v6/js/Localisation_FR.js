@@ -1,0 +1,21 @@
+this.localisation_fr = {
+    translationInProgress: "Traduction en cours ..., veuillez patienter ...",
+    translationIsReady: "Votre module a été traduit, veuillez consulter l'écran 'Mes Productions' et choisissez \"${targetLanguage}\"",
+    deletionInProgress: "Suppression en cours...",
+    creationInProgress: "Création en cours...",
+    moduleIsReady: "Votre module est prêt.",
+    dragAndDroptooltip: "Déposez vos fichiers ici.",
+    error_prepareWorkspaceForNewCreation: "Une erreur est survenue pendant la préparation de l'espace de travail pour " +
+        "la création d'un nouveau contenu.",
+    error_initAPI: "Une erreur est survenue pendant l'initialisation de l'API Thaleia.",
+    error_initAPI_getToken: "Impossible de récupérer le token de connexion.",
+    error_addFiles: "Une erreur est survenue pendant l'ajout de fichier(s).",
+    error_addfile: "Une erreur est survenue lors de l'ajout du fichier \"${file}\".",
+    error_deleteFile: "Une erreur est survenue pendant la suppression du fichier \"${file}\"",
+    error_deleteUploadedFiles: "Une erreur est survenue pendant la suppression des fichiers uploadés.",
+    error_createContent: "Une erreur est survenue pendant la création du contenu pédagogique.",
+    error_createContentFromZip: "Une erreur est survenue pendant l'ajout d'un fichier zip en tant que contenu Thaleia XL.",
+    error_previewContent: "Une erreur est survenue pendant la demande de prévisualisation du contenu pédagogique.",
+    warning_excelFileIsMissing_title: "Fichier excel manquant.",
+    warning_excelFileIsMissing_text: "Vous devez ajouter le fichier excel avant de pouvoir créer votre module.",
+}

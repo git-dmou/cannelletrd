@@ -1,0 +1,21 @@
+this.localisation_en = {
+    translationInProgress: "Translation in progress ..., please wait ...",
+    translationIsReady: "Your module was translated, please see 'My Productions' and choose \"${targetLanguage}\"",
+    deletionInProgress: "Deletion in progress...",
+    creationInProgress: "Creation in progress...",
+    moduleIsReady: "Your module is ready.",
+    dragAndDroptooltip: "Drop your files here.",
+    error_prepareWorkspaceForNewCreation: "An error occurred while preparing the workspace for creating new content.",
+    error_initAPI: "An error occurred while initializing the Thaleia API.",
+    error_initAPI_getToken: "Unable to retrieve the connection token.",
+    error_addFiles: "An error occurred while adding file(s).",
+    error_addfile: "An error occurred while adding the file \"${file}.\"",
+    error_deleteFile: "An error occurred while deleting the file \"${file}\"",
+    error_deleteUploadedFiles: "An error occurred while deleting the uploaded files.",
+    error_createContent: "An error occurred while creating the educational content.",
+    error_createContentFromZip: "An error occurred while adding a zip file as Thaleia XL content.",
+    error_previewContent: "An error occurred while requesting preview of educational content.",
+    warning_excelFileIsMissing_title: "Excel file missing.",
+    warning_excelFileIsMissing_text: "You must add the excel file before you can create your module.",
+
+}
