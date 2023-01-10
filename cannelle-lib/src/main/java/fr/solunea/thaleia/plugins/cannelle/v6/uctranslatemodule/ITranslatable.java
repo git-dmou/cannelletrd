@@ -11,4 +11,11 @@ public interface ITranslatable {
 
     default void setTranslatableValue(String value) {}
 
+    default Optional<String> getTranslatableResponse() {
+        Optional<String> s = Optional.empty();
+        return s;
+    }
+
+    default void setTranslatableResponse(String value) {}
+
 }

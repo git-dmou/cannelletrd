@@ -28,6 +28,8 @@ public class CannelleScreenParamTranslator {
     private String originLanguage;
     private String targetLanguage;
 
+    private final String RESPONSE_SUFFIX = ".responseT";
+
     public ITranslatorAPI translatorAPI;
 
     private Map<String, String> htmlTagsSubstition = new HashMap<>();
@@ -101,12 +103,12 @@ public class CannelleScreenParamTranslator {
 
         String paramLocaleKey;
         IScreenParameter param;
-        Optional<String> textToTranslate;
+        Optional<String> textToTranslate_Value;
+        Optional<String> textToTranslate_Response;
         String textToTranslateCleaned;
         String safeKey;
-        String textTranslation = "";
+        String textTranslation;
         Iterator<String> iter = toTranslateParams.iterator();
-//        List<String> translatableParams = new ArrayList<>();
         Map<String, String> safeLocaleKeys = new HashMap<>();
         Map<String, String> safeTranslatableParams = new HashMap<>();
 
@@ -114,21 +116,23 @@ public class CannelleScreenParamTranslator {
             while (iter.hasNext()) {
                 paramLocaleKey = iter.next();
                 param = toTranslateParams.getScreenParameter(paramLocaleKey);
-                textToTranslate = param.getTranslatableValue();
+                textToTranslate_Value = param.getTranslatableValue();
+                textToTranslate_Response = param.getTranslatableResponse();
                 safeKey = param.getSafeKey();
 
-                if (textToTranslate.isPresent() && !textToTranslate.get().equals("")) {
-//                    textToTranslateCleaned = cleanHtmlTags(textToTranslate.get());
-                    textToTranslateCleaned = cleanHtmlTags(textToTranslate.orElse(""));
+                if (textToTranslate_Value.isPresent() && !textToTranslate_Value.get().equals("")) {
+                    textToTranslateCleaned = cleanHtmlTags(textToTranslate_Value.orElse(""));
                     safeTranslatableParams.put(safeKey, textToTranslateCleaned);
                     safeLocaleKeys.put(safeKey, paramLocaleKey);
                 }
+                if (textToTranslate_Response.isPresent() && !textToTranslate_Response.get().equals("")) {
+                    textToTranslateCleaned = cleanHtmlTags(textToTranslate_Response.orElse(""));
+                    safeTranslatableParams.put(safeKey + RESPONSE_SUFFIX, textToTranslateCleaned);
+                    safeLocaleKeys.put(safeKey, paramLocaleKey);
+                }
+
             }
         }
-
-//        Iterator<String> translatableParamsIter = translatableParams.keySet().iterator();
-//        Iterator<String> translatableParamsIter = safeTranslatableParams.iterator();
-
 
         if (isThereSomethingToTranslate(safeTranslatableParams)) {
             String textToTranslateXML = convertParamToXML(safeTranslatableParams);
@@ -142,7 +146,7 @@ public class CannelleScreenParamTranslator {
         }
 
 
-//      les parametres traduits ont été substitués dans la l'instance de toTranslateParams (CannelleScreenParameters)
+//      les parametres traduits ont été substitués dans l'instance de toTranslateParams (CannelleScreenParameters)
         return toTranslateParams;
     }
 
@@ -280,8 +284,15 @@ public class CannelleScreenParamTranslator {
         while (iter.hasNext()) {
             String paramSafeKey = iter.next();
             String translationValue = screenData.get(paramSafeKey);
-            String LocalKey = safeLocaleKeys.get(paramSafeKey);
-            toTranslateParams.getScreenParameter(LocalKey).setTranslatableValue(translationValue);
+            String localKey = safeLocaleKeys.get(paramSafeKey);
+
+            if (localKey!=null) {
+                toTranslateParams.getScreenParameter(localKey).setTranslatableValue(translationValue);
+            } else {
+                String safeKeyFromSuffixedKey = paramSafeKey.substring(0, paramSafeKey.length() - RESPONSE_SUFFIX.length());
+                localKey = safeLocaleKeys.get(safeKeyFromSuffixedKey);
+                toTranslateParams.getScreenParameter(localKey).setTranslatableResponse(translationValue);
+            }
         }
 //        System.out.println();
 

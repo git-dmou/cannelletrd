@@ -59,14 +59,9 @@ public class AssociationParameter extends AbstractScreenParameter {
 		return false;
 	}
 
-//	@Override
-//	public Optional<String> getTranslatableValue() {
-//		return  Optional.of(getValue());
-//	}
-
 	@Override
 	public Optional<String> getTranslatableValue() {
-		String translatableValue = getValue() + "::" + getResponse();
+		String translatableValue = getValue();
 		if (translatableValue == null) {
 			translatableValue = "";
 		}
@@ -76,19 +71,22 @@ public class AssociationParameter extends AbstractScreenParameter {
 
 	@Override
 	public void setTranslatableValue(String value) {
-		String [] translationSeparation = value.split("::");
-		if (translationSeparation.length > 0) {
-			setValue(translationSeparation[0]);
-		} else {
-			setValue("");
-		}
-		if (translationSeparation.length > 1) {
-			setResponse(translationSeparation[1]);
-		} else {
-			setResponse("");
-		}
+		setValue(value);
 	}
 
+	@Override
+	public Optional<String> getTranslatableResponse() {
+		String translatableResponse = getResponse();
+		if (translatableResponse==null) {
+			translatableResponse = "";
+		}
+		return Optional.of(translatableResponse);
+	}
+
+	@Override
+	public void setTranslatableResponse(String response) {
+		setResponse(response);
+	}
 
 
 

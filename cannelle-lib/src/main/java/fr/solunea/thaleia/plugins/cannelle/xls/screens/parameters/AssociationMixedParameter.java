@@ -62,33 +62,40 @@ public class AssociationMixedParameter extends AbstractScreenParameter {
 
 	@Override
 	public Optional<String> getTranslatableValue() {
-		//verification que response ne contient pas un nom de fichier
-		String response = getResponse();
-		String value = getValue();
-		if (resourcesHandler.isFileInUploadedFiles(response)) {
-			response = "";
-		}
-		String translatableValue = value + "::" + response;
-		if (translatableValue.equals("::")) {
+//		String response = getResponse();
+		String translatableValue = getValue();
+
+		if (translatableValue == null) {
 			translatableValue = "";
 		}
 		return  Optional.of(translatableValue);
-
 	}
 
 	@Override
 	public void setTranslatableValue(String value) {
-		String [] translationSeparation = value.split("::");
-		if (translationSeparation.length > 0) {
-			setValue(translationSeparation[0]);
-		} else {
-			setValue("");
+			setValue(value);
+	}
+
+	@Override
+	public Optional<String> getTranslatableResponse() {
+		String translatableResponse = getResponse();
+//		if (translatableResponse==null) {
+//			translatableResponse = "";
+//		}
+
+		//verification que response ne contient pas un nom de fichier
+		if (resourcesHandler.isFileInUploadedFiles(translatableResponse)) {
+			translatableResponse = "";
 		}
-		if (translationSeparation.length > 1) {
-			setResponse(translationSeparation[1]);
-		} else {
-			setResponse("");
+		if (translatableResponse == null) {
+			translatableResponse = "";
 		}
+		return Optional.of(translatableResponse);
+	}
+
+	@Override
+	public void setTranslatableResponse(String value) {
+		setResponse(value);
 	}
 
 	public void useResources(ResourcesHandler resourcesHandler) {

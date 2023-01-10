@@ -71,7 +71,7 @@ public class IllustrationQruParameter extends AssociationParameter {
 
 
 //    ne doit pas être traduit, getValue() retourne le nom du fichier !
-//    comme on hérite icic de AssociationParameter qui lui doit être traduit,
+//    comme on hérite ici de AssociationParameter qui lui doit être traduit,
     @Override
     public Optional<String> getTranslatableValue() {
         return  Optional.empty();
